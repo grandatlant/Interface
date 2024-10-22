@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r14 | kunda | 2010-08-11 21:30:58 +0000 (Wed, 11 Aug 2010) | 1 line
+Changed paths:
+   A /tags/30300-5 (from /trunk:13)
+
+Tagging as 30300-5
+------------------------------------------------------------------------
+r13 | kunda | 2010-08-11 21:28:17 +0000 (Wed, 11 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/FREAK.lua
+   M /trunk/FREAK.toc
+
+bugfix ... how stupid
+------------------------------------------------------------------------
+r11 | kunda | 2010-08-10 23:41:26 +0000 (Tue, 10 Aug 2010) | 3 lines
+Changed paths:
+   M /trunk/FREAK-localization-deDE.lua
+   M /trunk/FREAK-localization-enUS.lua
+   M /trunk/FREAK-localization-zhCN.lua
+   M /trunk/FREAK-localization-zhTW.lua
+   M /trunk/FREAK.lua
+   M /trunk/FREAK.toc
+   M /trunk/FREAK_GearData.lua
+
+FREAK:
+- Addded Tooltip Option (simple Checkbutton in MainFrame GUI), so that it's easy to see if an item is valid or not in the various tooltips (DISABLED by DEFAULT).
+- One function for item validation: FREAK:ValidateItem().
+------------------------------------------------------------------------

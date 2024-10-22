@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: Engraved
+## Version: 1.4
+## Author: lieandswell
+## Notes: Monitors Death Knight runes
+## SavedVariablesPerCharacter: Engraved_Settings
+Engraved_Localization.lua
+Engraved.lua
+Engraved_Options.lua
+Engraved.xml
+Engraved_Options.xml

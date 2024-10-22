@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: LoadIT
+## Notes: In-game addon management
+## Author: Ru of Frostmane - Updated by Saur of Emerald Dream (EU)
+## Dependencies: 
+## OptionalDeps: myAddOns
+## SavedVariables: LoadITcf
+## X-Curse-Packaged-Version: v30300.1
+## X-Curse-Project-Name: LoadIT (continued)
+## X-Curse-Project-ID: loadit
+## X-Curse-Repository-ID: wow/loadit/mainline
+LoadIT.xml
+LoadITmenu.xml
+LoadITGameMenuButton.xml

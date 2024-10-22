@@ -1,0 +1,13 @@
+﻿## Interface: 30300
+## Title: SoundAlerter
+## Notes: Sound Alerter for player used spells
+## Author: Trolololol, Abatorlos of Spinebreaker, Duskashes, Superk
+## SavedVariables: sadb
+## Version: 1.0
+
+SoundAlerter.xml
+
+SoundAlerter.lua
+sponsors.lua
+spellist.lua
+defaults.lua

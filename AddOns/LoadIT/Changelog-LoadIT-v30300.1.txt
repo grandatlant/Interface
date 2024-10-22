@@ -1,0 +1,12 @@
+tag v30300.1
+8fea0528a0c621283933a7ea31d6393fd2b029e5
+Peter Kjellerstedt <peter.kjellerstedt@gmail.com>
+2010-09-16 21:40:50 +0200
+
+Tag as v30300.1
+
+
+--------------------
+
+Peter Kjellerstedt:
+	- Update the .toc to match 3.3

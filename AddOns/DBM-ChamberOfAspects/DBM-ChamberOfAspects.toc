@@ -1,0 +1,30 @@
+## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Chamber of Aspects|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Палата Аспектов|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariables: DBMChamberOfAspects_AllSavedVars
+## SavedVariablesPerCharacter: DBMChamberOfAspects_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
+## X-DBM-Mod-Category: WotLK
+## X-DBM-Mod-SubCategories: The Obsidian Sanctum, The Ruby Sanctum
+## X-DBM-Mod-SubCategories-ruRU: Обсидиановое святилище, Рубиновое святилище
+## X-DBM-Mod-Name: Chamber of Aspects
+## X-DBM-Mod-Name-ruRU: Палата Аспектов
+## X-DBM-Mod-Sort: 1
+--## X-DBM-Mod-LoadZoneID: 532,610
+## X-DBM-Mod-LoadZone: The Obsidian Sanctum,The Ruby Sanctum
+## X-DBM-Mod-LoadZone-ruRU: Обсидиановое святилище,Рубиновое святилище
+localization.en.lua
+localization.ru.lua
+Obsidian\MapSizes.lua
+Obsidian\Shadron.lua
+Obsidian\Tenebron.lua
+Obsidian\Vesperon.lua
+Obsidian\Sartharion.lua
+Ruby\MapSizes.lua
+Ruby\Baltharus.lua
+Ruby\Saviana.lua
+Ruby\Zarithrian.lua
+Ruby\Halion.lua

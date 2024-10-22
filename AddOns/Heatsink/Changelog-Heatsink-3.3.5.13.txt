@@ -1,0 +1,12 @@
+tag 3.3.5.13
+10089f3368f4d6078ba05870f3c157ca16b94a4c
+durcyn <durcyn@gmail.com>
+2010-10-11 14:17:30 -0500
+
+3.3.5.13
+
+
+--------------------
+
+durcyn:
+	- track chained cooldowns like vanish/stealth since we're not scanning spellbook anymore

@@ -1,0 +1,24 @@
+## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Sunwell|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariables: DBMSunwell_AllSavedVars
+## SavedVariablesPerCharacter: DBMSunwell_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: WotLK
+## X-DBM-Mod-Name: Sunwell Plateau
+## X-DBM-Mod-Name-ruRU: Плато Солнечного Колодца
+--## X-DBM-Mod-LoadZoneID: 790
+## X-DBM-Mod-LoadZone: Sunwell Plateau
+## X-DBM-Mod-LoadZone-ruRU: Плато Солнечного Колодца
+MapSizes.lua
+localization.en.lua
+localization.ru.lua
+Kalecgos.lua
+KalecgosFrame.lua
+KalecgosFrame.xml
+Brutallus.lua
+Felmyst.lua
+EredarTwins.lua
+M'uru.lua
+Kil'jaeden.lua
