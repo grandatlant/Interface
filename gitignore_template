@@ -1,3 +1,6 @@
+# Ignore Blizz addons
+AddOns/Blizzard_*/
+
 # Compiled Lua sources
 luac.out
 
