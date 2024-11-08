@@ -1,266 +1,273 @@
 local mod	= DBM:NewMod("Anub'arak_Coliseum", "DBM-Coliseum")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 4435 $"):sub(12, -3))
+local CancelUnitBuff = CancelUnitBuff
+local GetSpellInfo = GetSpellInfo
+
+mod:SetRevision("20220909005309")
 mod:SetCreatureID(34564)
+mod:SetUsedIcons(1, 2, 3, 4, 5, 8)
+mod:SetMinSyncRevision(20220909000000)
 
-mod:RegisterCombat("yell", L.YellPull)
+mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REFRESH",
-	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_START",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+mod:RegisterEventsInCombat(
+	"SPELL_CAST_START 66118 67630 68646 68647 66134",
+	"SPELL_CAST_SUCCESS 66012",
+	"SPELL_AURA_APPLIED 67574 66013 67700 68509 68510 66012 10278",
+	"SPELL_AURA_REFRESH 67574 66013 67700 68509 68510 66012",
+	"SPELL_AURA_REMOVED 66013 67700 68509 68510 10278",
+	"CHAT_MSG_MONSTER_YELL",
+	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
-mod:SetUsedIcons(3, 4, 5, 6, 7, 8)
-
-
-mod:AddBoolOption("RemoveHealthBuffsInP3", false)
-
--- Adds
-local warnAdds				= mod:NewAnnounce("warnAdds", 3, 45419)
-local timerAdds				= mod:NewTimer(45, "timerAdds", 45419, nil, nil, 1, DBM_CORE_TANK_ICON)
-
--- Pursue
-local warnPursue			= mod:NewTargetAnnounce(67574, 4)
-local specWarnPursue		= mod:NewSpecialWarning("SpecWarnPursue")
-local warnHoP				= mod:NewTargetAnnounce(10278, 2)--Heroic strat revolves around kiting pursue and using Hand of Protection.
-local timerHoP				= mod:NewBuffActiveTimer(10, 10278, nil, nil, nil, 3)--So we will track bops to make this easier.
-mod:AddBoolOption("PlaySoundOnPursue")
-mod:AddBoolOption("PursueIcon")
-
--- Emerge
-local warnEmerge			= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local warnEmergeSoon		= mod:NewAnnounce("WarnEmergeSoon", 1, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local timerEmerge			= mod:NewTimer(62, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6, DBM_CORE_IMPORTANT_ICON, nil, 1)
-
--- Submerge
-local warnSubmerge			= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
-local warnSubmergeSoon		= mod:NewAnnounce("WarnSubmergeSoon", 1, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
-local specWarnSubmergeSoon	= mod:NewSpecialWarning("specWarnSubmergeSoon", mod:IsTank())
-local timerSubmerge			= mod:NewTimer(75, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6, DBM_CORE_IMPORTANT_ICON, nil, 1)
-
--- Phases
-local warnPhase3			= mod:NewPhaseAnnounce(3)
+-- General
 local enrageTimer			= mod:NewBerserkTimer(570)
-local Burrowed				= false
 
--- Penetrating Cold
-local specWarnPCold			= mod:NewSpecialWarningYou(68510, false)
-local timerPCold			= mod:NewBuffActiveTimer(15, 68509, nil, nil, nil, 3)
-
-mod:AddSetIconOption("SetIconsOnPCold", 68510, true, true, {7, 6, 5, 4, 3})
-mod:AddBoolOption("AnnouncePColdIcons", false)
-mod:AddBoolOption("AnnouncePColdIconsRemoved", false)
-
--- Freezing Slash
-local warnFreezingSlash		= mod:NewTargetAnnounce(66012, 2, nil, mod:IsHealer() or mod:IsTank())
-local timerFreezingSlash	= mod:NewCDTimer(20, 66012, nil, mod:IsHealer() or mod:IsTank(), nil, nil, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
-
--- Shadow Strike
-local timerShadowStrike		= mod:NewNextTimer(30.0, 66134, nil, true, nil, 4, nil, DBM_CORE_MYTHIC_ICON, nil, 3)
+-- Stage One: Emerge
+mod:AddTimerLine(DBM_CORE_L.SCENARIO_STAGE:format(1)..": "..GetSpellInfo(65982))
+local warnEmerge			= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, nil, 65982)
+local warnEmergeSoon		= mod:NewAnnounce("WarnEmergeSoon", 1, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, nil, 65982)
+local warnAdds				= mod:NewAnnounce("warnAdds", 3, 45419, nil, nil, nil, 66332)
 local preWarnShadowStrike	= mod:NewSoonAnnounce(66134, 3)
 local warnShadowStrike		= mod:NewSpellAnnounce(66134, 4)
-local specWarnShadowStrike	= mod:NewSpecialWarning("SpecWarnShadowStrike", mod:IsTank())
+local warnFreezingSlash		= mod:NewTargetNoFilterAnnounce(66012, 2, nil, "Tank|Healer")
 
-function mod:OnCombatStart(delay)
-	Burrowed = false
-	timerAdds:Start(10-delay)
-	warnAdds:Schedule(10-delay)
-	self:ScheduleMethod(10-delay, "Adds")
-	warnSubmergeSoon:Schedule(70-delay)
-	specWarnSubmergeSoon:Schedule(70-delay)
-	timerSubmerge:Start(80-delay)
-	enrageTimer:Start(-delay)
-	timerFreezingSlash:Start(-delay)
-	if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
-		timerShadowStrike:Start()
-		preWarnShadowStrike:Schedule(25.5-delay)
-		self:ScheduleMethod(30-delay, "ShadowStrike")
-	end
-	self:SetStage(1)
-end
+local specWarnShadowStrike	= mod:NewSpecialWarningSpell(66134, "Tank", nil, 2, 1) --Don't have a good voice for this. Need a "stun mob now"
+local specWarnPCold			= mod:NewSpecialWarningYou(66013, false, nil, nil, 1, 2)
 
-function mod:Adds()
+local timerEmerge			= mod:NewNextTimer(65, 65982, nil, nil, nil, 6, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", DBM_COMMON_L.IMPORTANT_ICON, nil, 1) -- Time to Emerge, related to Phase 2, but it's here for better Grouping
+local timerAdds				= mod:NewNextTimer(45, 66332, nil, nil, nil, 1, 45419, DBM_COMMON_L.TANK_ICON) -- (25H Lordaeron 2022/09/03) - Stage 1/45.1, Stage 2/24.9, Stage 1/65.0, 10.0/75.0/99.9, 45.0, Stage 3/1.9, 43.1/45.0, 45.0
+local timerShadowStrike		= mod:NewNextTimer(30, 66134, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3)
+local timerFreezingSlash	= mod:NewNextTimer(20, 66012, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON) -- (25H Lordaeron 2022/09/03) - Stage 1/20.0, 20.0, 20.0, Stage 2/4.9, Stage 1/65.0, 15.1/80.1/85.0, 20.0, 20.1, Stage 3/1.8, 18.2/20.0, 20.0, 20.0, 20.0
+local timerPCold			= mod:NewBuffActiveTimer(15, 66013, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+
+mod:AddSetIconOption("SetIconsOnPCold", 66013, true, 7, {1, 2, 3, 4, 5})
+mod:AddBoolOption("AnnouncePColdIcons", false, nil, nil, nil, nil, 66013)
+mod:AddBoolOption("AnnouncePColdIconsRemoved", false, nil, nil, nil, nil, 66013)
+
+mod:GroupSpells(66332, 66134) -- Nerubian Burrower, Shadow Strike
+
+-- Stage Two: Submerge Anub'Arak
+mod:AddTimerLine(DBM_CORE_L.SCENARIO_STAGE:format(2)..": "..GetSpellInfo(65981))
+local warnSubmerge			= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, nil, 65981)
+local warnSubmergeSoon		= mod:NewAnnounce("WarnSubmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, nil, 65981)
+local warnPursue			= mod:NewTargetNoFilterAnnounce(67574, 4)
+local warnHoP				= mod:NewTargetNoFilterAnnounce(10278, 2, nil, false) --Heroic strat revolves around kiting pursue and using Hand of Protection.
+
+local specWarnPursue		= mod:NewSpecialWarningRun(67574, nil, nil, 2, 4, 2)
+
+local timerSubmerge			= mod:NewNextTimer(80, 65981, nil, nil, nil, 6, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", DBM_COMMON_L.IMPORTANT_ICON, nil, 1) -- Time to Submerge, related to Phase 1, but it's here for better Grouping
+local timerHoP				= mod:NewBuffActiveTimer(10, 10278, nil, nil, nil, 5) --So we will track bops to make this easier.
+
+mod:AddSetIconOption("PursueIcon", 67574, true, 0, {8})
+
+-- Stage Three: Leeching Swarm
+mod:AddTimerLine(DBM_CORE_L.SCENARIO_STAGE:format(3)..": "..GetSpellInfo(66118))
+local warnPhase3			= mod:NewPhaseAnnounce(3, nil, 66118)
+
+mod:AddBoolOption("RemoveHealthBuffsInP3", false, nil, nil, nil, nil, 66118)
+
+mod.vb.Burrowed = false
+
+--"<40.90 19:45:27> [UNIT_SPELLCAST_SUCCEEDED] Anub'arak -Nerubian Burrower- [[boss1:Nerubian Burrower::0:]]", -- [1059]
+--[[disabling adds scheduling since we have proper event for this
+local function Adds(self)
 	if self:IsInCombat() then
-		if not Burrowed then
+		if not self.vb.Burrowed then
 			timerAdds:Start()
 			warnAdds:Schedule(45)
-			self:ScheduleMethod(45, "Adds")
+			self:Schedule(45, Adds, self)
 		end
 	end
-end
+end]]
 
-function mod:ShadowStrike(offset)
-	offset = offset or 0
+local function ShadowStrike(self)
+	self:Unschedule(ShadowStrike)
 	if self:IsInCombat() then
 		timerShadowStrike:Cancel()
-		timerShadowStrike:Start(30.0-offset)
+		timerShadowStrike:Start()
 		preWarnShadowStrike:Cancel()
-		preWarnShadowStrike:Schedule(25.5-offset)
-		self:UnscheduleMethod("ShadowStrike")
-		self:ScheduleMethod(30.0-offset, "ShadowStrike")
+		preWarnShadowStrike:Schedule(25.5)
+		self:Schedule(30, ShadowStrike, self)
 	end
 end
 
-function mod:ShadowStrikeReset(time)
-	if not time then return end
-	if not self:IsDifficulty("heroic10", "heroic25") then return end
-	if self:IsInCombat() then
-		timerShadowStrike:Cancel()
-		timerShadowStrike:Start(time)
-		if (time - 5) > 0 then
-			preWarnShadowStrike:Cancel()
-			preWarnShadowStrike:Schedule(time-5)
-		end
-		self:UnscheduleMethod("ShadowStrike")
-		self:ScheduleMethod(time, "ShadowStrike")
+-- Warmane workaround, since emerge boss emote is not being fired
+local function EmergeFix(self)
+	self:SetStage(1)
+	self.vb.Burrowed = false
+	timerEmerge:Cancel()
+	timerAdds:Start(5)
+--	warnAdds:Schedule(5)
+--	self:Schedule(5, Adds, self)
+	warnEmerge:Show()
+	warnSubmergeSoon:Schedule(70)
+	timerSubmerge:Start()
+	if self:IsHeroic() then
+		ShadowStrike(self)
 	end
 end
 
-local PColdTargets = {}
-do
-	local function sort_by_group(v1, v2)
-		return DBM:GetRaidSubgroup(UnitName(v1)) < DBM:GetRaidSubgroup(UnitName(v2))
-	end
-	function mod:SetPcoldIcons()
-		if DBM:GetRaidRank() > 0 then
-			table.sort(PColdTargets, sort_by_group)
-			local PColdIcon = 7
-			for i, v in ipairs(PColdTargets) do
-				if self.Options.AnnouncePColdIcons then
-					SendChatMessage(L.PcoldIconSet:format(PColdIcon, UnitName(v)), "RAID")
-				end
-				self:SetIcon(UnitName(v), PColdIcon)
-				PColdIcon = PColdIcon - 1
-			end
-			table.wipe(PColdTargets)
-		end
+function mod:AnnouncePcoldIcons(uId, icon)
+	if self.Options.AnnouncePColdIcons and DBM:IsInGroup() and DBM:GetRaidRank() > 1 then
+		SendChatMessage(L.PcoldIconSet:format(icon, DBM:GetUnitFullName(uId)), DBM:IsInRaid() and "RAID" or "PARTY")
 	end
 end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(67574) then			-- Pursue
-		if args:IsPlayer() then
-			specWarnPursue:Show()
-			if self.Options.PlaySoundOnPursue then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-			end
-		end
-		if self.Options.PursueIcon then
-			self:SetIcon(args.destName, 8, 15)
-		end
-		warnPursue:Show(args.destName)
-	elseif args:IsSpellID(66013, 67700, 68509, 68510) then		-- Penetrating Cold
-		if args:IsPlayer() then
-			specWarnPCold:Show()
-		end
-		if self.Options.SetIconsOnPCold then
-			table.insert(PColdTargets, DBM:GetRaidUnitId(args.destName))
-			self:UnscheduleMethod("SetPcoldIcons")
-			self:ScheduleMethod(0.2, "SetPcoldIcons")
-		end
-		timerPCold:Show()
-	elseif args:IsSpellID(66012) then							-- Freezing Slash
-		warnFreezingSlash:Show(args.destName)
-		timerFreezingSlash:Start()
-	elseif args:IsSpellID(10278) and self:IsInCombat() then		-- Hand of Protection
-		warnHoP:Show(args.destName)
-		timerHoP:Start(args.destName)
-	end
+function mod:RemoveBuffs() -- Remove HP buffs for p3
+	CancelUnitBuff("player", (GetSpellInfo(47440)))		-- Commanding Shout
+	CancelUnitBuff("player", (GetSpellInfo(48161)))		-- Power Word: Fortitude
+	CancelUnitBuff("player", (GetSpellInfo(48162)))		-- Prayer of Fortitude
+	CancelUnitBuff("player", (GetSpellInfo(72590)))		-- Runescroll of Fortitude
 end
 
-mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
-
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(66013, 67700, 68509, 68510) then			-- Penetrating Cold
-		mod:SetIcon(args.destName, 0)
-		if (self.Options.AnnouncePColdIcons and self.Options.AnnouncePColdIconsRemoved) and DBM:GetRaidRank() >= 1 then
-			SendChatMessage(L.PcoldIconRemoved:format(args.destName), "RAID")
-		end
-	elseif args:IsSpellID(10278) and self:IsInCombat() then		-- Hand of Protection
-		timerHoP:Cancel(args.destName)
+function mod:OnCombatStart(delay)
+	self:SetStage(1)
+	self.vb.Burrowed = false
+	timerAdds:Start(10-delay) -- (25H Lordaeron 2022/09/03) - pull:10.0
+--	warnAdds:Schedule(10-delay)
+--	self:Schedule(10-delay, Adds, self)
+	warnSubmergeSoon:Schedule(70-delay)
+	timerSubmerge:Start(-delay) -- EMOTE 2s earlier than Submerge Anub'arak unit cast. (25H Lordaeron 2022/09/03) - pull:79.9
+	enrageTimer:Start(-delay)
+	timerFreezingSlash:Start(15-delay) -- (25H Lordaeron 2022/09/03) - pull:15.0
+	if self:IsHeroic() then
+		timerShadowStrike:Start()
+		preWarnShadowStrike:Schedule(25.5-delay)
+		self:Schedule(30-delay, ShadowStrike, self)
 	end
 end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(66118, 67630, 68646, 68647) then			-- Swarm (start p3)
-		warnPhase3:Show()
 		self:SetStage(3)
+		warnPhase3:Show()
 		warnEmergeSoon:Cancel()
 		warnSubmergeSoon:Cancel()
-		specWarnSubmergeSoon:Cancel()
 		timerEmerge:Stop()
 		timerSubmerge:Stop()
-		local left = timerShadowStrike:GetRemaining()
-		self:ShadowStrikeReset(left+1.5)
+		if self:IsNormal() then
+			timerAdds:Cancel()
+--			warnAdds:Cancel()
+--			self:Unschedule(Adds)
+		end
 		if self.Options.RemoveHealthBuffsInP3 then
 			mod:ScheduleMethod(0.1, "RemoveBuffs")
 		end
-		if mod:IsDifficulty("normal10") or mod:IsDifficulty("normal25") then
-			timerAdds:Cancel()
-			warnAdds:Cancel()
-			self:UnscheduleMethod("Adds")
+	elseif args.spellId == 66134 and self:IsHeroic() and self:AntiSpam(2, 1) then	-- Shadow Strike
+		self:Unschedule(ShadowStrike)
+		ShadowStrike(self)
+		if self.Options.SpecWarn66134spell then
+			specWarnShadowStrike:Show()
+		else
+			warnShadowStrike:Show()
 		end
-	elseif args:IsSpellID(66134) and self:AntiSpam(2,66134) then
-		self:ShadowStrike()
-		specWarnShadowStrike:Show()
-		warnShadowStrike:Show()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 66012 then							-- Freezing Slash (caught one log where AURA_APPLIED was not present in one of the casts, so start timer on cast success instead)
+		timerFreezingSlash:Start()
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	local spellId = args.spellId
+	if spellId == 67574 then			-- Pursue
+		if args:IsPlayer() then
+			specWarnPursue:Show()
+			specWarnPursue:Play("justrun")
+			specWarnPursue:ScheduleVoice(1.5, "keepmove")
+		else
+			warnPursue:Show(args.destName)
+		end
+		if self.Options.PursueIcon then
+			self:SetIcon(args.destName, 8, 15)
+		end
+	elseif args:IsSpellID(66013, 67700, 68509, 68510) then		-- Penetrating Cold
+		timerPCold:Show()
+		if args:IsPlayer() then
+			specWarnPCold:Show()
+			specWarnPCold:Play("targetyou")
+		end
+		if self.Options.SetIconsOnPCold then
+			local maxIcon = self:IsDifficulty("normal25", "heroic25") and 5 or 2
+			self:SetSortedIcon("roster", 1, args.destName, 1, maxIcon, false, "AnnouncePcoldIcons")
+		end
+	elseif spellId == 66012 then							-- Freezing Slash
+		warnFreezingSlash:Show(args.destName)
+	elseif spellId == 10278 and self:IsInCombat() then		-- Hand of Protection
+		warnHoP:Show(args.destName)
+		timerHoP:Start(args.destName)
+	end
+end
+mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(66013, 67700, 68509, 68510) then			-- Penetrating Cold
+		if self.Options.SetIconsOnPCold then
+			self:SetIcon(args.destName, 0)
+			if self.Options.AnnouncePColdIconsRemoved and DBM:GetRaidRank() > 1 then
+				SendChatMessage(L.PcoldIconRemoved:format(args.destName), "RAID")
+			end
+		end
+	elseif args.spellId == 10278 and self:IsInCombat() then		-- Hand of Protection
+		timerHoP:Cancel(args.destName)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg) -- Warmane workaround since submerge emote sometimes is not being fired
+	if msg and msg == L.YellBurrow then
+		self:SetStage(2)
+		self.vb.Burrowed = true
+		timerAdds:Cancel()
+		warnAdds:Cancel()
+		warnSubmerge:Show()
+		warnEmergeSoon:Schedule(58.5)
+		timerEmerge:Start()
+		timerFreezingSlash:Stop()
+		if self:IsHeroic() then
+			self:Unschedule(ShadowStrike)
+			timerShadowStrike:Cancel()
+			preWarnShadowStrike:Cancel()
+		end
+		self:Schedule(65, EmergeFix, self)	-- Warmane workaround, since emerge boss emote is not being fired
 	end
 end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg and msg:find(L.Burrow) then
-		Burrowed = true
-		self:SetStage(2)
-		timerAdds:Cancel()
-		warnAdds:Cancel()
-		warnSubmerge:Show()
-		warnEmergeSoon:Schedule(55)
-		timerEmerge:Start()
-		timerFreezingSlash:Stop()
-		timerShadowStrike:Stop()
-		preWarnShadowStrike:Cancel()
-		self:UnscheduleMethod("ShadowStrike")
-	elseif msg and msg:find(L.Emerge) then
-		Burrowed = false
+	-- if msg and msg:find(L.Burrow) then
+	--	self:SetStage(2)
+	--	self.vb.Burrowed = true
+	--	timerAdds:Cancel()
+	--	warnAdds:Cancel()
+	--	warnSubmerge:Show()
+	--	warnEmergeSoon:Schedule(58.5)
+	--	timerEmerge:Start()
+	--	timerFreezingSlash:Stop()
+	--	self:Schedule(65, EmergeFix, self)	-- Warmane workaround, since emerge boss emote is not being fired
+	if msg and msg:find(L.Emerge) then
+		self:Unschedule(EmergeFix)		-- Warmane workaround: failsafe if script gets fixed eventually
 		self:SetStage(1)
+		self.vb.Burrowed = false
 		timerEmerge:Cancel()
 		timerAdds:Start(5)
-		warnAdds:Schedule(5)
-		self:ScheduleMethod(5, "Adds")
+--		warnAdds:Schedule(5)
+--		self:Schedule(5, Adds, self)
 		warnEmerge:Show()
-		warnSubmergeSoon:Schedule(65)
-		specWarnSubmergeSoon:Schedule(65)
+		warnSubmergeSoon:Schedule(70)
 		timerSubmerge:Start()
-		if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
-			timerShadowStrike:Stop()
-			preWarnShadowStrike:Cancel()
-			self:UnscheduleMethod("ShadowStrike")
-			self:ScheduleMethod(5.0, "ShadowStrike")
+		if self:IsHeroic() then
+			ShadowStrike(self)
 		end
 	end
 end
 
-function mod:RemoveBuffs()
-	CancelUnitBuff("player", (GetSpellInfo(47440)))		-- Commanding Shout (Rank 3)
-	CancelUnitBuff("player", (GetSpellInfo(47439)))		-- Commanding Shout (Rank 2)
-	CancelUnitBuff("player", (GetSpellInfo(45517)))		-- Commanding Shout (Rank 1)
-	CancelUnitBuff("player", (GetSpellInfo(469)))		-- Commanding Shout (Rank 1)
-	CancelUnitBuff("player", (GetSpellInfo(48161)))		-- Power Word: Fortitude (Rank 8)
-	CancelUnitBuff("player", (GetSpellInfo(25389)))		-- Power Word: Fortitude (Rank 7)
-	CancelUnitBuff("player", (GetSpellInfo(10938)))		-- Power Word: Fortitude (Rank 6)
-	CancelUnitBuff("player", (GetSpellInfo(10937)))		-- Power Word: Fortitude (Rank 5)
-	CancelUnitBuff("player", (GetSpellInfo(2791)))		-- Power Word: Fortitude (Rank 4)
-	CancelUnitBuff("player", (GetSpellInfo(1245)))		-- Power Word: Fortitude (Rank 3)
-	CancelUnitBuff("player", (GetSpellInfo(1244)))		-- Power Word: Fortitude (Rank 2)
-	CancelUnitBuff("player", (GetSpellInfo(1243)))		-- Power Word: Fortitude (Rank 1)
-	CancelUnitBuff("player", (GetSpellInfo(48162)))		-- Prayer of Fortitude (Rank 4)
-	CancelUnitBuff("player", (GetSpellInfo(25392)))		-- Prayer of Fortitude (Rank 3)
-	CancelUnitBuff("player", (GetSpellInfo(21564)))		-- Prayer of Fortitude (Rank 2)
-	CancelUnitBuff("player", (GetSpellInfo(21562)))		-- Prayer of Fortitude (Rank 1)
-	CancelUnitBuff("player", (GetSpellInfo(72590)))		-- Runescroll of Fortitude
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, spellName)
+	if spellName == GetSpellInfo(66332) then -- Nerubian Borrower
+		warnAdds:Show()
+		timerAdds:Start()
+	end
 end
-

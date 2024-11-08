@@ -1,40 +1,34 @@
 local mod	= DBM:NewMod("BloodstoneAnnihilator", "DBM-Party-WotLK", 5)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 2250 $"):sub(12, -3))
+mod.statTypes = "normal,heroic,mythic"
+
+mod:SetRevision("20221004111800")
 mod:SetCreatureID(29307)
---mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
-	"SPELL_DAMAGE"
+mod:RegisterEventsInCombat(
+	"SPELL_CAST_START 54850 54878",
+	"SPELL_PERIODIC_DAMAGE 59451"
 )
 
-local warningElemental	= mod:NewAnnounce("WarningElemental", 3, 54850)
-local warningStone		= mod:NewAnnounce("WarningStone", 3, 54878)
-local timerBarrage		= mod:NewCDTimer(6, 67994)
+local warningStone			= mod:NewSpellAnnounce(54878, 3)
+local warningElemental		= mod:NewSpellAnnounce(54850, 3)
 
-function mod:OnCombatStart()
-	timerBarrage:Start()
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 67994 then
-		timerBarrage:Start()
-	end
-end
+local specWarnPurpleShit	= mod:NewSpecialWarningGTFO(59451, nil, nil, nil, 1, 8)
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(54850) then
+	if args.spellId == 54850 then
 		warningElemental:Show()
-		timerBarrage:Cancel()
-	elseif args:IsSpellID(54878) then
+	elseif args.spellId == 54878 then
 		warningStone:Show()
-		timerBarrage:Start()
 	end
 end
 
-mod.SPELL_DAMAGE = mod.SPELL_CAST_SUCCESS
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, destGUID, _, _, spellId, spellName)
+	if spellId == 59451 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) and not self:IsTrivial() then
+		specWarnPurpleShit:Show(spellName)
+		specWarnPurpleShit:Play("watchfeet")
+	end
+end

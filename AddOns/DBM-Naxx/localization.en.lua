@@ -9,19 +9,14 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetWarningLocalization({
-	SpecialLocust		= "Locust Swarm",
-	WarningLocustFaded	= "Locust Swarm faded"
-})
-
 L:SetOptionLocalization({
-	SpecialLocust		= "Show special warning for Locust Swarm",
-	WarningLocustFaded	= "Show warning for Locust Swarm fade",
 	ArachnophobiaTimer	= "Show timer for Arachnophobia (achievement)"
 })
 
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobia"
+	ArachnophobiaTimer	= "Arachnophobia",
+	Pull1				= "Yes, run! It makes the blood pump faster!",
+	Pull2				= "Just a little taste..."
 })
 
 ----------------------------
@@ -34,13 +29,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Widow's Embrace ends in 5 seconds",
-	WarningEmbraceExpired	= "Widow's Embrace faded"
+	WarningEmbraceExpire	= "Widow's Embrace ends in 5 seconds"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Show pre-warning for Widow's Embrace fade",
-	WarningEmbraceExpired	= "Show warning for Widow's Embrace fade"
+	WarningEmbraceExpire	= "Show pre-warning for $spell:28732 fade"
+})
+
+L:SetMiscLocalization({
+	Pull					= "Kneel before me, worm!"--Not actually pull trigger, but often said on pull
 })
 
 ---------------
@@ -68,7 +65,6 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	YellWebWrap	= "I'm wrapped! Help me!",
 	ArachnophobiaTimer	= "Arachnophobia"
 })
 
@@ -83,7 +79,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "Teleported",
-	WarningTeleportSoon	= "Teleport in 20 seconds"
+	WarningTeleportSoon	= "Teleport in 10 seconds"
 })
 
 L:SetTimerLocalization({
@@ -96,6 +92,12 @@ L:SetOptionLocalization({
 	WarningTeleportSoon	= "Show pre-warning for Teleport",
 	TimerTeleport		= "Show timer for Teleport",
 	TimerTeleportBack	= "Show timer for Teleport back"
+})
+
+L:SetMiscLocalization({
+	Pull				= "Die, trespasser!",
+	Adds				= "summons forth Skeletal Warriors!",
+	AddsTwo				= "raises more skeletons!"
 })
 
 --------------------------
@@ -122,6 +124,10 @@ L:SetOptionLocalization({
 	TimerTeleport		= "Show timer for Teleport"
 })
 
+L:SetMiscLocalization({
+	Pull				= "You are mine now."
+})
+
 ---------------
 --  Loatheb  --
 ---------------
@@ -139,7 +145,10 @@ L:SetWarningLocalization({
 L:SetOptionLocalization({
 	WarningHealSoon		= "Show pre-warning for 3-second healing window",
 	WarningHealNow		= "Show warning for 3-second healing window",
-	SporeDamageAlert	= "Send whisper to and announce to raid players who damage spores\n(requires announce to be enabled and leader/promoted status)"
+	SporeDamageAlert	= "Send whisper to and announce to raid players who damage spores\n(requires announce to be enabled and leader/promoted status)",
+	CorruptedSorting	= "Set infoframe sorting behaviour for $spell:55593",
+	Alphabetical		= "Sort in alphabetical order",
+	Duration			= "Sort by duration"
 })
 
 -----------------
@@ -152,7 +161,6 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	RemoveHealthBuffsOnCombatStart	= "Remove HP buffs at start of the encounter",
 	WarningHateful	= "Post Hateful Strike targets to raid chat\n(requires announce to be enabled and leader/promoted status)"
 })
 
@@ -169,18 +177,6 @@ L = DBM:GetModLocalization("Grobbulus")
 
 L:SetGeneralLocalization({
 	name = "Grobbulus"
-})
-
-L:SetOptionLocalization({
-	SpecialWarningInjection		= "Show special warning when you are affected by Mutating Injection",
-	SetIconOnInjectionTarget	= "Set icons on Mutating Injection targets"
-})
-
-L:SetWarningLocalization({
-	SpecialWarningInjection	= "Mutating Injection on you"
-})
-
-L:SetTimerLocalization({
 })
 
 -------------
@@ -201,6 +197,20 @@ L:SetGeneralLocalization({
 	name = "Thaddius"
 })
 
+L:SetWarningLocalization({
+	WarningChargeChanged	= "Polarity changed to %s",
+	WarningChargeNotChanged	= "Polarity did not change"
+})
+
+L:SetOptionLocalization({
+	WarningChargeChanged	= "Show special warning when your polarity changed",
+	WarningChargeNotChanged	= "Show special warning when your polarity did not change",
+	ArrowsEnabled			= "Show arrows during $spell:28089",
+	TwoCamp					= "Show arrows (normal \"2 camp\" run through strategy)",
+	ArrowsRightLeft			= "Show left/right arrows for the \"4 camp\" strategy (show left arrow if polarity changed, right if not)",
+	ArrowsInverse			= "Inverse \"4 camp\" strategy (show right arrow if polarity changed, left if not)"
+})
+
 L:SetMiscLocalization({
 	Yell	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
@@ -209,24 +219,6 @@ L:SetMiscLocalization({
 	Boss2	= "Stalagg",
 	Charge1 = "negative",
 	Charge2 = "positive"
-})
-
-L:SetOptionLocalization({
-	WarningChargeChanged	= "Show special warning when your polarity changed",
-	WarningChargeNotChanged	= "Show special warning when your polarity did not change",
-	ArrowsEnabled			= "Show arrows (normal \"2 camp\" strategy)",
-	ArrowsRightLeft			= "Show left/right arrows for the \"4 camp\" strategy (show left arrow if polarity changed, right if not)",
-	ArrowsInverse			= "Inverse \"4 camp\" strategy (show right arrow if polarity changed, left if not)",
-	SoundWarnCountingShift	= "Play a 5 second audio countdown for Polarity Shift"
-})
-
-L:SetWarningLocalization({
-	WarningChargeChanged	= "Polarity changed to %s",
-	WarningChargeNotChanged	= "Polarity did not change"
-})
-
-L:SetOptionCatLocalization({
-	Arrows	= "Arrows"
 })
 
 ----------------------------
@@ -238,19 +230,19 @@ L:SetGeneralLocalization({
 	name = "Instructor Razuvious"
 })
 
-L:SetMiscLocalization({
-	Yell1 = "Show them no mercy!",
-	Yell2 = "The time for practice is over! Show me what you have learned!",
-	Yell3 = "Do as I taught you!",
-	Yell4 = "Sweep the leg... Do you have a problem with that?"
+L:SetWarningLocalization({
+	WarningShieldWallSoon	= "Shield Wall ends in 5 seconds"
 })
 
 L:SetOptionLocalization({
 	WarningShieldWallSoon	= "Show pre-warning for Shield Wall ending"
 })
 
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Shield Wall ends in 5 seconds"
+L:SetMiscLocalization({
+	Yell1 = "Show them no mercy!",
+	Yell2 = "The time for practice is over! Show me what you have learned!",
+	Yell3 = "Do as I taught you!",
+	Yell4 = "Sweep the leg... Do you have a problem with that?"
 })
 
 ----------------------------
@@ -262,13 +254,12 @@ L:SetGeneralLocalization({
 	name = "Gothik the Harvester"
 })
 
-L:SetOptionLocalization({
-	TimerWave			= "Show timer for next wave",
-	TimerPhase2			= "Show timer for Phase 2",
-	WarningWaveSoon		= "Show pre-warning for wave",
-	WarningWaveSpawned	= "Show warning for wave spawned",
-	WarningRiderDown	= "Show warning when an Unrelenting Rider dies",
-	WarningKnightDown	= "Show warning when an Unrelenting Death Knight dies"
+L:SetWarningLocalization({
+	WarningWaveSoon		= "Wave %d: %s in 3 sec",
+	WarningWaveSpawned	= "Wave %d: %s spawned",
+	WarningRiderDown	= "Rider down",
+	WarningKnightDown	= "Knight down",
+	WarningPhase2		= "Phase 2"
 })
 
 L:SetTimerLocalization({
@@ -276,12 +267,13 @@ L:SetTimerLocalization({
 	TimerPhase2	= "Phase 2"
 })
 
-L:SetWarningLocalization({
-	WarningWaveSoon		= "Wave %d: %s in 3 sec",
-	WarningWaveSpawned	= "Wave %d: %s spawned",
-	WarningRiderDown	= "Rider down",
-	WarningKnightDown	= "Knight down",
-	WarningPhase2		= "Phase 2"
+L:SetOptionLocalization({
+	TimerWave			= "Show timer for next wave",
+	TimerPhase2			= "Show timer for Phase 2",
+	WarningWaveSoon		= "Show pre-warning for wave",
+	WarningWaveSpawned	= "Show warning for wave spawned",
+	WarningRiderDown	= "Show warning when an Unrelenting Rider dies",
+	WarningKnightDown	= "Show warning when an Unrelenting Death Knight dies"
 })
 
 L:SetMiscLocalization({
@@ -303,19 +295,14 @@ L:SetGeneralLocalization({
 	name = "Four Horsemen"
 })
 
-L:SetOptionLocalization({
-	WarningMarkSoon				= "Show pre-warning for Mark",
-	WarningMarkNow				= "Show warning for Mark",
-	SpecialWarningMarkOnPlayer	= "Show special warning when you are affected by more than 4 marks"
-})
-
-L:SetTimerLocalization({
-})
-
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
-	WarningMarkNow				= "Mark %d",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
+})
+
+L:SetOptionLocalization({
+	WarningMarkSoon				= "Show pre-warning for Mark",
+	SpecialWarningMarkOnPlayer	= "Show special warning when you are affected by more than 4 marks"
 })
 
 L:SetMiscLocalization({
@@ -334,76 +321,80 @@ L:SetGeneralLocalization({
 	name = "Sapphiron"
 })
 
+L:SetWarningLocalization({
+	WarningAirPhaseSoon	= "Air phase in 10 seconds",
+	WarningAirPhaseNow	= "Air phase",
+	WarningLanded		= "Sapphiron landed",
+	SpecWarnSapphLow	= "Sapphiron can't fly!"
+})
+
+L:SetTimerLocalization({
+	TimerAir		= "Air phase",
+	TimerLanding	= "Landing"
+})
+
 L:SetOptionLocalization({
 	WarningAirPhaseSoon	= "Show pre-warning for air phase",
 	WarningAirPhaseNow	= "Announce air phase",
 	WarningLanded		= "Announce ground phase",
 	TimerAir			= "Show timer for air phase",
 	TimerLanding		= "Show timer for landing",
-	TimerIceBlast		= "Show timer for Frost Breath",
-	WarningDeepBreath	= "Show special warning for Frost Breath",
-	WarningIceblock		= "Yell on Ice Block",
-	SpecWarnSapphLow 	= "Special warning for 10% execute phase (cancel air phase)"
+	SpecWarnSapphLow	= "Special warning for 10% execute phase (cancel air phase)"
 })
 
 L:SetMiscLocalization({
 	EmoteBreath			= "%s takes a deep breath.",
-	WarningYellIceblock	= "I'm an Ice Block!"
-})
-
-L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "Air phase in 10 seconds",
-	WarningAirPhaseNow	= "Air phase",
-	WarningLanded		= "Sapphiron landed",
-	WarningDeepBreath	= "Frost Breath",
-	SpecWarnSapphLow 	= "Sapphiron can't fly!"
-})
-
-L:SetTimerLocalization({
-	TimerAir		= "Air phase",
-	TimerLanding	= "Landing",
-	TimerIceBlast	= "Frost Breath"
+	AirPhase			= "Sapphiron lifts off into the air!",
+	LandingPhase		= "Sapphiron resumes his attacks!"
 })
 
 ------------------
 --  Kel'Thuzad  --
 ------------------
-
 L = DBM:GetModLocalization("Kel'Thuzad")
 
 L:SetGeneralLocalization({
 	name = "Kel'Thuzad"
 })
 
+L:SetWarningLocalization({
+	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds",
+	warnAddsSoon	= "Guardians of Icecrown incoming soon",
+	WeaponsStatus	= "Auto Unequip/Equip weapons: %s (%s - %s)"
+})
+
+L:SetTimerLocalization({
+	TimerPhase2	= "Phase 2"
+})
+
 L:SetOptionLocalization({
-	TimerPhase2		= "Show timer for Phase 2",
-	MCImminent		= "MC Imminent! (20s)",
-	specwarnP2Soon	= "Show special warning 10 seconds before Kel'Thuzad engages",
-	fissure 		= "Show special warning for Shadow Fissure",
-	manaNear		= "Show special warning when Detonate Mana is nearby",
-	warnAddsSoon	= "Show pre-warning for Guardians of Icecrown",
-	BlastAlarm		= "Play custom siren sound when Frost Blast is being cast",
-	SmileScream		= "Play custom OnlySmile sound for Shadow Fissure(joke)",
-	EqUneqWeaponsKT	= "Automatically unequip and equip weapons before and after Mind Control. Create equip. set named 'pve' for re-equipping",
-	EqUneqWeaponsKT2= "Automatically unequip and equip weapons when MC is cast on YOU",
-	ShowRange		= "Show range frame when Phase 2 starts"
+	TimerPhase2			= "Show timer for Phase 2",
+	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages",
+	warnAddsSoon		= "Show pre-warning for Guardians of Icecrown",
+	WeaponsStatus		= "Show special warning at combat start if unequip/equip function is enabled",
+	EqUneqWeaponsKT		= "Automatically unequip and equip weapons on a timer, before and after $spell:28410. Requires a COMPLETE (with the weapons of choice that will be equipped) equipment set named \"pve\"",
+	EqUneqWeaponsKT2	= "Automatically unequip and equip weapons when $spell:28410 is cast on YOU. Requires a COMPLETE (with the weapons of choice that will be equipped) equipment set named \"pve\"",
+	RemoveBuffsOnMC		= "Remove buffs when $spell:28410 is cast on you. Each option is cumulative.",
+	Never				= NEVER, -- don't translate,
+	Gift				= "Remove $spell:48469 / $spell:48470. Minimal approach to prevent $spell:33786 resists.",
+	CCFree				= "+ Remove $spell:48169 / $spell:48170. Account for resists of spells in the Shadow school.",
+	ShortOffensiveProcs	= "+ Remove offensive procs that have a low duration. Recommended for raid safety without compromising raid damage output.",
+	MostOffensiveBuffs	= "+ Remove most offensive buffs (mainly for Casters and |cFFFF7C0AFeral Druids|r). Maximum raid safety with loss of damage output and need to self-rebuff/shapeshift!",
+	EqUneqFilter		= FILTER, -- don't translate
+	OnlyDPS				= DBM_COMMON_L.DAMAGE_ICON, -- don't translate
+	DPSTank				= DBM_COMMON_L.DAMAGE_ICON..DBM_COMMON_L.TANK_ICON, -- don't translate
+	NoFilter			= DBM_COMMON_L.DAMAGE_ICON..DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON -- don't translate
 })
 
 L:SetMiscLocalization({
 	Yell		= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
-	YellMC1		= "Your soul is bound to me, now!",
-	YellMC2		= "There will be no escape!",
-	setMissing	= "ATTENTION! DBM automatic weapon unequipping/equipping will not work until you create a equipment set named pve"
-})
-
-L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds",
-	fissure 		= "Shadow Fissure",
-	manaNear		= "Detonate Mana nearby",
-	warnAddsSoon	= "Guardians of Icecrown incoming soon"
-})
-
-L:SetTimerLocalization({
-	TimerPhase2	= "Phase 2",
-	MCImminent	= "MC Imminent! (20s)"
+--	YellMC1		= "Your soul is bound to me, now!",
+--	YellMC2		= "There will be no escape!",
+	Yell1Phase2	= "Pray for mercy!", -- 12995
+	Yell2Phase2	= "Scream your dying breath!", -- 12996
+	Yell3Phase2	= "The end is upon you!", -- 12997
+	YellPhase3	= "Master, I require aid!", -- 12998
+	YellGuardians	= "Very well. Warriors of the frozen wastes, rise up! I command you to fight, kill and die for your master! Let none survive!", -- 12994
+	setMissing	= "ATTENTION! DBM automatic weapon unequipping/equipping will not work until you create a equipment set named pve",
+	EqUneqLineDescription	= "Automatic Equip/Unequip"
 })
