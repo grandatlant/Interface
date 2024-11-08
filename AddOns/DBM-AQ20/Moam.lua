@@ -1,36 +1,40 @@
 local mod	= DBM:NewMod("Moam", "DBM-AQ20", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 132 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(15340)
+
+mod:SetModelID(15340)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_SUCCESS"
+mod:RegisterEventsInCombat(
+	"SPELL_AURA_APPLIED 25685",
+	"SPELL_AURA_REMOVED 25685"
 )
 
-local warnStoneformSoon	= mod:NewSoonAnnounce(25685, 2)
-local warnStoneform		= mod:NewSpellAnnounce(25685, 3)
+--Energize is mode boss goes in during Summon Mana Fiend Phase
+--TODO, update timrs on mana drains/etc
+--TODO, verify if arcane eruption wll always be the same
+--"Arcane Eruption-25672-npc:15340 = pull:325.8", -- [1]
+local warnEnergize		= mod:NewSpellAnnounce(25685, 3)
 
-local timerStoneform	= mod:NewNextTimer(90, 25685)
-local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685)
+local timerEnergize		= mod:NewNextTimer(90, 25685, nil, nil, nil, 6)
+local timerEnergizeDur	= mod:NewBuffActiveTimer(90, 25685, nil, nil, nil, 6)
 
 function mod:OnCombatStart(delay)
-	timerStoneform:Start(-delay)
-	warnStoneformSoon:Schedule(80)
+	timerEnergize:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(25685) then
-		timerStoneformDur:Start()
-		warnStoneform:Show()
+	if args.spellId == 25685 and args:IsDestTypeHostile() then
+		warnEnergize:Show()
+		timerEnergizeDur:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(25685) then
-		timerStoneform:Start()
-		warnStoneformSoon:Schedule(80)
+	if args.spellId == 25685 and args:IsDestTypeHostile() then
+		timerEnergizeDur:Stop()
+		timerEnergize:Start()
 	end
 end

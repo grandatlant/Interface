@@ -1,31 +1,35 @@
-local ipairs = ipairs
-local pairs = pairs
-local ceil, floor = math.ceil, math.floor
+local _, private = ...
 
-local GetInstanceInfo = GetInstanceInfo
+local ipairs = ipairs
+
 local GetNumPartyMembers = GetNumPartyMembers
 local GetNumRaidMembers = GetNumRaidMembers
 
-function tIndexOf(tbl, item)
+local function tIndexOf(tbl, item)
 	for i, v in ipairs(tbl) do
 		if item == v then
 			return i;
 		end
 	end
 end
+private.tIndexOf = tIndexOf
 
-function IsInGroup()
+local function IsInGroup()
 	return GetNumPartyMembers() > 0 or GetNumRaidMembers() > 0
 end
+private.IsInGroup = IsInGroup
 
-function IsInRaid()
+local function IsInRaid()
 	return GetNumRaidMembers() > 0
 end
+private.IsInRaid = IsInRaid
 
---function GetNumSubgroupMembers()
---	return GetNumPartyMembers()
---end
+local function GetNumSubgroupMembers()
+	return GetNumPartyMembers()
+end
+private.GetNumSubgroupMembers = GetNumSubgroupMembers
 
-function GetNumGroupMembers()
+local function GetNumGroupMembers()
 	return IsInRaid() and GetNumRaidMembers() or GetNumPartyMembers()
 end
+private.GetNumGroupMembers = GetNumGroupMembers
