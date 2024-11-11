@@ -126,7 +126,7 @@ elseif LOCALE_zhCN then
 elseif LOCALE_zhTW then
 	standardFont = "Fonts\\blei00d.TTF"
 elseif LOCALE_ruRU then
-	standardFont = "Fonts\\FRIZQT___CYR.TTF"
+	standardFont = "Fonts\\NIM_____.TTF"
 else
 	standardFont = "Fonts\\FRIZQT__.TTF"
 end
