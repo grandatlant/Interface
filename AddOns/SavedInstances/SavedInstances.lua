@@ -719,7 +719,8 @@ function core:ShowTooltip(anchorframe)
 		local toon = strsub(toondiff, 1, #toondiff-1)
 		local diff = strsub(toondiff, #toondiff, #toondiff)
 		if diff == "1" then
-			tooltip:SetCell(headLine, col, ClassColorise(vars.db.Toons[toon].Class, select(1, strsplit(" - ", toon))), tooltip:GetHeaderFont(), "CENTER", 4)
+			-- tooltip:SetCell(headLine, col, ClassColorise(vars.db.Toons[toon].Class, select(1, strsplit(" - ", toon))), tooltip:GetHeaderFont(), "CENTER", 4)
+			tooltip:SetCell(headLine, col, ClassColorise(vars.db.Toons[toon].Class, strsub(toon, 1, 6)), tooltip:GetHeaderFont(), "CENTER", 4)
 		end
 	end 
 	-- we now know enough to put in the category names where necessary
