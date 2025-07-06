@@ -1,0 +1,33 @@
+------------------------------------------------------------------------
+r16 | bl1john | 2008-11-23
+
+RageBar v1.02:
+
+- Tag as 1.02
+
+------------------------------------------------------------------------
+r15 | bl1john | 2008-11-20
+
+RageBar :
+
+- Add a health bar wich show your current health and your health deficit
+- Possibility to show or hide the health bar
+- fix some bugs
+
+------------------------------------------------------------------------
+r2 | bl1john | 2008-11-13
+
+RageBar v1.01 :
+
+- Fix an issue with automatic detect of talent "Tactycal mastery"
+------------------------------------------------------------------------
+r1 | bl1john | 2008-11-11
+
+RageBar v1.0 :
+
+- An additional rage bar, which shows how much rage would be lost by switching the stance.
+- Possibility to display bar verticaly or horizontally.
+- Possibility to display bar all the time, or if you have some rage, or if you are in combat.
+- 3.0.3 compatible
+- Localization frFR, enUS, deDE
+------------------------------------------------------------------------

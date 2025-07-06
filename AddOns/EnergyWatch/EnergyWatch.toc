@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: EnergyWatch Reborn
+## Notes: Displays current energy and combo points on a movable, customizable bar
+## Author: OneWingedAngel
+## Update Author: Repent
+## Original Author: Vector-
+## SavedVariablesPerCharacter: EnergyWatch_Save
+## OptionalDeps:
+## Dependencies: 
+EnergyWatch.xml

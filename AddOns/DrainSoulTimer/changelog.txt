@@ -1,0 +1,36 @@
+Change Log:
+
+Version 2.4
+====================
+- converted the wav files to ogg vorbis
+- replaced "this" with "self"
+- updated the toc
+
+Version 2.3
+====================
+- changed VARIABLES_LOADED to ADDON_LOADED (thank you very much bahuur!)
+
+Version 2.2
+====================
+- fixed a bug where the savedvariables were overwritten with the defaults (or at least i hope so)
+- changed the toc to interface 3.3
+
+Version 2.1
+====================
+- added the config to the interface options addons panel
+- changed the code to use spellIDs instead of spellnames
+
+Version 2.0
+====================
+- added gui for the config
+- removed the old slashcommands
+- changed DS Tick sound
+
+Version 1.2
+====================
+- added an execute warning (25%)
+
+Version 1.1
+====================
+- added the option to play a sound
+- added slashcommands

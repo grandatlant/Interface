@@ -1,0 +1,12 @@
+tag v1.20
+12ceaaac8975ae631a5652d3b7e0850bc7ae93fe
+kollektiv <kollektiv@pc>
+2009-12-28 20:05:30 -0500
+
+Tagging as v1.20
+
+
+--------------------
+
+kollektiv:
+	- Updated toc to 3.3

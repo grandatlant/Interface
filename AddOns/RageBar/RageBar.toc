@@ -1,0 +1,19 @@
+﻿## Interface: 30000
+## Title: RageBar
+## Notes: An additional rage bar, which shows how much rage would be lost by switching the stance.
+## Notes-deDE: Eine zusätzliche Wutleiste, die anzeigt, wie viel Wut man durch einen Haltungswechsel verlieren würde.
+## Notes-frFR: Une barre de rage supplémentaire, qui montre combien de rage serait perdue en changeant de position.
+## Version: 1.01
+## SavedVariables: RageBardb
+## X-Localizations: enUS, deDE, enGB, frFR
+## X-Category: Warrior
+## Author: Navy EU Dalaran
+## X-Website: http://wow.curse.com/downloads/wow-addons/details/ragebar.aspx
+## OptionalDeps: Ace3, LibStub, AceAddon-3.0, CallbackHandler-1.0, AceGUI-3.0, AceConfig-3.0, AceConsole-3.0, AceDB-3.0, AceEvent-3.0, AceDBOptions-3.0, AceLocale-3.0, AceDBOptions-3.0, LibSharedMedia-3.0, SharedMedia
+## X-Embeds: LibStub, AceAddon-3.0, CallbackHandler-1.0, AceGUI-3.0, AceConfig-3.0, AceConsole-3.0, AceDB-3.0, AceEvent-3.0, AceDBOptions-3.0, AceLocale-3.0, AceDBOptions-3.0, LibSharedMedia-3.0
+
+embeds.xml
+Locales\enUS.lua
+Locales\deDE.lua
+Locales\frFR.lua
+RageBar.lua

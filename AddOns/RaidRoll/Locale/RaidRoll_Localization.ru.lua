@@ -1,0 +1,75 @@
+﻿
+
+if (GetLocale() == "ruRU") then
+
+RAIDROLL_LOCALE["10_Sec_Announce_Winner"] = "10 сек + Анонс победителя"
+RAIDROLL_LOCALE["added_to_marking_list"] = "добавлена метка в список."
+RAIDROLL_LOCALE["Allow_all_rolls"] = "Все броски (р.п. 1-50)"
+RAIDROLL_LOCALE["Allow_Extra_Rolls"] = "Разрешить доп. броски"
+RAIDROLL_LOCALE["Are_You_Sure"] = "Вы уверены что хотите отдать %s игроку %s?"
+RAIDROLL_LOCALE["Auto_Announce_Count"] = "Автоматическое объявление броска"
+RAIDROLL_LOCALE["Auto_Close_Window"] = "Авто-закрыть окно"
+RAIDROLL_LOCALE["Automatically_open_window_when_new_loot_is_found"] = "Автоматически открывает окно при обнаружении новой добычи"
+RAIDROLL_LOCALE["Awaiting Rolls"] = "Ожидается розыгрыш"
+RAIDROLL_LOCALE["Award"] = "Награда %s"
+RAIDROLL_LOCALE["BARTOOLTIP"] = [=[Raid Roll
+	
+	Левый клик - показать окно
+	Правый клик - показать опции
+	
+	Alt+Левый клик - показать окно отслеживания бросков]=]
+RAIDROLL_LOCALE["Catch_Unannounced_Rolls"] = "Броски без объявлений"
+RAIDROLL_LOCALE["Clear"] = "Очистить"
+RAIDROLL_LOCALE["Clear_Marks"] = "Очистить метки"
+RAIDROLL_LOCALE["Clear_Rolls"] = "Очистить броски"
+RAIDROLL_LOCALE["Enable_EPGP_mode"] = "Включить EPGP мод"
+RAIDROLL_LOCALE["Enable_threshold_levels"] = "Включение порогового уровня"
+RAIDROLL_LOCALE["Finish_Early"] = "Закончить досрочно"
+RAIDROLL_LOCALE["Finishing_Rolling_Early"] = "Розыгрыш закончен досрочно"
+RAIDROLL_LOCALE["General_Settings"] = "Общие настройки"
+RAIDROLL_LOCALE["Give_Higher_Ranks_Priority"] = "Дать наивысший приоритет"
+RAIDROLL_LOCALE["Guild_Rank"] = "Ранг в Гильдии"
+RAIDROLL_LOCALE["HELP1"] = "|cFFC41F3BRaid Roll - команды:"
+RAIDROLL_LOCALE["HELP10"] = "|cFFFFF569/rr enable - включить отслеживание"
+RAIDROLL_LOCALE["HELP11"] = "|cFFFFF569/rr mark [Имя или RollerID*] - помечает бросателя меткой"
+RAIDROLL_LOCALE["HELP12"] = "|cFFFFF569/rr unmark [Имя или RollerID*] - убирает с бросателя метку"
+RAIDROLL_LOCALE["HELP13"] = "|cFFFFF569*RollerID это число, которое в настоящее время отображается рядом с именем игрока в окне"
+RAIDROLL_LOCALE["HELP2"] = "|cFF2459FF(Розыгрыш в рейде)"
+RAIDROLL_LOCALE["HELP3"] = "|cFF69CCF0/rr - Raid Rolls"
+RAIDROLL_LOCALE["HELP4"] = "|cFF69CCF0/rr [Itemlink] - Raid Rolls (выключая ссылку на предмет при оповещении победителей)"
+RAIDROLL_LOCALE["HELP5"] = "|cFF69CCF0/rr re - перерозыгрыш"
+RAIDROLL_LOCALE["HELP6"] = "|cFF69CCF0/rr re [Itemlink] - Rerolls (выключая ссылку на предмет при оповещении победителей)"
+RAIDROLL_LOCALE["HELP7"] = "|cFFFF7D0A(Отслеживание бросков)"
+RAIDROLL_LOCALE["HELP8"] = "|cFFFFF569/rr show - Sпоказать окно отслеживания бросков"
+RAIDROLL_LOCALE["HELP9"] = "|cFFFFF569/rr disable - отключить отслеживание"
+RAIDROLL_LOCALE["Marking_list_cleared"] = "Список марок очищен!"
+RAIDROLL_LOCALE["New_ID"] = "Новый ID"
+RAIDROLL_LOCALE["No_Item"] = "Нет предмета"
+RAIDROLL_LOCALE["No_Winner"] = "Нет победителя"
+RAIDROLL_LOCALE["No_winner_for"] = "Никто не выйграл %s."
+RAIDROLL_LOCALE["Options"] = "Настройки"
+RAIDROLL_LOCALE["OPTIONSTITLE"] = "Настройки меню"
+RAIDROLL_LOCALE["Priorities"] = "Дать доп. приоритет:"
+RAIDROLL_LOCALE["Raid_Roll_Display_Settings"] = "Показ настроек"
+RAIDROLL_LOCALE["Raid_Roll_EPGP_Settings"] = "EPGP настройки"
+RAIDROLL_LOCALE["Receive_loot_messages_from_guild"] = "Получиние сообщений о добыче из гильдии. (Рекомендуется выкл)"
+RAIDROLL_LOCALE["removed_from_marking_list"] = "очистить список марок."
+RAIDROLL_LOCALE["Rolling_Ends_in_10_Sec"] = "Розыгрыш закончиться через 10 секунд"
+RAIDROLL_LOCALE["Rolling_Ends_in_5_Sec"] = "Розыгрыш закончиться через 5 секунд"
+RAIDROLL_LOCALE["Set_Extra_Rank_Width"] = "Добавить ширину ранга"
+RAIDROLL_LOCALE["Set_Msg1"] = "Назначить первое сообщение"
+RAIDROLL_LOCALE["Set_Msg2"] = "Назначить второе сообщение"
+RAIDROLL_LOCALE["Set_Rolling_Time"] = "Время розыгрыша"
+RAIDROLL_LOCALE["Set_Scale"] = "Размер окна отслеживания бросков"
+RAIDROLL_LOCALE["Show_Class_Colors"] = "Показать цвета классов"
+RAIDROLL_LOCALE["Show_Group_Beside_Name"] = "Показать номер групп"
+RAIDROLL_LOCALE["Show_Rank_Beside_Name"] = "Показать ранг рядом с ником"
+RAIDROLL_LOCALE["Use_Item_Brackets"] = "Для оповещения с сылкой на предмет используйте [item]  (пример: Разыгрывается [item] на основной спек)"
+RAIDROLL_LOCALE["won_item_PR_value"] = "%s выйграл(а) %s. PR: %s"
+RAIDROLL_LOCALE["won_item_with"] = "%s выйграл(а) %s выбросив %s."
+RAIDROLL_LOCALE["won_PR_value"] = "%s выйграл(а). PR: %s"
+RAIDROLL_LOCALE["won_with"] = "%s выйграл(а) выбросив %s."
+
+
+
+end 

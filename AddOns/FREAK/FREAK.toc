@@ -1,0 +1,18 @@
+## Interface: 30300
+## Author: kunda
+## Title: FREAK
+## Notes: Freaking geaR dEpendent Achievement checKer - Gear check for the Achievements 'A Tribute to Dedicated Insanity' and 'Herald of the Titans'.
+## Version: 30300-5
+## SavedVariables: FREAK_Options
+## X-Curse-Packaged-Version: 30300-5
+## X-Curse-Project-Name: FREAK
+## X-Curse-Project-ID: freak
+## X-Curse-Repository-ID: wow/freak/mainline
+
+FREAK-localization-enUS.lua
+FREAK-localization-deDE.lua
+FREAK-localization-zhTW.lua
+FREAK-localization-zhCN.lua
+
+FREAK_GearData.lua
+FREAK.lua

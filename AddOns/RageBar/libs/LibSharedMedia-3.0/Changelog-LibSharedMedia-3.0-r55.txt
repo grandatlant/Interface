@@ -1,0 +1,107 @@
+------------------------------------------------------------------------
+r55 | arrowmaster | 2008-10-28 11:11:06 +0000 (Tue, 28 Oct 2008) | 1 line
+Changed paths:
+   A /trunk/lib.xml
+
+revert commit 54 by FUCKING DUMBASS Jncl, NEVER TOUCH THIS PROJECT AGAIN FUCKING DUMBASS
+------------------------------------------------------------------------
+r54 | jncl | 2008-10-28 11:02:15 +0000 (Tue, 28 Oct 2008) | 2 lines
+Changed paths:
+   D /trunk/lib.xml
+
+LibSharedMedia-3.0: Removed lib.xml from root level
+- Current packaged version 50 has an incorrect TOC, but the one in the SVN is correct, so forcing a new package
+------------------------------------------------------------------------
+r53 | elkano | 2008-10-23 13:45:10 +0000 (Thu, 23 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0/LibSharedMedia-3.0.lua
+
+added a type check for mediatype and key to :Register
+------------------------------------------------------------------------
+r52 | arrowmaster | 2008-10-14 21:30:05 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   M /tags/1
+   M /tags/1/CallbackHandler-1.0/CallbackHandler-1.0.lua
+   M /tags/1/LibSharedMedia-3.0.toc
+   M /tags/1/LibStub/LibStub.lua
+   M /tags/1/tests
+   M /tags/1/tests/LibSharedMedia-3.0 tests.lua
+   M /tags/1/tests/wow_api.lua
+   M /trunk
+   M /trunk/.pkgmeta
+   M /trunk/CallbackHandler-1.0/CallbackHandler-1.0.lua
+   M /trunk/LibSharedMedia-3.0.toc
+   M /trunk/LibStub/LibStub.lua
+   A /trunk/lib.xml
+   M /trunk/tests
+   M /trunk/tests/LibSharedMedia-3.0 tests.lua
+   M /trunk/tests/wow_api.lua
+
+Add lib.xml back to base directory since removing it broke some externals, and fix various svn properties
+------------------------------------------------------------------------
+r51 | durcyn | 2008-10-14 20:59:32 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0.toc
+
+LibSharedMedia-3.0: if we're going to nuke the root lib.xml, maybe the toc should refer to the child lib.xml, no?
+------------------------------------------------------------------------
+r49 | elkano | 2008-10-14 11:43:31 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0/LibSharedMedia-3.0.lua
+
+LibSharedMedia-3.0: added some additional default media
+------------------------------------------------------------------------
+r48 | elkano | 2008-10-14 11:25:18 +0000 (Tue, 14 Oct 2008) | 5 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/LibSharedMedia-3.0/LibSharedMedia-3.0.lua
+   M /trunk/LibSharedMedia-3.0.toc
+   D /trunk/lib.xml
+   A /trunk/tests
+   A /trunk/tests/LibSharedMedia-3.0 tests.lua
+   A /trunk/tests/wow_api.lua
+
+LibSharedMedia-3.0
+- removed base folder lib.xml by now they should all have changed to the subfolder
+- added some test code as separate file
+- cleaned up ruRU code
+- fixed TOC for WoW 3.x
+------------------------------------------------------------------------
+r47 | nevcairiel | 2008-10-12 11:40:04 +0000 (Sun, 12 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0.toc
+
+Patch 3.0 prep: Remove LoD from Libraries that have no load manager (LoD+OptDep Bug)
+------------------------------------------------------------------------
+r46 | nevcairiel | 2008-10-09 21:53:54 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0/LibSharedMedia-3.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r45 | ackis | 2008-10-04 06:04:47 +0000 (Sat, 04 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Fake commit to see if this will be packaged
+------------------------------------------------------------------------
+r44 | root | 2008-09-29 21:29:16 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r42 | root | 2008-09-29 20:58:19 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/LibSharedMedia-3.0
+   A /trunk (from /tmp/trunk/LibSharedMedia-3.0:41)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r41 | StingerSoft | 2008-09-20 09:45:25 +0000 (Sat, 20 Sep 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibSharedMedia-3.0/LibSharedMedia-3.0/LibSharedMedia-3.0.lua
+
+LibSharedMedia-3.0
+- added ruRU local
+------------------------------------------------------------------------

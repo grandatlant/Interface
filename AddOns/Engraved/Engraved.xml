@@ -1,0 +1,210 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<Frame name="Engraved_RuneTemplate" movable="true" toplevel="true" enableMouse="true" virtual="true">
+		<Size>
+			<AbsDimension x="128" y="128"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOP"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBackground" file="Interface\AddOns\Engraved\Textures\CircleBackground">
+					<Size>
+						<AbsDimension x="128" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentFill" file="Interface\AddOns\Engraved\Textures\CircleFill">
+					<Size>
+						<AbsDimension x="128" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOM"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentGlow" file="Interface\AddOns\Engraved\Textures\CircleGlow" alphaMode="BLEND">
+					<Size>
+						<AbsDimension x="128" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentInnerGlow" file="Interface\AddOns\Engraved\Textures\CircleFill" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="128" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				Engraved.Rune_OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				Engraved.Rune_OnEvent(self, event, ...);
+			</OnEvent>
+			<OnMouseUp>
+				if ( button == "RightButton" ) then
+					InterfaceOptionsFrame_OpenToCategory("Engraved");
+				end
+			</OnMouseUp>
+			<OnDragStart>
+				Engraved.Rune_OnDragStart(self);
+				--	self:StartMoving();
+		--[[
+				if ( IsShiftKeyDown() ) then
+					self:GetParent():StartMoving();
+				else
+					self:StartMoving();
+				end
+		--]]
+			</OnDragStart>
+			<OnDragStop>
+				Engraved.Rune_OnDragStop(self);
+--[[
+				self:StopMovingOrSizing();
+				self:GetParent():StopMovingOrSizing();
+				Engraved.SaveRunePosition(self);
+				--	Engraved.SavePosition(self:GetParent());
+--]]
+			</OnDragStop>
+			<OnEnter>
+				GameTooltip_SetDefaultAnchor(GameTooltip, self);
+				GameTooltip:AddLine("Engraved", HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b, 1);
+				GameTooltip:AddLine(ENGRAVED.RUNE_TOOLTIP, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
+				GameTooltip:Show();
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<Frames>
+			<Button name="$parentResizeButton">
+				<Size>
+					<AbsDimension x="40" y="40"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentTexture" file="Interface\AddOns\Engraved\Textures\Resize">
+							<Size>
+								<AbsDimension x="40" y="40"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						_G[self:GetName().."Texture"]:SetVertexColor(0.6, 0.6, 0.6);
+					</OnLoad>
+					<OnMouseDown>
+						Engraved.StartSizing(self, button);
+					</OnMouseDown>
+					<OnMouseUp>
+						Engraved.StopSizing(self, button);
+					</OnMouseUp>
+					<OnEnter>
+						GameTooltip_SetDefaultAnchor(GameTooltip, self);
+						GameTooltip:AddLine(ENGRAVED.RESIZE_TOOLTIP, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
+						GameTooltip:Show();
+						_G[self:GetName().."Texture"]:SetVertexColor(1, 1, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+						_G[self:GetName().."Texture"]:SetVertexColor(0.6, 0.6, 0.6);
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+
+	<Frame name="Engraved_RuneFrame" parent="UIParent">
+		<Size>
+			<AbsDimension x="1" y="1"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				Engraved.RuneFrame_OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				Engraved.RuneFrame_OnEvent(self, event, ...);
+			</OnEvent>
+		</Scripts>
+		<Frames>
+			<Frame name="Engraved_Rune1" inherits="Engraved_RuneTemplate" id="1">
+				<Size>
+					<AbsDimension x="128" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Frame>
+			<Frame name="Engraved_Rune2" inherits="Engraved_RuneTemplate" id="2">
+				<Size>
+					<AbsDimension x="128" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Frame>
+			<Frame name="Engraved_Rune3" inherits="Engraved_RuneTemplate" id="3">
+				<Size>
+					<AbsDimension x="128" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Frame>
+			<Frame name="Engraved_Rune4" inherits="Engraved_RuneTemplate" id="4">
+				<Size>
+					<AbsDimension x="128" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Frame>
+			<Frame name="Engraved_Rune5" inherits="Engraved_RuneTemplate" id="5">
+				<Size>
+					<AbsDimension x="128" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Frame>
+			<Frame name="Engraved_Rune6" inherits="Engraved_RuneTemplate" id="6">
+				<Size>
+					<AbsDimension x="128" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Frame>
+		</Frames>
+	</Frame>
+
+
+</Ui>

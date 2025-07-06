@@ -1,0 +1,26 @@
+------------------------------------------------------------------------
+r697 | kagaro | 2010-10-13 14:58:32 +0000 (Wed, 13 Oct 2010) | 1 line
+Changed paths:
+   A /tags/v.1.24 (from /trunk:696)
+
+Tagging as v.1.24
+------------------------------------------------------------------------
+r696 | kagaro | 2010-10-13 14:56:04 +0000 (Wed, 13 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/Display.lua
+   M /trunk/GatherMate.lua
+
+Added a compat filter for GatherMAte so it loads in 4.0 as not working and tells the user to upgrade. Done so that the GM2 convertor can load the DB and convrt the nodes.
+------------------------------------------------------------------------
+r695 | dhedbor | 2010-10-13 06:07:24 +0000 (Wed, 13 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/Display.lua
+
+Reverse 4.0 patch, Upgrade to GatherMate2 instead.
+------------------------------------------------------------------------
+r694 | dhedbor | 2010-10-13 05:59:24 +0000 (Wed, 13 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/Display.lua
+
+Now loads on 4.0
+------------------------------------------------------------------------

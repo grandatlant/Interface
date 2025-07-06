@@ -1,0 +1,15 @@
+tag v1.6.5
+eb7b6282400760d81d2b9df0427d53ad87dc48b7
+Shadowed <shadowed.wow@gmail.com>
+2010-06-09 14:29:48 -0700
+
+Tagging as release 1.6.5, Math Edition (TM)
+
+
+--------------------
+
+Shadowed:
+	- Added HealComm:GetPlayerHealingMod(), returns the players healing modifier, a Paladin with Avenging Wrath will have a return of 1.2, if they have Divine Plea and Avenging Wrath then 0.6 (1.2 * 0.5 = 0.6)
+	- DRUID: Added Relic's which give +healing to Lifebloom's bomb heal
+	- Added Enervating Band debuff (PTR)
+	- SHAMAN: Fixed Lesser Healing Wave Rank 5 having an average of 631 - 05

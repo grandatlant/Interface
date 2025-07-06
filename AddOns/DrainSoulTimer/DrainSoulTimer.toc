@@ -1,0 +1,12 @@
+## Interface: 40000
+## Title: DrainSoulTimer
+## Title-deDE: DrainSoulTimer
+## Author: Env\195\189 <Der Blutring> - Der Rat von Dalaran
+## Version: 2.4
+## Notes: Will play a sound if you get a drain soul tick
+## Notes-deDE: Spielt ein Sound ab, wenn der Seelendieb tickt
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariablesPerCharacter: DST_Vars
+DrainSoulTimer.xml
+DrainSoulTimerOptions.xml

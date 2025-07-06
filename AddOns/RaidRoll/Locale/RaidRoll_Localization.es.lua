@@ -1,0 +1,57 @@
+﻿
+
+if (GetLocale() == "esES") then
+
+RAIDROLL_LOCALE["5_Sec_Announce_Winner"] = "5 seg + Anunciar Ganador"
+RAIDROLL_LOCALE["added_to_marking_list"] = "añadido a lista de marcados."
+RAIDROLL_LOCALE["Allow_all_rolls"] = "Permitir todas las tiradas (p.ej: 1-50)"
+RAIDROLL_LOCALE["Allow_Extra_Rolls"] = "Permitir tiradas extra"
+RAIDROLL_LOCALE["Are_You_Sure"] = "¿Estás seguro de querer dar %s a %s?"
+RAIDROLL_LOCALE["Award"] = "Otorgar a %s"
+RAIDROLL_LOCALE["BARTOOLTIP"] = [=[Raid Roll
+
+Click Izquierdo para mostrar ventana
+Click Derecho para mostrar opciones]=]
+RAIDROLL_LOCALE["Catch_Unannounced_Rolls"] = "Capturar tiradas no anunciadas"
+RAIDROLL_LOCALE["Clear"] = "Limpiar"
+RAIDROLL_LOCALE["Enable_EPGP_mode"] = "Activar modo EPGP"
+RAIDROLL_LOCALE["Enable_threshold_levels"] = "Activar umbrales"
+RAIDROLL_LOCALE["Extra_Options"] = "Opciones adicionales"
+RAIDROLL_LOCALE["General_Settings"] = "Ajustes generales"
+RAIDROLL_LOCALE["Give_Higher_Ranks_Priority"] = "Dar prioridad a los Rangos mayores"
+RAIDROLL_LOCALE["Guild_Rank"] = "Rango de Gremio"
+RAIDROLL_LOCALE["HELP1"] = "|cFFC41F3BRaid Roll - Comandos:"
+RAIDROLL_LOCALE["HELP10"] = " |cFFFFF569/rr enable - Permite seguimiento"
+RAIDROLL_LOCALE["HELP11"] = "|cFFFFF569/rr mark [Nombre o IDTirador*] - Marca al tirador con un !"
+RAIDROLL_LOCALE["HELP12"] = "|cFFFFF569/rr unmark [Nombre o IDTirador*] - Elimina el ! del tirador"
+RAIDROLL_LOCALE["HELP13"] = "|cFFFFF569*IDTirador es el número junto al nombre del tirador en la ventana que se muestra actualmente"
+RAIDROLL_LOCALE["HELP2"] = "|cFF2459FF(Realizando tirada de banda)"
+RAIDROLL_LOCALE["HELP3"] = " |cFF69CCF0/rr - Realiza una tirada de banda"
+RAIDROLL_LOCALE["HELP4"] = "|cFF69CCF0/rr [Enlace Objeto] - Realiza una tirada de banda (Incluye enlace al objeto cuando se anuncia el ganador)"
+RAIDROLL_LOCALE["HELP5"] = "|cFF69CCF0/rr re - Repite la tirada"
+RAIDROLL_LOCALE["HELP6"] = "|cFF69CCF0/rr re [Enlace Objeto] - Repite la tirada (Incluye enlace al objeto cuando se anuncia el ganador)"
+RAIDROLL_LOCALE["HELP7"] = " |cFFFF7D0A(Siguiendo tiradas)"
+RAIDROLL_LOCALE["HELP8"] = " |cFFFFF569/rr show - Muestra la ventana de seguimiento de tiradas"
+RAIDROLL_LOCALE["HELP9"] = "|cFFFFF569/rr disable - Desactiva el seguimiento"
+RAIDROLL_LOCALE["Marking_list_cleared"] = "Lista de marcados limpiada!"
+RAIDROLL_LOCALE["No_Item"] = "No hay Objeto"
+RAIDROLL_LOCALE["No_Winner"] = "No hay Ganador"
+RAIDROLL_LOCALE["No_winner_for"] = "No hay ganador para %s."
+RAIDROLL_LOCALE["OPTIONSTITLE"] = "Musou's Raid Roll - Menú de opciones"
+RAIDROLL_LOCALE["Priorities"] = "Dar mayor prioridad a:"
+RAIDROLL_LOCALE["Raid_Roll_Display_Settings"] = "Mostrar ajustes"
+RAIDROLL_LOCALE["Raid_Roll_EPGP_Settings"] = "Ajustes de EPGP"
+RAIDROLL_LOCALE["removed_from_marking_list"] = "eliminado de lista de marcados."
+RAIDROLL_LOCALE["Rolling_Ends_in_5_Sec"] = "La tirada termina en 5 segundos"
+RAIDROLL_LOCALE["Set_Extra_Rank_Width"] = "Aumentar ancho de Rango"
+RAIDROLL_LOCALE["Set_Rolling_Time"] = "Duración de la tirada"
+RAIDROLL_LOCALE["Set_Scale"] = "Tamaño de ventana de tiradas"
+RAIDROLL_LOCALE["Show_Class_Colors"] = "Mostrar colores de Clase"
+RAIDROLL_LOCALE["Show_Group_Beside_Name"] = "Mostrar Nº de Grupo"
+RAIDROLL_LOCALE["Show_Rank_Beside_Name"] = "Mostrar Rango junto al nombre"
+RAIDROLL_LOCALE["won_item_PR_value"] = "%s ha ganado %s. Valor PR: %s"
+RAIDROLL_LOCALE["won_item_with"] = "%s ha ganado %s con %s."
+RAIDROLL_LOCALE["won_PR_value"] = "%s ha ganado. Valor PR: %s"
+RAIDROLL_LOCALE["won_with"] = "%s ha ganado con %s"
+
+end 
