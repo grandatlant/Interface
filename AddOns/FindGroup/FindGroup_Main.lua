@@ -147,13 +147,13 @@ function FindGroup_EditMSG(msg)
 		msg = string.gsub(msg, FGL.db.submsgs[i], "")
 	end
 	msg = string.gsub(msg, "  ", " ")
-	msg = string.gsub(msg, "нидд", "нид")
-	msg = string.gsub(msg, "пздц", "пипец")
+	msg = string.gsub(msg, "need", "нид")
+	msg = string.gsub(msg, "fuck", "пипец")
 	local lmsg = msg
 	msg = msg:lower()
-	msg = string.gsub(msg, " и ", ";")
-	msg = string.gsub(msg, "желательно ", "")
-	msg = string.gsub(msg, "желательно", "")
+	msg = string.gsub(msg, " and ", ";")
+	msg = string.gsub(msg, "", "")
+	msg = string.gsub(msg, "", "")
 	msg = string.gsub(msg, "item[%-?%d:]+%[?([^%[%]]*)%]?", "")
 	msg = string.gsub(msg, "spell[%-?%d:]+%[?([^%[%]]*)%]?", "")
 	msg = string.gsub(msg, "achievement[%-?%d:]+", "")
@@ -284,7 +284,7 @@ parrentframe = getglobal(parrentframe_n)
 				hours = math.floor((reset - days * (24 * 60 * 60)) / (60 * 60))                 
 				minutes = math.floor((reset - days * (24 * 60 * 60) - hours * (60 * 60)) / 60)
 			
-				local timemsg = days.."д "..hours.."ч "..minutes.."м"
+				local timemsg = days.."d "..hours.."h "..minutes.."m"
 		
 				getglobal(parrentframe:GetName().."Line"..i.."C3"):SetText(online_color..timemsg)
 			end
@@ -558,9 +558,9 @@ function FindGroup_NoButton()
 	FGL.db.boxshowstatus = 0
 	FGL.db.faststatus = FindGroupDB.FASTSTATUS
 	if FGL.db.faststatus == 1 then
-		FindGroupShadowFastButton:SetText("пм (м)")
+	FindGroupShadowFastButton:SetText("pm (w)")
 	else
-		FindGroupShadowFastButton:SetText("пм (р)")
+		FindGroupShadowFastButton:SetText("pm (r)")
 	end
 	PlaySound("igCharacterInfoClose");
 end
@@ -637,10 +637,10 @@ end
 function FindGroup_ActButton(self,button)
 if button == "LeftButton" then
 	if FGL.db.timeleft == 90 then FGL.db.timeleft = 15 else FGL.db.timeleft = FGL.db.timeleft + 15 end
-	FindGroupConfigFrameHActButton:SetText(string.format("%d сек", FGL.db.timeleft))
+	FindGroupConfigFrameHActButton:SetText(string.format("%d sec", FGL.db.timeleft))
 elseif button == "RightButton" then
 	if FGL.db.timeleft == 15 then FGL.db.timeleft = 90 else FGL.db.timeleft = FGL.db.timeleft - 15 end
-	FindGroupConfigFrameHActButton:SetText(string.format("%d сек", FGL.db.timeleft))
+	FindGroupConfigFrameHActButton:SetText(string.format("%d sec", FGL.db.timeleft))
 end
 FindGroupDB.TIMELEFT = FGL.db.timeleft
 if FGL.db.includeaddon then PlaySound("igMainMenuOptionCheckBoxOn") end
@@ -671,10 +671,10 @@ end
 function FindGroup_FastButton(i)
 if FGL.db.faststatus == 1 then
 	FGL.db.faststatus = 0
-	FindGroupShadowFastButton:SetText("пм (р)")
+	FindGroupShadowFastButton:SetText("pm (r)")
 else
 	FGL.db.faststatus = 1
-	FindGroupShadowFastButton:SetText("пм (м)")
+	FindGroupShadowFastButton:SetText("pm (w)")
 end
 GameTooltip:Hide()
 if FGL.db.includeaddon then 
@@ -803,7 +803,7 @@ FindGroupInfofText5:Show()
 FindGroupInfoButton5:Show()
 FindGroupInfoButton6:Show()
 FindGroupDB.setcode = 1
-print("Вы действительно любите FindGroup")
+print("You really love FindGroup")
 end
 end
 
@@ -1014,7 +1014,7 @@ end
 -- -- -- -- -- -- 1 level
 
 function FG_APatch_GetTargetText() 
-	return "Конкретный"
+	return "Specific"
 end
 
 
@@ -1179,7 +1179,7 @@ function FindGroup_GetInstRMax()
 				for j=1, string.len(FGL.db.add_instances[f].difficulties) do
 					if FGL.db.add_difficulties[i].difficulties:find(string.sub(FGL.db.add_instances[f].difficulties, j, j)) then g = g+1 end
 				end
-				if "любой" == FGL.db.add_difficulties[i].name and g > 1 then n = n+1
+				if "any" == FGL.db.add_difficulties[i].name and g > 1 then n = n+1
 				elseif g > 1 and not(g== string.len(FGL.db.add_instances[f].difficulties)) then n = n+1 end
 			end
 			return string.len(FGL.db.add_instances[f].difficulties) + n
@@ -1192,7 +1192,7 @@ function FindGroup_GetInstRMax()
 						g = g+1 
 					end
 				end
-				if "любой" == FGL.db.add_difficulties[i].name and g > 1 then n = n+1
+				if "any" == FGL.db.add_difficulties[i].name and g > 1 then n = n+1
 				elseif g > 1 and not(g== string.len(FGL.db.instances[f].difficulties)) then n = n+1 end
 			end
 			return string.len(FGL.db.instances[f].difficulties) + n
@@ -1214,7 +1214,7 @@ for k=1, #FGL.db.add_difficulties do
 			g = g+1 
 		end
 	end
-	if "любой" == FGL.db.add_difficulties[k].name and g > 1 then n = n+1
+	if "any" == FGL.db.add_difficulties[k].name and g > 1 then n = n+1
 	elseif g > 1 and not(g== string.len(dif_1)) then n = n+1 end
 	if n == i - string.len(dif_1) then return k + string.len(dif_1) end
 end
@@ -1353,7 +1353,7 @@ function FindGroup_CheckAlarm(favorite, IR, achieve, instcd)
 			if need_dif(f, i):find(tostring(IR)) then
 				local flag = true
 				if f > #FGL.db.instances then
-					if FGL.db.add_instances[f - #FGL.db.instances].name == "С достижением" then
+					if FGL.db.add_instances[f - #FGL.db.instances].name == "With ach" then
 						flag = false
 						if achieve then
 							return 1
@@ -1485,38 +1485,38 @@ local f = 0
 local text1, text2 = "", ""
 for i=1, 4 do if (FGL.db.findlistvalues[i] == true) then f = f + 1 end end
 if f == 4 then
-text1 = "Всех"
+text1 = "All"
 elseif f == 0 then
-text1 = "Нет критериев"
+text1 = "No criteria"
 elseif f == 3 then
 if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[2] then
-	if FGL.db.findlistvalues[3] then text1 = "Р (об.)" end
-	if FGL.db.findlistvalues[4] then text1 = "Р (гер.)" end
-	text2 = "и всех П"
+	if FGL.db.findlistvalues[3] then text1 = "R (nm)" end
+	if FGL.db.findlistvalues[4] then text1 = "R (hc)" end
+	text2 = "and all D"
 else
-	if FGL.db.findlistvalues[1] then text1 = "П (об.)" end
-	if FGL.db.findlistvalues[2] then text1 = "П (гер.)" end
-	text2 = "и всех Р"
+	if FGL.db.findlistvalues[1] then text1 = "D (nm)" end
+	if FGL.db.findlistvalues[2] then text1 = "D (hc)" end
+	text2 = "and all R"
 end
 elseif f == 2 then
-if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[2] then text1 = "всех П"  end
-if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[3] then text1 = "П (об.) и Р (об.)"end
-if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[4] then text1 = "П (об.) и Р (гер.)"  end
-if FGL.db.findlistvalues[2] and FGL.db.findlistvalues[3] then text1 = "П (гер.) и Р (об.)" end
-if FGL.db.findlistvalues[2] and FGL.db.findlistvalues[4] then text1 = "П (гер.) и Р (гер.)"  end
-if FGL.db.findlistvalues[3] and FGL.db.findlistvalues[4] then text1 = "всех Р" end
+if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[2] then text1 = "all D"  end
+if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[3] then text1 = "D (nm) and R (nm)"end
+if FGL.db.findlistvalues[1] and FGL.db.findlistvalues[4] then text1 = "D (nm) and R (hc)"  end
+if FGL.db.findlistvalues[2] and FGL.db.findlistvalues[3] then text1 = "D (hc) and R (nm)" end
+if FGL.db.findlistvalues[2] and FGL.db.findlistvalues[4] then text1 = "D (hc) and R (hc)"  end
+if FGL.db.findlistvalues[3] and FGL.db.findlistvalues[4] then text1 = "all R" end
 elseif f == 1 then
-if FGL.db.findlistvalues[1] then text1 = "П (об.)" end
-if FGL.db.findlistvalues[2] then text1 = "П (гер.)" end
-if FGL.db.findlistvalues[3] then text1 = "Р (об.)" end
-if FGL.db.findlistvalues[4] then text1 = "Р (гер.)" end
+if FGL.db.findlistvalues[1] then text1 = "D (nm)" end
+if FGL.db.findlistvalues[2] then text1 = "D (hc)" end
+if FGL.db.findlistvalues[3] then text1 = "R (nm)" end
+if FGL.db.findlistvalues[4] then text1 = "R (hc)" end
 end
 FindGroupOptionsFindFrameComboBox1Text:SetText(string.format("%s %s",text1,text2))
 end
 
 
 
----------------Изменение разрешения дисплея
+---------------Change display resolution
 
 local j_changesize = CreateFrame("Frame")
 j_changesize:RegisterEvent("DISPLAY_SIZE_CHANGED")
@@ -1525,7 +1525,7 @@ j_changesize:SetScript("OnEvent", function()
 	FindGroup_SetBackGround()
 end)
 
----------------Изменение уровня игрока
+---------------Change player level
 local j_changelevel = CreateFrame("Frame")
 j_changelevel:RegisterEvent("PLAYER_LEVEL_UP")
 j_changelevel:SetScript("OnEvent", function(self, event, level)
@@ -1542,7 +1542,7 @@ j_changelevel:SetScript("OnEvent", function(self, event, level)
 	end
 end)
 
------------------Список патчей
+-----------------Patch list
 
 function FindGroup_Patches_SetText()
 	local msg=""
@@ -1557,7 +1557,7 @@ function FindGroup_Patches_SetText()
 
 		end
 	end
-	if msg == "" then msg="Нет критериев" end
+	if msg == "" then msg="No criteria" end
 	FindGroupOptionsFindFrameComboBox2Text:SetText(msg)
 end
 
@@ -1593,7 +1593,7 @@ function FindGroup_Patches_Checked(i)
 	end
 end
 
------------------Оповещение патчи
+-----------------Alert patches
 
 function FindGroup_APatches_SetText()
 	local msg=""
@@ -1608,7 +1608,7 @@ function FindGroup_APatches_SetText()
 
 		end
 	end
-	if msg == "" then msg="Нет критериев" end
+	if msg == "" then msg="No criteria" end
 	FindGroupOptionsAlarmFrameComboBox4Text:SetText(msg)
 end
 
@@ -1650,7 +1650,7 @@ function FindGroup_APatches_Checked(i)
 end
 
 
------------------Сбор патчи
+-----------------Create patches
 
 function FindGroup_CPatches_SetText()
 	local msg=""
@@ -1665,7 +1665,7 @@ function FindGroup_CPatches_SetText()
 
 		end
 	end
-	if msg == "" then msg="Нет критериев" end
+	if msg == "" then msg="No criteria" end
 	FindGroupOptionsCreateViewFrameComboBox2Text:SetText(msg)
 end
 
@@ -1700,4 +1700,3 @@ function FindGroup_CPatches_Checked(i)
 		return false 
 	end
 end
-

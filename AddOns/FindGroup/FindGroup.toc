@@ -1,7 +1,7 @@
 ## Interface: 30300
 ## Title: FindGroup |cFF0099FF[Link]|r
-## Version: 2.1
-## Author: Mio, Maglink
+## Version: 3.0
+## Author: Waidmanns
 ## DefaultState: enabled
 ## SavedVariablesPerCharacter: FindGroupDB
 ## LoadManagers: AddonLoader

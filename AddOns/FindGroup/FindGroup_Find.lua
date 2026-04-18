@@ -368,25 +368,20 @@ function FindGroup_FindAchieve(msg, diff)
 end
 
 function FindGroup_GetInstIR_heroic(msg)
-	local x, y = msg:find("гер")
-	local text="0123456789 "
-	if x and y then
-		if y == strlen(msg) then return 1 end
-		local flag1, flag2
-		for i=1, 3 do
-			for j=1, strlen(text) do
-				if strsub(msg, x-i, x-i) == strsub(text, j, j) then flag1 = 1 end
-			end
+	local heroic_patterns = {
+		"%f[%a]hc%f[%A]",
+		"%f[%a]hm%f[%A]",
+		"%f[%a]heroic%f[%A]",
+		"%f[%a]heroics%f[%A]",
+	}
+	for i=1, #heroic_patterns do
+		if msg:find(heroic_patterns[i]) then
+			return 1
 		end
-		for i=-3, -1 do
-			for j=1, strlen(text) do
-				if strsub(msg, y-i, y-i) == strsub(text, j, j) then flag2 = 1 end
-			end
-		end
-		if flag1 and flag2 then return 1 end
 	end
-	x, y = msg:find("г")
-	text="0123456789. "
+
+	local x, y = msg:find("h")
+	local text="0123456789. "
 	if x and y then
 		local flag1, flag2
 		for i=1, 2 do
@@ -404,24 +399,18 @@ function FindGroup_GetInstIR_heroic(msg)
 end
 
 function FindGroup_GetInstIR_normal(msg)
-	local x, y = msg:find("об")
-	local text="0123456789 "
-	if x and y then
-		if y == strlen(msg) then return 1 end
-		local flag1, flag2
-		for i=1, 3 do
-			for j=1, strlen(text) do
-				if strsub(msg, x-i, x-i) == strsub(text, j, j) then flag1 = 1 end
-			end
+	local normal_patterns = {
+		"%f[%a]nm%f[%A]",
+		"%f[%a]normal%f[%A]",
+		"%f[%a]norm%f[%A]",
+	}
+	for i=1, #normal_patterns do
+		if msg:find(normal_patterns[i]) then
+			return 1
 		end
-		for i=-3, -1 do
-			for j=1, strlen(text) do
-				if strsub(msg, y-i, y-i) == strsub(text, j, j) then flag2 = 1 end
-			end
-		end
-		if flag1 and flag2 then return 1 end
 	end
-	x, y = msg:find("о")
+
+	local x, y = msg:find("n")
 	text="0123456789. "
 	if x and y then
 		local flag1, flag2
@@ -537,18 +526,20 @@ function FindGroup_GetInstIR(msg, favorite)
 end
 
 local id_criteria={
-"ид",
 "id",
-"айди",
-"кд",
 "cd",
+"lock",
+"lockout",
+"save",
 }
 
 function FindGroup_FindID(msg, id)
 	local f =false
 	if msg:find(id_criteria[1]..id) then return 1 end
 	if msg:find(id_criteria[1].." "..id) then return 1 end
-	msg = string.gsub(msg, "нид", "")
+	msg = string.gsub(msg, "need", "")
+	msg = string.gsub(msg, "lfm", "")
+	msg = string.gsub(msg, "lf ", "")
 	local x1, x2 = msg:find(id_criteria[1])
 	local y1, y2 = msg:find(""..id)
 	if x2 and y1 then
@@ -575,9 +566,9 @@ if name then
          elseif diff == 2 then
             diffname = "25"
          elseif diff == 3 then
-            diffname = "10 гер"
+            diffname = "10 hc"
          elseif diff == 4 then
-            diffname = "25 гер"
+            diffname = "25 hc"
          end
             
          if players == 40 then
@@ -588,7 +579,7 @@ if name then
 			if diff == 1 then
 				diffname = ""
 			elseif diff == 2 then
-				diffname = "5 гер"
+				diffname = "5 hc"
 			end
          end  
 
@@ -606,8 +597,8 @@ end
 end
 ------------------------------------
 local _, _, _, _, _, duration, _, _, _, _, _ = UnitDebuff("player", "Dungeon Deserter")
-if duration and (FGL.db.instances[FindGroup_GetInstFav(FGL.db.lastmsg[i][11])].name == "Случайное") then return 1 end
-if GetLFGRandomCooldownExpiration() and (FGL.db.instances[FindGroup_GetInstFav(FGL.db.lastmsg[i][11])].name == "Случайное") then return 1 end
+if duration and (FGL.db.instances[FindGroup_GetInstFav(FGL.db.lastmsg[i][11])].name == "Random Dungeon") then return 1 end
+if GetLFGRandomCooldownExpiration() and (FGL.db.instances[FindGroup_GetInstFav(FGL.db.lastmsg[i][11])].name == "Random Dungeon") then return 1 end
 ----------------------------------
 end
 return nil
@@ -615,7 +606,7 @@ end
 
 function FindGroup_TinyFind(msg, msg1, msg2, space)
 
-	if not space then space = 4 end --расстояние между словосочетаниями
+	if not space then space = 4 end --distance between phrases
 	
 	local x1, y1 = msg:find(msg1)
 	local x2, y2 = msg:find(msg2)
@@ -629,7 +620,7 @@ end
 
 function GetClassFind(className, need, msg)
 
-	-- баг с доп дд
+	-- bug with extra dps
 	if need == 2 then
 		if GetClassFind(className, 1, msg) or  GetClassFind(className, 3, msg) then
 			return nil
@@ -643,7 +634,8 @@ function GetClassFind(className, need, msg)
 		if type(base[i]) == 'table' then
 			if FindGroup_TinyFind(msg, base[i][1], base[i][2], base[i][3]) then return 1 end
 		else
-			if msg:find(base[i]) and not(msg:find(base[i].." фул")) and not(msg:find("не "..base[i])) then return 1 end
+			local pattern = "%f[%a]" .. base[i] .. "%f[%A]"
+			if msg:find(pattern) and not(msg:find(base[i].." full")) and not(msg:find("no "..base[i])) then return 1 end
 		end
 	end
 

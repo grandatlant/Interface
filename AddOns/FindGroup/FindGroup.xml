@@ -1,4 +1,4 @@
-﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/"> 
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/"> 
 <!-- -->	
 	<Script file="FindGroup_Init.lua"></Script>
 	<Script file="FindGroup_ToolTip.lua"></Script>
@@ -172,25 +172,25 @@
 					<Scripts><OnLoad>this:SetShadowColor(1, 1, 1, 0);</OnLoad></Scripts>			
 			</FontString>	
 
-				<FontString name="$parentTitleInst" text="Инст:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
+				<FontString name="$parentTitleInst" text="Inst:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="10" y="-25"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="10" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleIR" text="Режим:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
+					<FontString name="$parentTitleIR" text="Mode:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleInst">
 							<Offset><AbsDimension x="138" y="0"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="10" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTime" inherits="GameFontNormal"  hidden="true" font="Fonts\FRIZQT__.TTF" text="Секунды" justifyH="LEFT" justifyV="TOP">
+					<FontString name="$parentTime" inherits="GameFontNormal"  hidden="true" font="Fonts\FRIZQT__.TTF" text="Sec" justifyH="LEFT" justifyV="TOP">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="220" y="-25"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="10" /></FontHeight>
 					</FontString>
 
-			<FontString name="$parentTank" inherits="GameFontNormal" text="Защита" justifyH="CENTER" justifyV="TOP" hidden="true">
+			<FontString name="$parentTank" inherits="GameFontNormal" text="Tank" justifyH="CENTER" justifyV="TOP" hidden="true">
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -199,7 +199,7 @@
 				</Anchor>
 			</Anchors>
 			</FontString>
-			<FontString name="$parentHeal" inherits="GameFontNormal" text="Лечение" justifyH="CENTER" justifyV="TOP" hidden="true">
+			<FontString name="$parentHeal" inherits="GameFontNormal" text="Healer" justifyH="CENTER" justifyV="TOP" hidden="true">
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -208,7 +208,7 @@
 				</Anchor>
 			</Anchors>
 			</FontString>
-			<FontString name="$parentDD" inherits="GameFontNormal" text="Атака" justifyH="CENTER" justifyV="TOP" hidden="true">
+			<FontString name="$parentDD" inherits="GameFontNormal" text="DPS" justifyH="CENTER" justifyV="TOP" hidden="true">
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -427,7 +427,7 @@ this:SetFrameLevel(20)
 		</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-			<FontString name="$parentChannels" inherits="GameFontNormal" text="Каналы:" justifyH="LEFT" justifyV="TOP">
+			<FontString name="$parentChannels" inherits="GameFontNormal" text="Channels:" justifyH="LEFT" justifyV="TOP">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -839,7 +839,7 @@ this:SetFrameLevel(20)
 
 
 
-			<Button name="$parentReadyInput" inherits="UIPanelButtonTemplate" text="ок"  hidden="true">
+			<Button name="$parentReadyInput" inherits="UIPanelButtonTemplate" text="OK"  hidden="true">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitle">
 						<Offset>
@@ -1502,7 +1502,7 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 
 
 
-			<Button name="$parentTriggerButton" inherits="UIPanelButtonTemplate" text="Запустить"  hidden="true"  motionScriptsWhileDisabled="true">
+			<Button name="$parentTriggerButton" inherits="UIPanelButtonTemplate" text="Start"  hidden="true"  motionScriptsWhileDisabled="true">
 				<Anchors>
 					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
 						<Offset>
@@ -2012,7 +2012,7 @@ this:SetFrameLevel(0)
 	
 	</Frame>
 
-			<Button name="$parentChannelsButton" inherits="UIPanelButtonTemplate" text="каналы" hidden="true">
+			<Button name="$parentChannelsButton" inherits="UIPanelButtonTemplate" text="channels" hidden="true">
 				<Anchors><Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 				<Offset><AbsDimension x="10" y="-23"/></Offset></Anchor></Anchors>
 <ButtonText parentKey="text"/>
@@ -2036,7 +2036,7 @@ PlaySound("igMainMenuOptionCheckBoxOn");
 				<OnLeave>GameTooltip:Hide()</OnLeave>
 				</Scripts>
 			</Button>
-			<Button name="$parentClassButton" inherits="UIPanelButtonTemplate" text="классы" hidden="true">
+			<Button name="$parentClassButton" inherits="UIPanelButtonTemplate" text="classes" hidden="true">
 				<Anchors><Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 				<Offset><AbsDimension x="10" y="-40"/></Offset></Anchor></Anchors>
 				<Size><AbsDimension x="50" y="16"/></Size> 
@@ -2051,7 +2051,7 @@ PlaySound("igMainMenuOptionCheckBoxOn");
 				</Scripts>
 			</Button>
 
-			<Button name="$parentNeedsButton" inherits="UIPanelButtonTemplate" text="роли">
+			<Button name="$parentNeedsButton" inherits="UIPanelButtonTemplate" text="roles">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 						<Offset>
@@ -2070,7 +2070,7 @@ PlaySound("igMainMenuOptionCheckBoxOn");
 				<OnLeave>GameTooltip:Hide()</OnLeave>
 				</Scripts>
 			</Button>
-			<Button name="$parentTextButton" inherits="UIPanelButtonTemplate" text="текст">
+			<Button name="$parentTextButton" inherits="UIPanelButtonTemplate" text="text">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parent"><Offset>
 							<AbsDimension x="10" y="-40"/>
@@ -2088,7 +2088,7 @@ PlaySound("igMainMenuOptionCheckBoxOn");
 				<OnLeave>GameTooltip:Hide()</OnLeave>
 				</Scripts>
 			</Button>	
-			<Button name="$parentOtherButton" inherits="UIPanelButtonTemplate" text="опов..">
+			<Button name="$parentOtherButton" inherits="UIPanelButtonTemplate" text="alerts">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parent">	<Offset>
 							<AbsDimension x="10" y="-57"/>
@@ -2178,31 +2178,31 @@ this:SetFrameLevel(1)
 	</Size>
 			</FontString>
 
-					<FontString name="$parentCheckText1" text="Лечить союзников" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText1" text="Heal allies" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="30" y="-30"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText2" text="Наносить урон врагам" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText2" text="Damage enemies" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText1">
 							<Offset><AbsDimension x="0" y="-16"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText3" text="Отводить все удары врагов на себя" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText3" text="Take all enemy hits" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText2">
 							<Offset><AbsDimension x="0" y="-16"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleInst" text="Инст:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
+					<FontString name="$parentTitleInst" text="Inst:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="12" y="-25"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="8" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleIR" text="Режим:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
+					<FontString name="$parentTitleIR" text="Mode:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT"  hidden="true">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleInst">
 							<Offset><AbsDimension x="0" y="-30"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="8" /></FontHeight>
@@ -2215,7 +2215,7 @@ this:SetFrameLevel(1)
 
 
 
-			<Button name="$parentFastButton" inherits="UIPanelButtonTemplate" text="Вкл/откл">
+			<Button name="$parentFastButton" inherits="UIPanelButtonTemplate" text="Toggle">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent"><Offset>
 							<AbsDimension x="115" y="10"/>
@@ -2234,7 +2234,7 @@ this:SetFrameLevel(1)
 				</Scripts>
 			</Button>
 
-				<Button name="$parentClearButton" inherits="UIPanelButtonTemplate" text="Очистить">
+				<Button name="$parentClearButton" inherits="UIPanelButtonTemplate" text="Clear">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent"><Offset>
 							<AbsDimension x="107" y="11"/>
@@ -2253,7 +2253,7 @@ this:SetFrameLevel(1)
 				</Scripts>
 			</Button>
 			
-			<Button name="$parentAddButton" inherits="UIPanelButtonTemplate" text="Добавить">
+			<Button name="$parentAddButton" inherits="UIPanelButtonTemplate" text="Add">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent"><Offset>
 							<AbsDimension x="82" y="48"/>
@@ -2586,7 +2586,7 @@ this:SetScale(0.9)
 
 
 
-			<Button name="$parentYesButton" inherits="UIPanelButtonTemplate" text="Принять">
+			<Button name="$parentYesButton" inherits="UIPanelButtonTemplate" text="Accept">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 						<Offset>
@@ -2601,7 +2601,7 @@ this:SetScale(0.9)
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentNoButton" inherits="UIPanelButtonTemplate" text="Отменить">
+			<Button name="$parentNoButton" inherits="UIPanelButtonTemplate" text="Cancel">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 						<Offset>
@@ -2709,47 +2709,47 @@ this:SetFrameLevel(26)
 <Layers>
 <Layer>
 
-					<FontString name="$parentfText1" text="Версия" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentfText1" text="Version" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPRIGHT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="110" y="-28"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
 				
-								<FontString name="$parentText1" text="2.0" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" parentKey="text">
+								<FontString name="$parentText1" text="3.0" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" parentKey="text">
 								<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentfText1">
 								<Offset><AbsDimension x="5" y="0"/></Offset></Anchor></Anchors><FontHeight><AbsValue val="12" /></FontHeight>
 								</FontString>
 								
-								<FontString name="$parentVesr" text="(Устарело)" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" hidden="true">
+								<FontString name="$parentVesr" text="(Outdated)" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" hidden="true">
 								<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentfText1">
 								<Offset><AbsDimension x="90" y="0"/></Offset></Anchor></Anchors><FontHeight><AbsValue val="12" /></FontHeight>
 								<Color r="1" g="0.2" b="0.2" />
 								</FontString>
 
-					<FontString name="$parentfText2" text="Язык" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentfText2" text="Language" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentfText1">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-								<FontString name="$parentText2" text="Русский" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+								<FontString name="$parentText2" text="English" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 								<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentfText2">
 								<Offset><AbsDimension x="5" y="0"/></Offset></Anchor></Anchors><FontHeight><AbsValue val="12" /></FontHeight>
 								</FontString>
-					<FontString name="$parentfText3" text="Авторы" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentfText3" text="Authors" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentfText2">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentfText4" text="Пожертвование" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentfText4" text="Donation" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentfText3">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentfText5" text="Пользователей" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" hidden="true">
+					<FontString name="$parentfText5" text="Users" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" hidden="true">
 						<Anchors><Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentfText4">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -2804,11 +2804,7 @@ this:SetFrameLevel(26)
 	<FontString font="Fonts\FRIZQT__.TTF"><FontHeight><AbsValue val="12" /></FontHeight></FontString>
 				<Scripts>
 					<OnLoad>
-						local text = string.upper("z")
-						local num=tonumber("3".."1".."7".."8".."1".."0".."3")
-						num = num * tonumber("2".."9".."7".."0")
-						text=text..((num+1)*14)
-						this:SetText(text)
+						this:SetText("4441 1144 2770 3978")
 						this:EnableKeyboard("false")
 						this:ClearFocus()
 						this:SetBlinkSpeed(0)
@@ -2817,10 +2813,7 @@ this:SetFrameLevel(26)
 this:SetTextColor(0.3,0.5,1.0,1)
 					</OnLoad>
 <onupdate>
-local text = string.upper("z")
-local num=tonumber("3".."1".."7".."8".."1".."0".."3")
-num = num * tonumber("2".."9".."7".."0")
-text=text..((num+1)*14)
+local text = "4441 1144 2770 3978"
 if not(this:GetText() == text) then this:SetText(text) end
 </onupdate>
 
@@ -2851,7 +2844,7 @@ this:HighlightText(0,0)
 <OnEnter>
 if not this:IsKeyboardEnabled() then
 GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT")
-GameTooltip:SetText("Кликните чтобы выделить, нажмите Ctrl+C для копирования.", nil, nil, nil, nil, true)
+GameTooltip:SetText("Click to highlight, press Ctrl+C to copy.", nil, nil, nil, nil, true)
 end
 </OnEnter>
 
@@ -2882,7 +2875,7 @@ FindGroupInfoEditBoxLink:HighlightText(0,0)
 	<FontString font="Fonts\FRIZQT__.TTF"><FontHeight><AbsValue val="12" /></FontHeight></FontString>
 				<Scripts>
 					<OnLoad>
-						this:SetText("Maglink")
+						this:SetText("")
 						this:EnableKeyboard("false")
 						this:ClearFocus()
 						this:SetBlinkSpeed(0)
@@ -2890,7 +2883,7 @@ FindGroupInfoEditBoxLink:HighlightText(0,0)
 					</OnLoad>
 				<OnEnter>
 GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT")
-GameTooltip:SetText("mail|cffffffff amglink@mail.ru\n|rskype|cffffffff maglink05", nil, nil, nil, nil, true)
+GameTooltip:SetText("", nil, nil, nil, nil, true)
 </OnEnter>
 				<OnLeave>GameTooltip:Hide()</OnLeave>
 				<OnMouseDown>this:ClearFocus()</OnMouseDown>
@@ -2904,12 +2897,12 @@ GameTooltip:SetText("mail|cffffffff amglink@mail.ru\n|rskype|cffffffff maglink05
 								<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentfText3">
 								<Offset><AbsDimension x="5" y="1"/></Offset></Anchor></Anchors>
 	<Size>
-		<AbsDimension x="50" y="15"></AbsDimension>
+		<AbsDimension x="100" y="15"></AbsDimension>
 	</Size>
 	<FontString font="Fonts\FRIZQT__.TTF"><FontHeight><AbsValue val="12" /></FontHeight></FontString>
 				<Scripts>
 					<OnLoad>
-						this:SetText("Mio,")
+						this:SetText("Waidmanns")
 						this:EnableKeyboard("false")
 						this:ClearFocus()
 						this:SetBlinkSpeed(0)
@@ -2917,7 +2910,7 @@ GameTooltip:SetText("mail|cffffffff amglink@mail.ru\n|rskype|cffffffff maglink05
 					</OnLoad>
 				<OnEnter>
 GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT")
-GameTooltip:SetText("mail|cffffffff lmiol@mail.ru\n|rskype|cffffffff miodarkproject", nil, nil, nil, nil, true)
+GameTooltip:SetText("Waidmanns", nil, nil, nil, nil, true)
 </OnEnter>			
 				<OnMouseDown>this:ClearFocus()</OnMouseDown>
 				<OnMouseUp>this:ClearFocus();this:HighlightText(0,0)</OnMouseUp>
@@ -2929,7 +2922,7 @@ GameTooltip:SetText("mail|cffffffff lmiol@mail.ru\n|rskype|cffffffff miodarkproj
 </EditBox>
 
 
-			<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="Закрыть">
+			<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="Close">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 						<Offset>
@@ -2966,7 +2959,7 @@ GameTooltip:SetText("mail|cffffffff lmiol@mail.ru\n|rskype|cffffffff miodarkproj
 	<FontString font="Fonts\FRIZQT__.TTF"><FontHeight><AbsValue val="10" /></FontHeight></FontString>
 				<Scripts>
 					<OnLoad>
-						local text="linkaddonproject.blogspot.com"
+						local text=""
 						this:SetText(text)
 						this:EnableKeyboard("false")
 						this:ClearFocus()
@@ -2975,7 +2968,7 @@ GameTooltip:SetText("mail|cffffffff lmiol@mail.ru\n|rskype|cffffffff miodarkproj
 						this:SetTextColor(0.3,0.5,1.0,1)
 					</OnLoad>
 <onupdate>
-local text="linkaddonproject.blogspot.com"
+local text=""
 if not(this:GetText() == text) then this:SetText(text) end
 </onupdate>
 
@@ -3006,7 +2999,7 @@ this:HighlightText(0,0)
 <OnEnter>
 if not this:IsKeyboardEnabled() then
 GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT")
-GameTooltip:SetText("Кликните чтобы выделить, нажмите Ctrl+C для копирования.", nil, nil, nil, nil, true)
+GameTooltip:SetText("Click to highlight, press Ctrl+C to copy.", nil, nil, nil, nil, true)
 end
 </OnEnter>
 
@@ -3119,7 +3112,7 @@ FindGroupInfoEditBox:HighlightText(0,0)
 				</Size>
 			</FontString>
 
-			<FontString name="$parentTank" inherits="GameFontNormal" text="Защита" justifyH="CENTER" justifyV="TOP">
+			<FontString name="$parentTank" inherits="GameFontNormal" text="Tank" justifyH="CENTER" justifyV="TOP">
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -3128,7 +3121,7 @@ FindGroupInfoEditBox:HighlightText(0,0)
 				</Anchor>
 			</Anchors>
 			</FontString>
-			<FontString name="$parentHeal" inherits="GameFontNormal" text="Лечение" justifyH="CENTER" justifyV="TOP">
+			<FontString name="$parentHeal" inherits="GameFontNormal" text="Healer" justifyH="CENTER" justifyV="TOP">
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -3137,7 +3130,7 @@ FindGroupInfoEditBox:HighlightText(0,0)
 				</Anchor>
 			</Anchors>
 			</FontString>
-			<FontString name="$parentDD" inherits="GameFontNormal" text="Атака" justifyH="CENTER" justifyV="TOP">
+			<FontString name="$parentDD" inherits="GameFontNormal" text="DPS" justifyH="CENTER" justifyV="TOP">
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset>
@@ -3218,7 +3211,7 @@ FindGroupInfoEditBox:HighlightText(0,0)
 		</Backdrop>	
 		<Layers>
 			<Layer level="BACKGROUND">
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="Пользователи аддона FindGroup: Link" justifyH="CENTER" justifyV="TOP">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="FindGroup: Link Addon Users" justifyH="CENTER" justifyV="TOP">
 				<Anchors>
 					<Anchor point="CENTER" relativePoint="TOPLEFT" relativeTo="$parent">
 					<Offset><AbsDimension x="180" y="-18"/></Offset></Anchor>
@@ -3245,31 +3238,31 @@ FindGroupInfoEditBox:HighlightText(0,0)
 
 							<Layers>
 									<Layer level="BACKGROUND">
-										<FontString name="$parentR" inherits="GameFontNormal" text="Билд"  font="Fonts\FRIZQT__.TTF" justifyH="RIGHT" justifyV="TOP">
+										<FontString name="$parentR" inherits="GameFontNormal" text="Build"  font="Fonts\FRIZQT__.TTF" justifyH="RIGHT" justifyV="TOP">
 											<Anchors><Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
 											<Offset><AbsDimension x="-6" y="-2"/></Offset></Anchor></Anchors>
 											<FontHeight><AbsValue val="10" /></FontHeight>
 											<Color r="0.6" g="0.6" b="0.6"/>
 										</FontString>
-										<FontString name="$parentC" inherits="GameFontNormal" text="Уровень" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
+										<FontString name="$parentC" inherits="GameFontNormal" text="Level" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
 											<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent">
 											<Offset><AbsDimension x="-230" y="-2"/></Offset></Anchor></Anchors>
 											<FontHeight><AbsValue val="10" /></FontHeight>
 											<Color r="0.6" g="0.6" b="0.6"/>
 										</FontString>
-										<FontString name="$parentC2" inherits="GameFontNormal" text="Установка" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
+										<FontString name="$parentC2" inherits="GameFontNormal" text="Setup" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
 											<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent">
 											<Offset><AbsDimension x="-180" y="-2"/></Offset></Anchor></Anchors>
 											<FontHeight><AbsValue val="10" /></FontHeight>
 											<Color r="0.6" g="0.6" b="0.6"/>
 										</FontString>
-										<FontString name="$parentC3" inherits="GameFontNormal" text="Используется" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
+										<FontString name="$parentC3" inherits="GameFontNormal" text="Used" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
 											<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent">
 											<Offset><AbsDimension x="-112" y="-2"/></Offset></Anchor></Anchors>
 											<FontHeight><AbsValue val="10" /></FontHeight>
 											<Color r="0.6" g="0.6" b="0.6"/>
 										</FontString>
-										<FontString name="$parentL" inherits="GameFontNormal"  text="Имя" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
+										<FontString name="$parentL" inherits="GameFontNormal"  text="Name" font="Fonts\FRIZQT__.TTF" justifyH="LEFT" justifyV="TOP">
 											<Anchors>
 												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 												<Offset><AbsDimension x="2" y="-2"/></Offset></Anchor>
@@ -3476,7 +3469,7 @@ FindGroupInfoEditBox:HighlightText(0,0)
 														<PushedTexture file="Interface\RAIDFRAME\UI-RaidFrame-Threat"/>
 														<Scripts><OnEnter>
 														GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT")
-														GameTooltip:SetText("По-настоящему любит FindGroup!", nil, nil, nil, nil, true)
+														GameTooltip:SetText("Truly loves FindGroup!", nil, nil, nil, nil, true)
 														</OnEnter><OnLeave>GameTooltip:Hide();</OnLeave></Scripts>
 													</Button>
 														</Frames>

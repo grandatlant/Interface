@@ -43,9 +43,9 @@ local this = FindGroupShadowFastButton
 if falsetonil(FGL.db.tooltipsstatus) then
 GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT")
 if FGL.db.faststatus == 1 then
-	GameTooltip:SetText("Мгновенная отправка сообщений", nil, nil, nil, nil, true)
+	GameTooltip:SetText("Instant message sending", nil, nil, nil, nil, true)
 else
-	GameTooltip:SetText("Ручная отправка сообщений", nil, nil, nil, nil, true)
+	GameTooltip:SetText("Manual message sending", nil, nil, nil, nil, true)
 end
 end
 end
@@ -63,7 +63,7 @@ function FindGroup_AchieveIcon_Enter(this)
 			text = ""
 		end
 		GameTooltip:SetOwner(this, ANCHOR_TOPRIGHT)
-		GameTooltip:SetText("Достижение"..text, nil, nil, nil, nil, true)
+		GameTooltip:SetText("Achievement"..text, nil, nil, nil, nil, true)
 	end
 	this:SetNormalTexture("Interface\\AddOns\\FindGroup\\textures\\UI-GROUP-ACHIEV1")
 end
@@ -88,7 +88,7 @@ end
 function FindGroup_Tooltip_SendParty(self)
 	if falsetonil(FGL.db.tooltipsstatus) then
 		GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")					
-		GameTooltip:SetText("Отправить запрос", nil, nil, nil, nil, true)
+		GameTooltip:SetText("Send request", nil, nil, nil, nil, true)
 	end
 end
 			
@@ -168,9 +168,3 @@ end
 
 ------------------------------------+______________________+||||||||||||||||||||||||||||||||
 ------------------------------------+______________________+||||||||||||||||||||||||||||||||
-
-
-
-
-
-

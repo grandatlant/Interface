@@ -1,0 +1,2 @@
+FindGroup_Main.lua:150: msg = string.gsub(msg, "need", "нид")
+FindGroup_Main.lua:151: msg = string.gsub(msg, "fuck", "пипец")

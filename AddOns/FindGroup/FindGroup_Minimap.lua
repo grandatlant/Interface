@@ -299,13 +299,13 @@ function FindGroup_LoadMinimapIcon()
 --      Right Click Menu     --
 --------------------------------------
 local menu_func={
-	{	name="Открыть окно поиска",			func=FuncMenu_Find,		},
-	{	name="Выключить оповещение",			func=FindGroup_AlarmButton,	},
+	{	name="Open Search Window",			func=FuncMenu_Find,		},
+	{	name="Disable Alerts",			func=FindGroup_AlarmButton,	},
 	{	name="separator"									},
-	{	name="Открыть окно сбора",			func=FuncMenu_Create,		},
-	{	name="Кд список",				func=FindGroupSaves_Toggle,	},
+	{	name="Open Create Window",			func=FuncMenu_Create,		},
+	{	name="Saves List",				func=FindGroupSaves_Toggle,	},
 	{	name="separator"									},
-	{	name="Hастройки",				func=FindGroup_ShowOptions,	},
+	{	name="Settings",				func=FindGroup_ShowOptions,	},
 }
 
 icon.FGL_MAP_MENU = CreateFrame("Frame", icon:GetName().."Menu", UIParent, "GameTooltipTemplate")
@@ -340,9 +340,9 @@ for i=1, #menu_func do
 		if menu_func[i].func == FindGroup_AlarmButton then
 			f:SetScript("OnShow", function()
 				if FGL.db.alarmstatus == 1 then
-					g:SetText("Выключить оповещение")
+					g:SetText("Disable Alerts")
 				else
-					g:SetText("Включить оповещение")				
+					g:SetText("Enable Alerts")				
 				end
 			end)
 		elseif menu_func[i].func == FindGroupSaves_Toggle then

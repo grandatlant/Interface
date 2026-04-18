@@ -250,7 +250,7 @@ function FindGroup_ShowSecTooltip(this)
 	GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT")
 	GameTooltip:ClearLines()
 
-	GameTooltip:SetText("Антиспам")
+	GameTooltip:SetText("Anti-spam")
 	for i=1, #channellist do
 		if channellist[i][3] == 1 then
 			local color
@@ -265,12 +265,12 @@ function FindGroup_ShowSecTooltip(this)
 			local cout_msg = tostring(propusk - channellist[i][5] + 1)
 			if tonumber(cout_msg) > 0 then
 				if tonumber(cout_msg) == 1 then
-					msg = string.format("%sждёт |cffffbb00%d%s%s сообщен%s", color, cout_msg, "", color, "ие")
+					msg = string.format("%swaits for |cffffbb00%d%s%s message%s", color, cout_msg, "", color, "")
 				else
-					msg = string.format("%sждёт |cffffbb00%d%s%s сообщен%s", color, cout_msg, "х", color, "ий")
+					msg = string.format("%swaits for |cffffbb00%d%s%s message%s", color, cout_msg, " more", color, "s")
 				end
 			else	
-				msg = color.."готов к отправке"			
+				msg = color.."ready to send"			
 			end
 			local chan_msg
 			if channellist[i][2] == "preset" then
@@ -343,7 +343,7 @@ function FGC_GetClasses(role)
 				end
 			end
 		end
-		if light < #mass - light then msg=msg.." мимо" end
+		if light < #mass - light then msg=msg.." except" end
 		msg=msg..")"
 	end
 	return msg
@@ -351,12 +351,12 @@ end
 
 function FGC_Getend(i)
 if i>9 and i<21 then
-return "ов"
+return "s"
 else
 for j=1,3 do if i > 9 then i = i - 10 else break end end
 if i == 1 then return "" end
-if i == 2 or i == 3 or i == 4 then return "а" end
-if i == 5 or i == 6 or i == 7  or i == 8  or i == 9 or i == 0 then return "ов" end
+if i == 2 or i == 3 or i == 4 then return "s" end
+if i == 5 or i == 6 or i == 7  or i == 8  or i == 9 or i == 0 then return "s" end
 end
 end
 
@@ -381,13 +381,13 @@ function FGC_GetSavedid()
 							if diff == 1 then
 								diffname = ""
 							elseif diff == 2 then
-								diffname = "5 гер"
+								diffname = "5 hc"
 							end
 						else
 							if diff == 3 then
-								diffname = diffname.." гер"
+								diffname = diffname.." hc"
 							elseif diff == 4 then
-								diffname = diffname.." гер"
+								diffname = diffname.." hc"
 							end
 						 end
 				if diffname == FGL.db.difficulties[FindGroup_GetInstIR(FGC_IR_Text(FGC_IR_Geti()),Inst)].name then
@@ -403,11 +403,11 @@ end
 
 function FGC_GetNeed(dd)
 local msg=""
-local more = "много"
+local more = "many"
 local number
 --[[
 	if FindGroupFrameEditTank:GetNumber() > 0 and FindGroupFrameEditHeal:GetNumber() > 0 and FindGroupFrameEditDD:GetNumber() > 0 then
-		msg = msg.." все"
+		msg = msg.." all"
 	else
 
 	end
@@ -425,7 +425,7 @@ local number
 			else
 				number = " "..count
 			end			
-			msg = msg..number.." ".."танк"..FGC_Getend(count)
+			msg = msg..number.." ".."tank"..FGC_Getend(count)
 			msg = msg..FGC_GetClasses("Tank")
 		end
 		if countHeal > 0 then
@@ -441,7 +441,7 @@ local number
 			elseif count>1 then
 				number = number..count
 			end			
-			msg = msg..number.." ".."хил"..FGC_Getend(countHeal)
+			msg = msg..number.." ".."heal"..FGC_Getend(countHeal)
 			msg = msg..FGC_GetClasses("Heal")
 		end
 		if countDD > 0 then
@@ -513,11 +513,11 @@ function FGC_GetSendText()
 	end
 	
 	if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].heroic == 1 then 
-		msg = msg.." гер."
+		msg = msg.." HC"
 	elseif not(FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].maxplayers > 5) then
 		for i=1, strlen(FGL.db.instances[FGC_Inst_Geti()].difficulties) do
 			if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, i, i))].heroic == 1 then
-				msg = msg.." об."
+				msg = msg.." NM"
 				break
 			end
 		end
@@ -636,11 +636,11 @@ if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].dif
 end
 
 if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].heroic == 1 then 
-	msg = msg.." гер."
+	msg = msg.." HC"
 elseif not(FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].maxplayers > 5) then
 	for i=1, strlen(FGL.db.instances[FGC_Inst_Geti()].difficulties) do
 		if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, i, i))].heroic == 1 then
-			msg = msg.." об."
+			msg = msg.." NM"
 			break
 		end
 	end
@@ -1053,7 +1053,7 @@ end
 
 
 
---///////////////////////////////////////////////////////////////////////////////////////////////ТРИГЕР
+--///////////////////////////////////////////////////////////////////////////////////////////////TRIGGER
 
 function FindGroup_CreateTrigger_Check()
 	local check
@@ -1076,7 +1076,7 @@ end
 function FindGroup_CreateTrigger()
 if createtrigger == 1 then
 	createtrigger = 0
-	FindGroupFrameTriggerButton:SetText("Запустить")
+	FindGroupFrameTriggerButton:SetText("Start")
 	FindGroupFrameTriggerButton:UnlockHighlight()
 	FindGroupFrameCreateButton:UnlockHighlight()
 	FindGroup_CreateChannel()
@@ -1104,7 +1104,7 @@ check = tonumber(FindGroupFrameSec:GetText())
 if check then
 if check > 0 then
 	createtrigger = 1
-	FindGroupFrameTriggerButton:SetText("Остановить")
+	FindGroupFrameTriggerButton:SetText("Stop")
 	FindGroupFrameTriggerButton:LockHighlight()
 	FindGroupFrameCreateButton:LockHighlight()
 	FindGroupDB.FGC.createtext = createtext
@@ -1186,12 +1186,12 @@ end)
 
 local table_autocalc={
 	tank={
-		{spec = "Защита"},
+		{spec = "Protection"},
 	},
 	heal={
-		{spec = "Исцеление"},
-		{spec = "Свет"},
-		{spec = "Послушание"},
+		{spec = "Restoration"},
+		{spec = "Holy"},
+		{spec = "Discipline"},
 	},
 	dd={
 		{class = "MAGE"},
@@ -1199,17 +1199,17 @@ local table_autocalc={
 		{class = "ROGUE"},
 		{class = "WARLOCK"},
 	--druid
-		{spec = "Баланс"},
+		{spec = "Balance"},
 	--warior
-		{spec = "Оружие"},
-		{spec = "Неистовство"},
+		{spec = "Arms"},
+		{spec = "Fury"},
 	--paladin
-		{spec = "Воздаяние"},
+		{spec = "Retribution"},
 	--shaman
-		{spec = "Совершенствование"},
-		{spec = "Стихии"},
+		{spec = "Enhancement"},
+		{spec = "Elemental"},
 	--priest
-		{spec = "Тьма"},
+		{spec = "Shadow"},
 	},
 }
 
@@ -1283,7 +1283,7 @@ if createtrigger == 0 or not(createtrigger) then
 	local name, s_type, difficultyIndex, difficultyName, maxPlayers, dynamicDifficulty, isDynamic = GetInstanceInfo()
 	if s_type == "raid" or s_type == "party" then
 		local msg=name.." "..difficultyName
-		if dynamicDifficulty == 1 then msg=msg.." гер " end
+		if dynamicDifficulty == 1 then msg=msg.." heroic " end
 
 		msg=string.lower(msg)
 		local inst_i = FindGroup_GetInstFav(msg)
@@ -1565,11 +1565,11 @@ local my_popup = "C".."HANNEL_PA".."SSWORD"
 function FindGroup_CreateChannel()
 	channellist={}
 	channellist = {
-		{"Say", "preset", nil, "Сказать", 0 },
-		{"Party", "preset", nil, "Группа", 0, 1},
-		{"Raid", "preset", nil, "Рейд", 0, 2  },
-		{"Guild", "preset", nil, "Гильдия", 0, 3 },
-		{"Yell", "preset", nil, "Крикнуть", 0 },
+			{"Say", "preset", nil, "Say", 0 },
+			{"Party", "preset", nil, "Party", 0, 1},
+			{"Raid", "preset", nil, "Raid", 0, 2  },
+			{"Guild", "preset", nil, "Guild", 0, 3 },
+			{"Yell", "preset", nil, "Yell", 0 },
 	}
 
 
@@ -1791,13 +1791,13 @@ end
 
 function FGC_TriggerButtonOn()
 	if createtrigger == 1 then
-		FindGroupFrameTriggerButton:SetText("Применить")
+		FindGroupFrameTriggerButton:SetText("Apply")
 	end
 end
 
 function FGC_TriggerButtonOff()
 	if createtrigger == 1 then
-		FindGroupFrameTriggerButton:SetText("Остановить")
+		FindGroupFrameTriggerButton:SetText("Stop")
 	else
 		FindGroup_CreateTrigger()
 	end
@@ -1832,12 +1832,12 @@ function FGC_autostop()
 		if FGL.db.FGC.checksplite == 1 then
 			local add = ""
 			if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].heroic == 1 then add = add.." "..FGL.db.heroic[2] end
-			msg=string.format("%s %s%s фулл", FGL.db.instances[FGC_Inst_Geti()].abbreviationeng, FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].print)
+			msg=string.format("%s %s%s full", FGL.db.instances[FGC_Inst_Geti()].abbreviationeng, FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].print)
 
 		else
 			local add = ""
 			if FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].heroic == 1 then add = add.." "..FGL.db.heroic[2] end
-			msg=string.format("В инст '%s' %s%s мест нет", FGL.db.instances[FGC_Inst_Geti()].abbreviationeng, FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].print)
+			msg=string.format("Instance '%s' %s%s is full", FGL.db.instances[FGC_Inst_Geti()].abbreviationeng, FGL.db.difficulties[tonumber(string.sub(FGL.db.instances[FGC_Inst_Geti()].difficulties, IR, IR))].print)
 		end
 		for i=1, #channellist do
 			if channellist[i][3] == 1 then

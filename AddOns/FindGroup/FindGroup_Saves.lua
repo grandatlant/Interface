@@ -18,7 +18,7 @@ local online_period = 15
 local player_donthave_invite = 0
 local saveplayers_elapsed = 0
 local saveplayers_maxelapsed = 15
-local headtext = "Сохраненные подземелья"
+local headtext = "Saved Dungeons"
 local saves_delete_char_name, saves_delete_char_id;
 local color_online = {r=1, g=0.87, b=0, a=0.6}
 local color_online_friend = {r=0.4, g=1, b=0, a=0.5}
@@ -40,10 +40,10 @@ local eventlist = {
 
 
 local notABoss = {
-      [37025] = true, -- Вонючка
-      [37217] = true, -- Прелесть
+      [37025] = true, -- Festergut
+      [37217] = true, -- Rotface
 
-	-- скелеты у вали
+	-- Valithria skeletons
       [37868] = true, 
       [37886] = true, 
       [37934] = true,
@@ -52,20 +52,20 @@ local notABoss = {
 
 local ABoss = {
 	-- PC
-      [39751] = true, -- Балтар Рожденный в Битве
-      [39746] = true, -- Генерал Заритриан
-      [39747] = true, -- Савиана Огненная Пропасть
-      [39863] = true, -- Халион <Сумеречный разрушитель>
+      [39751] = true, -- Baltharus the Warborn
+      [39746] = true, -- General Zarithrian
+      [39747] = true, -- Saviana Ragefire
+      [39863] = true, -- Halion <The Twilight Destroyer>
    }
 
 local bossyell = {
-	{yell="I have seen worlds bathed in the Makers' flames.", name="Алгалон"},
-	{yell="His hold on me dissipates. I can see clearly once more. Thank you, heroes.",  name="Фрейя"},
-	{yell="I... I am released from his grasp... at last.", name="Ходир"},
-	{yell="^It would appear that I've made a slight miscalculation.", name="Мимирон"},
-	{yell="Stay your arms! I yield!", name="Торим"},
-	{yell="Don't say I didn't warn ya, scoundrels! Onward, brothers and sisters!", name="Битва на Кораблях"},
-	{yell="The Alliance falter. Onward to the Lich King!", name="Битва на Кораблях"},
+	{yell="I have seen worlds bathed in the Makers' flames.", name="Algalon"},
+	{yell="His hold on me dissipates. I can see clearly once more. Thank you, heroes.",  name="Freya"},
+	{yell="I... I am released from his grasp... at last.", name="Hodir"},
+	{yell="^It would appear that I've made a slight miscalculation.", name="Mimiron"},
+	{yell="Stay your arms! I yield!", name="Thorim"},
+	{yell="Don't say I didn't warn ya, scoundrels! Onward, brothers and sisters!", name="Gunship Battle"},
+	{yell="The Alliance falter. Onward to the Lich King!", name="Gunship Battle"},
 }
 local chan_i, chan_flag
 updateframe:SetScript("OnUpdate", function(self, elapsed)
@@ -172,9 +172,9 @@ function FindGroupSaves_GetMailText(InstName, maxPlayers, difficulty, id)
 	local InstDiffname = ""
 	if maxPlayers > 5 then
 		InstDiffname=InstDiffname..maxPlayers
-		if difficulty == 3 or difficulty == 4 then  InstDiffname=InstDiffname.."(гер.)" end
+		if difficulty == 3 or difficulty == 4 then  InstDiffname=InstDiffname.." (HC)" end
 	else
-		if difficulty == 2 then  InstDiffname=InstDiffname.."(гер.)" end
+		if difficulty == 2 then  InstDiffname=InstDiffname.." (HC)" end
 	end
 	
 	local p = FindGroup_GetInstFav(string.lower(InstName))
@@ -334,7 +334,7 @@ function FindGroupSaves_SavePlayer(id, name, class, n)
 	if name then
 		if UnitInRange(name) or n then
 			local spec = LGT:GetGUIDTalentSpec(UnitGUID(name))
-			if not spec then spec = "Неизвестно" end
+			if not spec then spec = "Unknown" end
 			local i = FindGroupSaves_FindPlayer(id, name)
 			if not i then
 				tinsert(FindGroupDB.FGS[id].players, {name=name, class=class, spec=spec, oldtime=time()})
@@ -450,11 +450,11 @@ function FindGroupSaves_PrintInstances()
 			local name, id, reset, diff, _, _, _, _, maxPlayers, diffname = GetSavedInstanceInfo(i)
 			if i > maxframes then FindGroupSaves_AddButton(i, parrentframe) end
 
-				if not diffname:find("гер") then
+				if not diffname:find("HC") then
 			         if diff == 3 then
-			            diffname = diffname.." (гер.)"
+			            diffname = diffname.." (HC)"
 			         elseif diff == 4 then
-			            diffname = diffname.." (гер.)"
+			            diffname = diffname.." (HC)"
 			         end
 				end
 				local days, hours, minutes
@@ -463,7 +463,7 @@ function FindGroupSaves_PrintInstances()
 				hours = math.floor((reset - days * (24 * 60 * 60)) / (60 * 60))                 
 				minutes = math.floor((reset - days * (24 * 60 * 60) - hours * (60 * 60)) / 60)
 			
-				local timemsg = days.."д "..hours.."ч "..minutes.."м"
+				local timemsg = days.."d "..hours.."h "..minutes.."m"
 
 			getglobal(parrentframe:GetName().."Line"..i.."L"):SetText(name)
 			getglobal(parrentframe:GetName().."Line"..i.."C"):SetText(diffname)
@@ -639,7 +639,7 @@ if #FindGroupDB.FGS.my_channel_players > 0 then
 	GameTooltip:SetOwner(FindGroupInfoButton6, "ANCHOR_TOPLEFT")
 	GameTooltip:ClearLines()
 
-	GameTooltip:SetText("Пользователи")
+	GameTooltip:SetText("Users")
 	for i=1, #FindGroupDB.FGS.my_channel_players do
 		if FindGroupDB.FGS.my_channel_players[i].online then
 			local msg =""
@@ -998,7 +998,7 @@ function FindGroupSaves_CheckSendAll()
 			if iid == id then InstName = name; maxPlayers=imax; difficulty=idifficulty; break end
 		end
 		if InstName then
-			local msg = "Вы уверены что хотите отправить всем текущим игрокам:\n"
+			local msg = "Are you sure you want to send to all current players:\n"
 			msg = msg..FindGroupSaves_GetMailText(InstName, maxPlayers, difficulty, id)
 			StaticPopupDialogs["FINDGROUP_CONFIRM_SEND_ALL"].text = msg
 			StaticPopup_Show("FINDGROUP_CONFIRM_SEND_ALL")
@@ -1016,9 +1016,9 @@ function FindGroupSaves_PrintAllPlayers()
 	local InstDiffname = ""
 	if maxPlayers > 5 then
 		InstDiffname=InstDiffname..maxPlayers
-		if difficulty == 3 or difficulty == 4 then  InstDiffname=InstDiffname.."(гер.)" end
+		if difficulty == 3 or difficulty == 4 then  InstDiffname=InstDiffname.." (HC)" end
 	else
-		if difficulty == 2 then  InstDiffname=InstDiffname.."(гер.)" end
+		if difficulty == 2 then  InstDiffname=InstDiffname.." (HC)" end
 	end
 	local msg = string.format(FGL.db.msgforprint, InstName, InstDiffname, id)
 	
@@ -1292,14 +1292,14 @@ function FindGroupSaves_ShowTooltip(i)
 	hours = math.floor((reset - days * (24 * 60 * 60)) / (60 * 60))                 
 	minutes = math.floor((reset - days * (24 * 60 * 60) - hours * (60 * 60)) / 60)
 
-	local timemsg = days.."д "..hours.."ч "..minutes.."м"
+	local timemsg = days.."d "..hours.."h "..minutes.."m"
 
 	GameTooltip:SetText(name)
 	GameTooltip:AddLine(difficultyName, HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
 	GameTooltip:AddDoubleLine("ID: " .. id .. "", "|cffffffff"..timemsg.."|r", HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
 
 	if FindGroupDB.FGS[id] then
-		GameTooltip:AddLine("\nБосов убито (" .. #FindGroupDB.FGS[id].bosses .. "/" .. FindGroupDB.FGS[id].maxbosses .. ")")
+		GameTooltip:AddLine("\nBosses killed (" .. #FindGroupDB.FGS[id].bosses .. "/" .. FindGroupDB.FGS[id].maxbosses .. ")")
 		if #FindGroupDB.FGS[id].bosses > 0 then
 			for i=1, #FindGroupDB.FGS[id].bosses do
 				local sln = ""
@@ -1307,7 +1307,7 @@ function FindGroupSaves_ShowTooltip(i)
 				if #FindGroupDB.FGS[id].bosses == i then sln = "\n" end
 			end
 		end
-		GameTooltip:AddLine("\nИгроки (" .. #FindGroupDB.FGS[id].players .. ")")
+		GameTooltip:AddLine("\nPlayers (" .. #FindGroupDB.FGS[id].players .. ")")
 		for i=1, #FindGroupDB.FGS[id].players do
 			local color = "|cff"..FindGroup_funcgetcolor(FindGroupDB.FGS[id].players[i].class)
 			if not FindGroupDB.FGS[id].players[i].spec then FindGroupDB.FGS[id].players[i].spec = "" end
@@ -1365,7 +1365,7 @@ end
 
 
 PlAYER_ONLINE_MENU.Delete = function()
-	local msg = "Вы действительно хотите удалить игрока [%s%s|r] из этого списка с ID-%d?"
+	local msg = "Do you really want to remove player [%s%s|r] from this list with ID-%d?"
 	msg=string.format(msg, PlAYER_ONLINE_MENU.TargetColor, PlAYER_ONLINE_MENU.TargetName, global_id)
 	StaticPopupDialogs["FINDGROUP_CONFIRM_DELETECHAR"].text = msg
 	saves_delete_char_name = PlAYER_ONLINE_MENU.TargetName
@@ -1378,12 +1378,12 @@ end
 
 local menu_func={
 	{	name="Nick", },
-	{	name="Шепот", 		dis=true,			func=PlAYER_ONLINE_MENU.Whisper,	},
-	{	name="Пригласить",	dis=true,	invite=true,	func=PlAYER_ONLINE_MENU.Invite,		},
-	{	name="Добавить друга",	friend=true,		func=PlAYER_ONLINE_MENU.AddFriend,	},
-	{	name="Черный список",	ignore=true,		func=PlAYER_ONLINE_MENU.AddExcend,	},
-	{	name="Удалить",					func=PlAYER_ONLINE_MENU.Delete,		},
-	{	name="Отмена",					func=PlAYER_ONLINE_MENU.Cancel,		},
+	{	name="Whisper", 		dis=true,			func=PlAYER_ONLINE_MENU.Whisper,	},
+	{	name="Invite",	dis=true,	invite=true,	func=PlAYER_ONLINE_MENU.Invite,		},
+	{	name="Add friend",	friend=true,		func=PlAYER_ONLINE_MENU.AddFriend,	},
+	{	name="Ignore",	ignore=true,		func=PlAYER_ONLINE_MENU.AddExcend,	},
+	{	name="Delete",					func=PlAYER_ONLINE_MENU.Delete,		},
+	{	name="Cancel",					func=PlAYER_ONLINE_MENU.Cancel,		},
 }
 
 for i=1, #menu_func do
@@ -1509,7 +1509,7 @@ function FindGroupSaves_CheckLocale(name_player, i, id)
 
 	GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT")
 	GameTooltip:ClearLines()
-	GameTooltip:SetText(name_player.."\r|cffaaffaaКликните для проверки местоположения...")
+	GameTooltip:SetText(name_player.."\r|cffaaffaaClick to check location...")
 	GameTooltip:Show()
 	
 		if UnitName("player") == name_player then
@@ -1557,7 +1557,7 @@ function FindGroupSaves_CheckLocaleClick(name_player, i, id)
 
 	GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT")
 	GameTooltip:ClearLines()
-	GameTooltip:SetText(name_player.."\r|cffaaffaaПроверка местоположения...")
+	GameTooltip:SetText(name_player.."\r|cffaaffaaChecking location...")
 	GameTooltip:Show()
 	
 		if UnitName("player") == name_player then
@@ -1707,42 +1707,42 @@ end)
 
 local function myChatFilter(self, event, msg, author, ...)
 	if check_flag then
-		if msg:find("должны быть вашими") or msg:find("уже есть в вашем списке") or msg:find("Игрок не найден") then check_flag = nil; FindGroupSaves_CallBack(check_name, nil); return true end
-		if msg:find("Вы добавили") or msg:find("Вы удалили") then
+		if msg:find("must be your") or msg:find("is already on your") or msg:find("not found") then check_flag = nil; FindGroupSaves_CallBack(check_name, nil); return true end
+		if msg:find("You have added") or msg:find("You have removed") then
 			return true
 		end
 	elseif check_last then
 		check_last = nil
 		check_flag = nil
 		FindGroupSaves_StopCheck()
-		if msg:find("Вы добавили") or msg:find("Вы удалили") then
+		if msg:find("You have added") or msg:find("You have removed") then
 			return true
 		end
 	elseif check_last_1 then
 		check_last_1 = nil
-		if msg:find("Вы добавили") or msg:find("Вы удалили") then
+		if msg:find("You have added") or msg:find("You have removed") then
 			return true
 		end
 	end
 	
 	if check_last_2 == 1 then
 		check_last_2 = 2
-		if msg:find("Вы добавили") or msg:find("Вы удалили") then
+		if msg:find("You have added") or msg:find("You have removed") then
 			return true
 		end
 	elseif check_last_2 == 2 then
 		check_last_2 = 3
-		if msg:find("Вы добавили") or msg:find("Вы удалили") then
+		if msg:find("You have added") or msg:find("You have removed") then
 			return true
 		end
 	elseif check_last_2 == 3 then
 		check_last_2 = nil
 				FindGroupSaves_PrintPlayers(global_id)
-		if msg:find("Вы добавили") or msg:find("Вы удалили") then
+		if msg:find("You have added") or msg:find("You have removed") then
 			return true
 		end
 	end
-	if msg:find("Вы добавили") or msg:find("Вы удалили") or msg:find("уже есть в вашем списке") then
+	if msg:find("You have added") or msg:find("You have removed") or msg:find("is already on your") then
 		if GetMouseFocus() then
 		if GetMouseFocus():GetName() then
 			if (GetMouseFocus():GetName()):find("FindGroupSavesFrame") and (GetMouseFocus():GetName()):find("Line") then
@@ -1756,8 +1756,8 @@ local function myChatFilter(self, event, msg, author, ...)
 			double_stop = nil
 			double_flag = nil
 		end
-		if msg:find("должны быть вашими") or msg:find("уже есть в вашем списке") or msg:find("Игрок не найден") then return true end
-		if msg:find("Вы удалили") then
+		if msg:find("must be your") or msg:find("is already on your") or msg:find("not found") then return true end
+		if msg:find("You have removed") then
 			return true
 		end
 	end

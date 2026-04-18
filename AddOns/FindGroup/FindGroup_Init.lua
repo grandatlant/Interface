@@ -1,9 +1,9 @@
-﻿FGL={}
+FGL={}
 FGL.db={}
 FGL.func={}
 FGL.Interface = {}
 FGL.SPACE_NAME= "FindGroup: link"
-FGL.SPACE_VERSION = "2.1"
+FGL.SPACE_VERSION = "3.0"
 FGL.SPACE_BUILD = "2162"
 FGL.Interface.Frame = FindGroupFrame
 FGL.ChannelName = "FindGroupChannel"
@@ -20,7 +20,7 @@ FGL.db.defparam={
 ["alarmpatches"]={true,true,true, true},	-- bool false or true
 ["needs"]={true,true,true},					-- bool false or true
 ["alarmlist"]={},							-- serious table
-["msgforparty"]="пати", 			-- string max=80 symbols
+["msgforparty"]="inv", 			-- string max=80 symbols
 ["timeleft"]=60, 			-- seconds 15, 30, 45, 60, 75, 90
 ["framealpha"]=100, 		-- alpha percent 20 to 100
 ["framealphaback"]=100,		-- alpha percent 0 to 100
@@ -60,806 +60,801 @@ FGL.db.defparam={
 
 
 FGL.db.difficulties={
-{name="5", 			print="", 		maxplayers=5, 	heroic=0, 		balance={1,1,3}}, 	-- 1. 5об
-{name="5 гер", 		print="", 		maxplayers=5, 	heroic=1,		balance={1,1,3}}, 	-- 2. 5гер
-{name="10", 		print=" 10", 	maxplayers=10, 	heroic=0,		balance={2,3,5}},	-- 3. 10об
-{name="10 гер", 	print=" 10", 	maxplayers=10, 	heroic=1,		balance={2,3,5}}, 	-- 4. 10гер
-{name="25", 		print=" 25", 	maxplayers=25, 	heroic=0,		balance={2,5,18}}, 	-- 5. 25об
-{name="25 гер",		print=" 25", 	maxplayers=25, 	heroic=1,		balance={2,5,18}}, 	-- 6. 25гер
+{name="5", 			print="", 		maxplayers=5, 	heroic=0, 		balance={1,1,3}}, 	-- 1. 5nm
+{name="5 hc", 		print="", 		maxplayers=5, 	heroic=1,		balance={1,1,3}}, 	-- 2. 5hc
+{name="10", 		print=" 10", 	maxplayers=10, 	heroic=0,		balance={2,3,5}},	-- 3. 10nm
+{name="10 hc", 	print=" 10", 	maxplayers=10, 	heroic=1,		balance={2,3,5}}, 	-- 4. 10hc
+{name="25", 		print=" 25", 	maxplayers=25, 	heroic=0,		balance={2,5,18}}, 	-- 5. 25nm
+{name="25 hc",		print=" 25", 	maxplayers=25, 	heroic=1,		balance={2,5,18}}, 	-- 6. 25hc
 {name="20", 		print=" 20",	maxplayers=20, 	heroic=0,		balance={2,4,14}},	-- 7. 20
 {name="40", 		print=" 40",	maxplayers=40, 	heroic=0,		balance={3,7,30}},	-- 8. 40
 }
 
 FGL.db.add_difficulties={
-{name="норм.", difficulties="13578"},
-{name="гер.", difficulties="246"},
-{name="все 10", difficulties="34"},
-{name="все 25", difficulties="56"},
-{name="любой", difficulties="12345678"}
+{name="nm", difficulties="13578"},
+{name="hc", difficulties="246"},
+{name="all 10", difficulties="34"},
+{name="all 25", difficulties="56"},
+{name="any", difficulties="12345678"}
 }
 
 FGL.db.patches={
-{name="Wrath of the Lick King",		abbreviation="WotLK",	point="wotlk"},
+{name="Wrath of the Lich King",		abbreviation="WotLK",	point="wotlk"},
 {name="The Burning Crusade", 		abbreviation="TBC",	point="tbc"},
 {name="Classic", 					abbreviation="Classic",	point="classic"},
-{name="Сезонные ивенты", 			abbreviation="Events",	point="events"},
+{name="Seasonal Events", 			abbreviation="Events",	point="events"},
 }
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
 FGL.db.instances={
-{	name="Цит. Лед. Короны", 
- 	namecreatepartyraid="В ЦЛК",
-	abbreviationrus="ЦЛК",
-	abbreviationeng="ЦЛК",
+{	name="Icecrown Citadel", 
+ 	namecreatepartyraid="To ICC",
+	abbreviationrus="ICC",
+	abbreviationeng="ICC",
 	difficulties="3456",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-IcecrownCitadel", 
-	search={criteria={"цкл ", "цлк", "clk", "ребра", "цитадель", "цетадель", "в цит. лед.", "срлк"}
+	search={criteria={"icc", "icecrown"}
 }},
-{	name="Склеп Аркавона", 
- 	namecreatepartyraid="В Склеп",
-	abbreviationrus="СА",
-	abbreviationeng="Склеп",
+{	name="Vault of Archavon", 
+ 	namecreatepartyraid="To VoA",
+	abbreviationrus="VoA",
+	abbreviationeng="VoA",
 	difficulties="35",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-VaultOfArchavon",
-	search={criteria={"склеп", "торавон", {"в са"}, "арку", {"арка"}}
+	search={criteria={"voa", "vault"}
 }},
-{	name="Ульдуар", 
- 	namecreatepartyraid="В Ульду",
-	abbreviationrus="УЛД",
-	abbreviationeng="Ульду",
+{	name="Ulduar", 
+ 	namecreatepartyraid="To Ulduar",
+	abbreviationrus="Uld",
+	abbreviationeng="Ulduar",
 	difficulties="35",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Ulduar",
-	search={criteria={"ульду", {"ульда"}, {"сру"}, "робот", "игнис", "острокрыл", "алгалон", {"йог",  "сарон"}, {"ёг",  "сарон"}},
+	search={criteria={"ulduar", "uld"}
 }},
-{	name="Наксрамас", 
- 	namecreatepartyraid="В Накс",
-	abbreviationrus="НКС",
-	abbreviationeng="Накс.",
+{	name="Naxxramas", 
+ 	namecreatepartyraid="To Naxx",
+	abbreviationrus="Naxx",
+	abbreviationeng="Naxx",
 	difficulties="35",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Naxxramas",
-	search={criteria={"накс", "ласкут", "лоскут", "чумно", "разуви"}
+	search={criteria={"naxx", "naxxramas"}
 }},
-{	name="Логово Ониксии", 
- 	namecreatepartyraid="На Оню",
-	abbreviationrus="ЛО",
-	abbreviationeng="Ониксия",
+{	name="Onyxia's Lair", 
+ 	namecreatepartyraid="To Onyxia",
+	abbreviationrus="Ony",
+	abbreviationeng="Onyxia",
 	cutVeng="true",
 	difficulties="35",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-OnyxiaEncounter",
-	search={criteria={{"оня"}, "на оньку", " оню", "оникс", {"логово", "они"}, {"лог.", "они"}}
+	search={criteria={"ony", "onyxia", {"onyxia's", "lair"}}
 }},
-{	name="Око Вечности", 
- 	namecreatepartyraid="На Малигоса",
-	abbreviationrus="ОВ",
-	abbreviationeng="Малигос",
+{	name="Eye of Eternity", 
+ 	namecreatepartyraid="To EoE",
+	abbreviationrus="EoE",
+	abbreviationeng="Malygos",
 	cutVeng="true",
 	difficulties="35",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Malygos",
-	search={criteria={"малигос", "око вечности"}
+	search={criteria={"eoe", "malygos", {"eye", "of", "eternity"}}
 }},
-{	name="Обс. Святилище", 
- 	namecreatepartyraid="В ОС",
-	abbreviationrus="ОС",
-	abbreviationeng="ОС",
+{	name="Obsidian Sanctum", 
+ 	namecreatepartyraid="To OS",
+	abbreviationrus="OS",
+	abbreviationeng="OS",
 	difficulties="35",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ChamberOfAspects",
-	search={criteria={" ос ", " ос2", " ос1", "обс. свят", "сарт", {"обсид", "свят"}, {"ос"}}
+	search={criteria={"os", "sarth", "obsidian"}
 }},
-{	name="Руб. Святилище", 
- 	namecreatepartyraid="В РС",
-	abbreviationrus="РС",
-	abbreviationeng="РС",
+{	name="Ruby Sanctum", 
+ 	namecreatepartyraid="To RS",
+	abbreviationrus="RS",
+	abbreviationeng="RS",
 	difficulties="3456",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RubySanctum",
-	search={criteria={" рс", "руб. свят", {"рубин", "свят"}, {"рс"}}
+	search={criteria={"rs", "halion", "ruby"}
 }},
-{	name="Исп. Крестоносца", 
- 	namecreatepartyraid="В ИК",
-	abbreviationrus="ИК",
-	abbreviationeng="ИК",
+{	name="Trial of the Crusader", 
+ 	namecreatepartyraid="To ToC",
+	abbreviationrus="ToC",
+	abbreviationeng="ToC",
 	difficulties="3456",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ArgentRaid",
-	search={criteria={"в ик", "в ивк", " ик ", " ивк ", "исп. крест", {"испытание", "крестоносца"}, {"ик"}, {"ивк"}}
+	search={criteria={"toc", "togc", "totc", "trial of the crusader", "crusader"}
 }},
-{	name="Исп. Чемпиона", 
- 	namecreatepartyraid="В ИЧ",
-	abbreviationrus="ИЧ",
-	abbreviationeng="ИЧ",
+{	name="Trial of the Champion", 
+ 	namecreatepartyraid="To ToC5",
+	abbreviationrus="ToC5",
+	abbreviationeng="ToC5",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ArgentDungeon",
-	search={criteria={" ич", "исп. чемп", {"испытание", "чемпиона"}, {"ич"}}
+	search={criteria={"toc5", "champion"}
 }},
-{	name="Чертоги Камня", 
- 	namecreatepartyraid="В ЧК",
-	abbreviationrus="ЧК",
-	abbreviationeng="ЧК",
+{	name="Halls of Stone", 
+ 	namecreatepartyraid="To HoS",
+	abbreviationrus="HoS",
+	abbreviationeng="HoS",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HallsofStone",
-	search={criteria={" чк", {"чертоги", "камня"}, {"чк"}}
+	search={criteria={"hos", {"halls", "of", "stone"}}
 }},
-{	name="Чертоги Молний", 
- 	namecreatepartyraid="В ЧМ",
-	abbreviationrus="ЧМ",
-	abbreviationeng="ЧМ",
+{	name="Halls of Lightning", 
+ 	namecreatepartyraid="To HoL",
+	abbreviationrus="HoL",
+	abbreviationeng="HoL",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HallsofLightning",
-	search={criteria={" чм ", {"чертоги", "молний"}, {"чм"}}
+	search={criteria={"hol", {"halls", "of", "lightning"}}
 }},
-{	name="Ам. Крепость", 
- 	namecreatepartyraid="В АМК",
-	abbreviationrus="АМК",
-	abbreviationeng="АМК",
+{	name="Violet Hold", 
+ 	namecreatepartyraid="To VH",
+	abbreviationrus="VH",
+	abbreviationeng="VH",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TheVioletHold",
-	search={criteria={" амк", "аметисов", "ам. креп"}
+	search={criteria={"vh", "violet"}
 }},
-{	name="Яма Сарона", 
- 	namecreatepartyraid="В Яму",
-	abbreviationrus="ЯС",
-	abbreviationeng="Яму",
+{	name="Pit of Saron", 
+ 	namecreatepartyraid="To PoS",
+	abbreviationrus="PoS",
+	abbreviationeng="PoS",
  	cutVname="true",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-PitofSaron", 
-	search={criteria={"яма", "яму", "рукоят", "на ика"}
+	search={criteria={"pos", {"pit", "of", "saron"}}
 }},
-{	name="Кузня Душ", 
- 	namecreatepartyraid="В Кузню",
-	abbreviationrus="КД",
-	abbreviationeng="Кузню",
+{	name="Forge of Souls", 
+ 	namecreatepartyraid="To FoS",
+	abbreviationrus="FoS",
+	abbreviationeng="FoS",
  	cutVname="true",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TheForgeofSouls",
-	search={criteria={"кузня", "кузню", "кузни"}
+	search={criteria={"fos", {"forge", "of", "souls"}}
 }},
-{	name="Залы Отражений", 
- 	namecreatepartyraid="В Залы",
-	abbreviationrus="ЗО",
-	abbreviationeng="Залы",
+{	name="Halls of Reflection", 
+ 	namecreatepartyraid="To HoR",
+	abbreviationrus="HoR",
+	abbreviationeng="HoR",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HallsofReflection",
-	search={criteria={"в залы", "v zali", {"залы"}}
+	search={criteria={"hor", {"halls", "of", "reflection"}}
 }},
-{	name="Нексус", 
- 	namecreatepartyraid="В Нексус",
-	abbreviationrus="НС",
-	abbreviationeng="Нексус",
+{	name="The Nexus", 
+ 	namecreatepartyraid="To Nexus",
+	abbreviationrus="Nexus",
+	abbreviationeng="Nexus",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TheNexus",
-	search={criteria={"нексус"}
+	search={criteria={"nexus"}
 }},
-{	name="Окулус", 
- 	namecreatepartyraid="В Окулус",
-	abbreviationrus="ОК",
-	abbreviationeng="Окулус",
+{	name="The Oculus", 
+ 	namecreatepartyraid="To Oculus",
+	abbreviationrus="Occ",
+	abbreviationeng="Oculus",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TheOculus",
-	search={criteria={"окулус", "окулос"}
+	search={criteria={"oculus", "occ"}
 }},
-{	name="Азжол-Неруб", 
- 	namecreatepartyraid="В Азжол",
-	abbreviationrus="АН",
-	abbreviationeng="Азжол",
+{	name="Azjol-Nerub", 
+ 	namecreatepartyraid="To AN",
+	abbreviationrus="AN",
+	abbreviationeng="Azjol",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-AzjolNerub",
-	search={criteria={"азжол", "неруб ", "ажол "}
+	search={criteria={"azjol", "nerub", "an"}
 }},
-{	name="Ан'Кахет", 
- 	namecreatepartyraid="В Анкахет",
-	abbreviationrus="АК",
-	abbreviationeng="Ан'Кахет",
+{	name="Ahn'kahet", 
+ 	namecreatepartyraid="To AK",
+	abbreviationrus="AK",
+	abbreviationeng="Ahn'kahet",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Ahnkalet",
-	search={criteria={"кахет"}
+	search={criteria={"ahn", "kahet", "ak", "ok", {"old", "kingdom"}}
 }},
-{	name="Верш. Утгард", 
- 	namecreatepartyraid="В в.Утгард",
-	abbreviationrus="ВУ",
-	abbreviationeng="Вер. Утгард",
+{	name="Utgarde Pinnacle", 
+ 	namecreatepartyraid="To UP",
+	abbreviationrus="UP",
+	abbreviationeng="UP",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-UtgardePinnacle",
-	search={criteria={"скади", "имирон", "верш. утга", {"вир", "утга"}, {"вер", "утга"}, {"сини", "протодра"}, "да здравствует король"}
+	search={criteria={"up", "pinnacle"}
 }},
-{	name="Крепость Утгард", 
- 	namecreatepartyraid="В к.Утгард",
-	abbreviationrus="КУ",
-	abbreviationeng="Кр. Утгард",
+{	name="Utgarde Keep", 
+ 	namecreatepartyraid="To UK",
+	abbreviationrus="UK",
+	abbreviationeng="UK",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Utgarde",
-	search={criteria={"крепость утг", "кр. утга"}
+	search={criteria={"uk", "keep", {"utgarde", "keep"}}
 }},
-{	name="Креп. Драк'Тарон", 
- 	namecreatepartyraid="В Драктарон",
-	abbreviationrus="КДТ",
-	abbreviationeng="Драк'Тарон",
+{	name="Drak'Tharon Keep", 
+ 	namecreatepartyraid="To DTK",
+	abbreviationrus="DTK",
+	abbreviationeng="DTK",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-DrakTharon", 
-	search={criteria={"драктар", {"драк", "тарон"}}
+	search={criteria={"dtk", "drak"}
 }},
-{	name="Оч. Стратхольма", 
- 	namecreatepartyraid="В Страты",
-	abbreviationrus="ОС",
-	abbreviationeng="Оч. Страт.",
+{	name="Culling of Stratholme", 
+ 	namecreatepartyraid="To CoS",
+	abbreviationrus="CoS",
+	abbreviationeng="CoS",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-OldStrathome",
-	search={criteria={"в стратхольм", "на ривендера", "балназ", {"за", "поводья", "коня", "смерти"}, 
-	{"стратхольм"}, {"страт", "60"}, {"страт", "стары"} }
+	search={criteria={"cos", "culling"}
 }},
-{	name="Гундрак", 
- 	namecreatepartyraid="В Гундрак",
-	abbreviationrus="ГК",
-	abbreviationeng="Гундрак",
+{	name="Gundrak", 
+ 	namecreatepartyraid="To GD",
+	abbreviationrus="GD",
+	abbreviationeng="Gundrak",
 	difficulties="12",
 	patch="wotlk",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Gundrak",
-	search={criteria={"гундр"}
+	search={criteria={"gd", "gundrak"}
 }},
-{	name="Зул'Аман", 
- 	namecreatepartyraid="В ЗА",
-	abbreviationrus="ЗА",
-	abbreviationeng="ЗА",
+{	name="Zul'Aman", 
+ 	namecreatepartyraid="To ZA",
+	abbreviationrus="ZA",
+	abbreviationeng="ZA",
 	difficulties="3",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ZulAman",
-	search={criteria={"v za", "в за ", "за палачем", {"на зул", "джина"}, {"зул", "аман"}}
+	search={criteria={"za", "zul'aman"}
 }},
-{	name="Каражан", 
- 	namecreatepartyraid="В Каражан",
-	abbreviationrus="КРЖ",
-	abbreviationeng="Каражан",
+{	name="Karazhan", 
+ 	namecreatepartyraid="To Kara",
+	abbreviationrus="Kara",
+	abbreviationeng="Karazhan",
 	difficulties="3",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Karazhan",
-	search={criteria={"в кару", "v karu", "каражан", "на малчезара", "за магустом", {"за", "поводья", "огненного", "боевого", "коня"}}
+	search={criteria={"kara", "karazhan"}
 }},
 {  
-	name="Крепость Бурь", 
- 	namecreatepartyraid="В ТК",
-	abbreviationrus="КБ",
-	abbreviationeng="ТК",
+	name="Tempest Keep", 
+ 	namecreatepartyraid="To TK",
+	abbreviationrus="TK",
+	abbreviationeng="TK",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TempestKeep",
-	search={criteria={"v tk", "в тк", "в кб", " кб ", " tk ",  "за феней", "за феникc", {"пепел", "ал", "ара"}, {"крепость", "бурь"}, {"tk"}, {"тк"}, {"кб"}}
+	search={criteria={"tk", "tempest"}
 }},
-{	name="Лог. Груула", 
- 	namecreatepartyraid="На Груула",
-	abbreviationrus="ЛГ",
-	abbreviationeng="Груул",
+{	name="Gruul's Lair", 
+ 	namecreatepartyraid="To Gruul",
+	abbreviationrus="Gruul",
+	abbreviationeng="Gruul",
 	cutVeng="true",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-GruulsLair",
-	search={criteria={ "груул",  "на грул", "лог. груу", {"логово", "грул"}}
+	search={criteria={"gruul"}
 }},
-{	name="Вершина Хиджала", 
- 	namecreatepartyraid="В Хиджал",
-	abbreviationrus="ВХ",
-	abbreviationeng="Хиджал",
+{	name="Mount Hyjal", 
+ 	namecreatepartyraid="To Hyjal",
+	abbreviationrus="Hyjal",
+	abbreviationeng="Hyjal",
 	cutVname="true",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HyjalPast",
-	search={criteria={"на арчи", "на архимонда", "хиджал"}
+	search={criteria={"hyjal"}
 }},
-{	name="Солнечный Колодец", 
- 	namecreatepartyraid="В Санвел",
-	abbreviationrus="СК",
-	abbreviationeng="Санвелл",
+{	name="Sunwell Plateau", 
+ 	namecreatepartyraid="To SWP",
+	abbreviationrus="SWP",
+	abbreviationeng="SWP",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Sunwell",
-	search={criteria={"санвел", "за торидалом", "на киля", "плато солнечного колодца", {"кил", "джеден"}, {"солне", "колод"}, {"кел", "джеден"}, "санвел", "sunwel", "sunvel"}
+	search={criteria={"swp", "sunwell"}
 }},
-{	name="Змеиное Святилище", 
- 	namecreatepartyraid="В ССК",
-	abbreviationrus="ЗС",
-	abbreviationeng="ССК",
+{	name="Serpentshrine Cavern", 
+ 	namecreatepartyraid="To SSC",
+	abbreviationrus="SSC",
+	abbreviationeng="SSC",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-CoilFang",
-	search={criteria={"в подводку", "на вайш", "в сск", {"змеиное", "святилище"}}
+	search={criteria={"ssc", "serpentshrine"}
 }},
-{	name="Лог. Магтеридона", 
- 	namecreatepartyraid="На Магтеридона",
-	abbreviationrus="ЛМ",
-	abbreviationeng="Магтеридон",
+{	name="Magtheridon's Lair", 
+ 	namecreatepartyraid="To Mag",
+	abbreviationrus="Mag",
+	abbreviationeng="Magtheridon",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HellfireCitadelRaid",
-	search={criteria={{"логово", "магтеридона"}, "магтеридон", "лог. магтер"}
+	search={criteria={"mag", "magtheridon"}
 }},
-{	name="Черный Храм", 
- 	namecreatepartyraid="В БТ",
-	abbreviationrus="ЧХ",
-	abbreviationeng="БТ",
+{	name="Black Temple", 
+ 	namecreatepartyraid="To BT",
+	abbreviationrus="BT",
+	abbreviationeng="BT",
 	difficulties="5",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BlackTemple",
-	search={criteria={"v bt", "в бт", "в чх", " чх ", " bt ", " бт ", "на иллидана", "на илидана", "за азинотками", {"черн", "храм"}, {"чёрн", "храм"}, {"бт"}, {"чх"}, {"bt"}}
+	search={criteria={"bt", {"black", "temple"}}
 }},
-{	name="Аук. гробницы", 
- 	namecreatepartyraid="В АГ",
-	abbreviationrus="АГ",
-	abbreviationeng="АГ",
+{	name="Auchenai Crypts", 
+ 	namecreatepartyraid="To AC",
+	abbreviationrus="AC",
+	abbreviationeng="AC",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Auchindoun",
-	search={criteria={"в аг", "в аукенай", "маладаар", "аук. гроб", {"аукенайск", "гробн"}, {"аукенайск", "грабн"}}
+	search={criteria={"ac", "auchenai"}
 }},
-{	name="Гробницы Маны", 
- 	namecreatepartyraid="В Гроб. маны",
-	abbreviationrus="ГМ",
-	abbreviationeng="ГМ",
+{	name="Mana Tombs", 
+ 	namecreatepartyraid="To MT",
+	abbreviationrus="MT",
+	abbreviationeng="MT",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Auchindoun",
-	search={criteria={"в аг", "шаффар", "шафар", {"гробниц", "маны"}, {"грабниц", "маны"}}
+	search={criteria={"mt", "mana", "tombs"}
 }},
-{	name="Сетекк. залы", 
- 	namecreatepartyraid="В Сеттек",
-	abbreviationrus="СЗ",
-	abbreviationeng="Сетекк",
+{	name="Sethekk Halls", 
+ 	namecreatepartyraid="To Sethekk",
+	abbreviationrus="SH",
+	abbreviationeng="Sethekk",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Auchindoun",
-	search={criteria={"в сетекк", "за вороном", "анзу", "айкис", {"за", "владыки", "воронов"}, {"сетек", "залы"}}
+	search={criteria={"sethekk"}
 }},
-{	name="Темный лабиринт", 
- 	namecreatepartyraid="В Лабиринт",
-	abbreviationrus="ТЛ",
-	abbreviationeng="Лабиринт",
+{	name="Shadow Labyrinth", 
+ 	namecreatepartyraid="To SL",
+	abbreviationrus="SL",
+	abbreviationeng="Lab",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Auchindoun",
-	search={criteria={"в лабиринт", "в тл", "v tl", "бормотун", {"темный", "лабиринт"}}
+	search={criteria={"sl", "shadow", "labyrinth", "lab", "slabs", "slab"}
 }},
-{	name="Аркатрац", 
- 	namecreatepartyraid="В Аркатрац",
-	abbreviationrus="АТ",
-	abbreviationeng="Аркатрац",
+{	name="The Arcatraz", 
+ 	namecreatepartyraid="To Arca",
+	abbreviationrus="Arca",
+	abbreviationeng="Arcatraz",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TempestKeep",
-	search={criteria={"в аркатр", "скайрис", "аркатрац"}
+	search={criteria={"arca", "arcatraz"}
 }},
-{	name="Ботаника", 
- 	namecreatepartyraid="В Ботанику",
-	abbreviationrus="БН",
-	abbreviationeng="Ботаника",
+{	name="The Botanica", 
+ 	namecreatepartyraid="To Bota",
+	abbreviationrus="Bota",
+	abbreviationeng="Botanica",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TempestKeep",
-	search={criteria={"v botu", "в боту", "в ботанику", "узлодрев", "ботаник"}
+	search={criteria={"bota", "botanica"}
 }},
-{	name="Механар", 
- 	namecreatepartyraid="В Механар",
-	abbreviationrus="МХ",
-	abbreviationeng="Механар",
+{	name="The Mechanar", 
+ 	namecreatepartyraid="To Mech",
+	abbreviationrus="Mech",
+	abbreviationeng="Mechanar",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-TempestKeep",
-	search={criteria={"в мех", "паталеон", "вычислител", "механар"}
+	search={criteria={"mech", "mechanar"}
 }},
-{	name="Стар. Хилсбрад", 
- 	namecreatepartyraid="В Хилсбрад",
-	abbreviationrus="СХ",
-	abbreviationeng="Хилсбрад",
+{	name="Old Hillsbrad", 
+ 	namecreatepartyraid="To OHF",
+	abbreviationrus="OHF",
+	abbreviationeng="OHF",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-CavernsOfTime",
-	search={criteria={"в спх", "на охотника вечности", "хилсбрад", "дарнх", "стар. хилс"}
+	search={criteria={"ohb", "ohf", "hillsbrad"}
 }},
-{	name="Черные топи", 
- 	namecreatepartyraid="В Топи",
-	abbreviationrus="ЧТ",
-	abbreviationeng="Топи",
+{	name="The Black Morass", 
+ 	namecreatepartyraid="To BM",
+	abbreviationrus="BM",
+	abbreviationeng="BM",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-CavernsOfTime",
-	search={criteria={"эонус", "в чт ", "в топи", {"черн", "топи"}, {"чёрн", "топи"}, {"открытие", "темного", "портала"}}
+	search={criteria={"bm", {"black", "morass"}}
 }},
-{	name="Баст. Ад. Пламени", 
- 	namecreatepartyraid="В Бастионы",
-	abbreviationrus="БАП",
-	abbreviationeng="Бастионы",
+{	name="Hellfire Ramparts", 
+ 	namecreatepartyraid="To Ramps",
+	abbreviationrus="Ramps",
+	abbreviationeng="Ramps",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HELLFIRECITADEL",
-	search={criteria={"в бастионы", "в бап", "в бп", "на омора", "назан", "вазруден", "баст. ад. пла", {"бастионы", "адского", "пламени"}}
+	search={criteria={"ramps", "ramparts"}
 }},
-{	name="Кузня Крови", 
- 	namecreatepartyraid="В Кузню(70)",
-	abbreviationrus="КК",
-	abbreviationeng="Кузня(70)",
+{	name="The Blood Furnace", 
+ 	namecreatepartyraid="To BF",
+	abbreviationrus="BF",
+	abbreviationeng="BF",
 	cutVname="true",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HELLFIRECITADEL",
-	search={criteria={"в кк", "келидан", "кузню70", "кузню(70)", {"кузн", "крови"}}
+	search={criteria={"bf", "furnace"}
 }},
-{	name="Разрушенные залы", 
- 	namecreatepartyraid="В Залы(70)",
-	abbreviationrus="РЗ",
-	abbreviationeng="Залы(70)",
+{	name="The Shattered Halls", 
+ 	namecreatepartyraid="To SH",
+	abbreviationrus="SH",
+	abbreviationeng="SH",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HELLFIRECITADEL",
-	search={criteria={"в рз", "залы70", "залы(70)", "раз. залы", "р. залы", "залы 70", "залы (70)", "раз.залы", "р.залы", "каргат", "острорук", {"разруш", "залы"}}
+	search={criteria={"shattered"}
 }},
-{	name="Терраса Магистров", 
- 	namecreatepartyraid="В Терассу",
-	abbreviationrus="ТМ",
-	abbreviationeng="ТМ",
+{	name="Magister's Terrace", 
+ 	namecreatepartyraid="To MgT",
+	abbreviationrus="MgT",
+	abbreviationeng="MgT",
 	cutVname="true",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-MagistersTerrace",
-	search={criteria={"v tm", "в тм", "в терас", {"за", "белый", "крылобег"}, {"за", "птенец", "феникса"}, {"за", "син", "дорай"}, {"тер", "магистр"}, {"тм"}}
+	search={criteria={"mgt", "magister"}
 }},
-{	name="Нижетопь", 
- 	namecreatepartyraid="В Нижетопь",
-	abbreviationrus="НТ",
-	abbreviationeng="Нижетопь",
+{	name="The Underbog", 
+ 	namecreatepartyraid="To UB",
+	abbreviationrus="UB",
+	abbreviationeng="UB",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-CoilFang",
-	search={criteria={"в нт", {"черн", "охотниц"}, {"чёрн", "охотниц"}, "нижетопь"}
+	search={criteria={"ub", "underbog"}
 }},
-{ 	name="Пар. подземелье", 
- 	namecreatepartyraid="В Паровое",
- 	abbreviationrus="ПРП",
- 	abbreviationeng="Паровое",
+{ 	name="The Steamvault", 
+ 	namecreatepartyraid="To SV",
+ 	abbreviationrus="SV",
+ 	abbreviationeng="SV",
  	difficulties="12",
 	 patch="tbc",
  	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-CoilFang",
- 	search={criteria={"в паровое", "калитреш", "пар. подз", "в пар подзем", {"паров", "подзем"}, {"парав", "подзем"}}
+ 	search={criteria={"sv", "steamvault"}
 }},
-{	name="Узилище", 
- 	namecreatepartyraid="В Узилище",
-	abbreviationrus="УЗ",
-	abbreviationeng="Узилище",
+{	name="The Slave Pens", 
+ 	namecreatepartyraid="To SP",
+	abbreviationrus="SP",
+	abbreviationeng="SP",
 	difficulties="12",
 	patch="tbc",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-CoilFang",
-	search={criteria={"в узи", "зыбун", "узилище"}
+	search={criteria={"sp", "slave", "pens"}
 }},
-{	name="Зул'Гуруб", 
- 	namecreatepartyraid="В ЗГ",
-	abbreviationrus="ЗГ",
-	abbreviationeng="ЗГ",
+{	name="Zul'Gurub", 
+ 	namecreatepartyraid="To ZG",
+	abbreviationrus="ZG",
+	abbreviationeng="ZG",
 	difficulties="7",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ZulGurub",
-	search={criteria={"v zg", "в зг", "хаккар", "хакар", "за тигром", "за ящером", "за раптором", {"зул", "гуруб"}, {"зг"}, {"zg"}}
+	search={criteria={"zg", "zul'gurub"}
 }},
-{	name="Руины Ан'Киража", 
- 	namecreatepartyraid="В АК20",
-	abbreviationrus="РА",
-	abbreviationeng="AK20",
+{	name="Ruins of Ahn'Qiraj", 
+ 	namecreatepartyraid="To AQ20",
+	abbreviationrus="AQ20",
+	abbreviationeng="AQ20",
 	difficulties="7",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-AQRuins",
-	search={criteria={"в ак20", "в руины", "оссириан", {"руины", "ан", "киража"}, {"ак20"}}
+	search={criteria={"aq20", "ruins"}
 }},
-{	name="Храм Ан'Киража", 
- 	namecreatepartyraid="В АК40",
-	abbreviationrus="ХА",
-	abbreviationeng="AK40",
+{	name="Temple of Ahn'Qiraj", 
+ 	namecreatepartyraid="To AQ40",
+	abbreviationrus="AQ40",
+	abbreviationeng="AQ40",
 	difficulties="8",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-AQTemple",
-	search={criteria={"в ак40", "в анкираж", "в кираж", "в храм", "на ктун", {"храм", "ан", "киража"}, {"потому", "что", "он", "красный"}, {"к", "тун"}, {"ак40"}}
+	search={criteria={"aq40"}
 }},
-{	name="Лог. Крыла Тьмы", 
- 	namecreatepartyraid="В БВЛ",
-	abbreviationrus="ЛКТ",
-	abbreviationeng="БВЛ",
+{	name="Blackwing Lair", 
+ 	namecreatepartyraid="To BWL",
+	abbreviationrus="BWL",
+	abbreviationeng="BWL",
 	difficulties="8",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BlackwingLair",
-	search={criteria={"в лкт", "в бвл", "лог. крыла", "на нефариан", {"логов", "крыла", "тьмы"}, {"бвл"}, {"лкт"}}
+	search={criteria={"bwl"}
 }},
-{	name="Огненные Недра", 
- 	namecreatepartyraid="В Недра",
-	abbreviationrus="ОН",
-	abbreviationeng="МК",
+{	name="Molten Core", 
+ 	namecreatepartyraid="To MC",
+	abbreviationrus="MC",
+	abbreviationeng="MC",
 	difficulties="8",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-MoltenCore",
-	search={criteria={"v mc", "в мк", "в он ", " mc ", " мк ", "на рагнароса", "на гарра", "геддон", {"огн", "недра"}, {"за", "наручники", "искателя", "ветра"}, {"за", "око", "сульфураса"}, {"он40"}, {"mc"}, {"мк"}}
+	search={criteria={"mc", "molten"}
 }},
-{	name="Гномреган", 
- 	namecreatepartyraid="В Гномреган",
-	abbreviationrus="ГРН",
-	abbreviationeng="Реган",
+{	name="Gnomeregan", 
+ 	namecreatepartyraid="To Gnomer",
+	abbreviationrus="Gnomer",
+	abbreviationeng="Gnomer",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Gnomeregan",
-	search={criteria={"в реган ", "на термоштеп", "гномереган", "гномиреган", "гномреган"}
+	search={criteria={"gnomer"}
 }},
-{	name="Ульдаман", 
- 	namecreatepartyraid="В Ульдаман",
-	abbreviationrus="УЛН",
-	abbreviationeng="Ульдаман",
+{	name="Uldaman", 
+ 	namecreatepartyraid="To Uldaman",
+	abbreviationrus="Uldaman",
+	abbreviationeng="Uldaman",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Uldaman",
-	search={criteria={"ульдам", "аркедас"}
+	search={criteria={"uldaman"}
 }},
-{	name="Тюрьма Штормграда", 
- 	namecreatepartyraid="В Тюрьму",
-	abbreviationrus="ТШ",
-	abbreviationeng="Тюрьма",
+{	name="Stockades", 
+ 	namecreatepartyraid="To Stocks",
+	abbreviationrus="Stocks",
+	abbreviationeng="Stocks",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-StormwindStockades",
-	search={criteria={"в тюрьму", "в тш", "базил", "тюрьма"}
+	search={criteria={"stocks", "stockades"}
 }},
-{	name="Стратхольм", 
- 	namecreatepartyraid="В Страты(60)",
-	abbreviationrus="СМ",
-	abbreviationeng="Страты(60)",
+{	name="Stratholme", 
+ 	namecreatepartyraid="To Strat",
+	abbreviationrus="Strat",
+	abbreviationeng="Strat",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Stratholme",
-	search={criteria={"в страты(60)", "в стратхольм", "на ривендера", "балназ", {"за", "поводья", "коня", "смерти"}, {"стратхольм"}}
+	search={criteria={"strat", "stratholme"}
 }},
-{	name="Пик Черной Горы", 
- 	namecreatepartyraid="В БРС",
-	abbreviationrus="ПЧГ",
-	abbreviationeng="БРС",
+{	name="Blackrock Spire", 
+ 	namecreatepartyraid="To BRS",
+	abbreviationrus="BRS",
+	abbreviationeng="BRS",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BlackrockSpire",
-	search={criteria={"пик черной го","в пчг", "в брс", "в вчг", "в нчг", "в вччг", "в нччг", "змейталак", "драккисат", "дракисат", {"часть", "черной", "гор"}, {"часть", "чёрной", "гор"}}
+	search={criteria={"brs", "ubrs", "lbrs"}
 }},
-{	name="Глуб. Черной Горы", 
- 	namecreatepartyraid="В БРД",
-	abbreviationrus="ГЧГ",
-	abbreviationeng="БРД",
+{	name="Blackrock Depths", 
+ 	namecreatepartyraid="To BRD",
+	abbreviationrus="BRD",
+	abbreviationeng="BRD",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BlackrockDepths",
-	search={criteria={"глуб. черной го", "в брд", "в гчг", "дагран", "тауриссан", "таурисан", {"глубины", "черной", "горы"}}
+	search={criteria={"brd", "depths"}
 }},
-{	name="Некроситет",
- 	namecreatepartyraid="В Некро",
-	abbreviationrus="НТ",
-	abbreviationeng="Некро",
+{	name="Scholomance",
+ 	namecreatepartyraid="To Scholo",
+	abbreviationrus="Scholo",
+	abbreviationeng="Scholo",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Scholomance",
-	search={criteria={"в некро", "в шоло", "гандлинг", {"рас", "ледяной", "шепот"}, {"некроситет"}}
+	search={criteria={"scholo"}
 }},
-{	name="Марадон", 
- 	namecreatepartyraid="В Марадон",
-	abbreviationrus="МН",
-	abbreviationeng="Мара",
+{	name="Maraudon", 
+ 	namecreatepartyraid="To Mara",
+	abbreviationrus="Mara",
+	abbreviationeng="Mara",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Maraudon",
-	search={criteria={"в мару", "в мара", "терадрас", "марадон", "мародон"}
+	search={criteria={"mara", "maraudon"}
 }},
-{	name="Мертвые копи", 
- 	namecreatepartyraid="В Копи",
-	abbreviationrus="МК",
-	abbreviationeng="Копи",
+{	name="Deadmines", 
+ 	namecreatepartyraid="To VC",
+	abbreviationrus="VC",
+	abbreviationeng="VC",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Deadmines",
-	search={criteria={"в копи", "эдвин", "клиф", {"мертвые", "копи"}}
+	search={criteria={"vc", "deadmines"}
 }},
-{	name="Пещеры Стенаний", 
- 	namecreatepartyraid="В Пещеры",
-	abbreviationrus="ПС",
-	abbreviationeng="Пещеры",
+{	name="Wailing Caverns", 
+ 	namecreatepartyraid="To WC",
+	abbreviationrus="WC",
+	abbreviationeng="WC",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-WailingCaverns",
-	search={criteria={"в пещеры", "мутанус", {"пещер", "стенан"}}
+	search={criteria={"wc", "wailing"}
 }},
-{	name="Огненная Пропасть", 
- 	namecreatepartyraid="Под Огри",
-	abbreviationrus="ОП",
-	abbreviationeng="Под огри",
+{	name="Ragefire Chasm", 
+ 	namecreatepartyraid="To RFC",
+	abbreviationrus="RFC",
+	abbreviationeng="RFC",
 	cutVname="true",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RagefireChasm",
-	search={criteria={"под огри", "в оп ", "в пропасть", "в пропость", {"огнен", "проп"}}
+	search={criteria={"rfc", "ragefire"}
 }},
-{	name="Непроглядная Пучина", 
- 	namecreatepartyraid="В Пучину",
-	abbreviationrus="НП",
-	abbreviationeng="Пучина",
+{	name="Blackfathom Deeps", 
+ 	namecreatepartyraid="To BFD",
+	abbreviationrus="BFD",
+	abbreviationeng="BFD",
  	cutVname="true",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BlackfathomDeeps",
-	search={criteria={"в нп", "в пучину", {"аку", "май"}, {"непр", "пучина"}}
+	search={criteria={"bfd", "blackfathom"}
 }},
-{	name="Креп. Темн. Клыка", 
- 	namecreatepartyraid="В КТК",
-	abbreviationrus="КТК",
-	abbreviationeng="КТК",
+{	name="Shadowfang Keep", 
+ 	namecreatepartyraid="To SFK",
+	abbreviationrus="SFK",
+	abbreviationeng="SFK",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ShadowFangKeep",
-	search={criteria={"в ктк", "аругал", "креп. темн. кл", {"крепость", "темного", "клыка"}, {"ктк"}}
+	search={criteria={"sfk", "shadowfang"}
 }},
-{	name="Зул'Фаррак", 
- 	namecreatepartyraid="В ЗулФарак",
-	abbreviationrus="ЗФ",
-	abbreviationeng="Фаррак",
+{	name="Zul'Farrak", 
+ 	namecreatepartyraid="To ZF",
+	abbreviationrus="ZF",
+	abbreviationeng="ZF",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ZulFarak",
-	search={criteria={"в зф", "в фарак", "в фаррак", {"зул", "фаррак"}, {"зул", "фарак"}}
+	search={criteria={"zf", "zul'farrak"}
 }},
-{	name="Забытый Город", 
- 	namecreatepartyraid="В Маул",
-	abbreviationrus="ЗБГ",
-	abbreviationeng="Маул",
+{	name="Dire Maul", 
+ 	namecreatepartyraid="To DM",
+	abbreviationrus="DM",
+	abbreviationeng="DM",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-DireMaul",
-	search={criteria={"в маул", "в город", {"зобытый", "город"}, "алззин", "на гордок", {"гордок"}, {"забытый", "город"}, {"зобытый", "город"}, {"бессмер", "тер"}, {"dire", "maul"}}
+	search={criteria={"dm", "dire", "maul"}
 }},
-{	name="Затонувший храм", 
- 	namecreatepartyraid="В Зат. Храм",
-	abbreviationrus="ЗХ",
-	abbreviationeng="Зат. Храм",
+{	name="Sunken Temple", 
+ 	namecreatepartyraid="To ST",
+	abbreviationrus="ST",
+	abbreviationeng="ST",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-SunkenTemple",
-	search={criteria={"в зх", "зат. храм", "эраникус", {"затонувш", "храм"}}
+	search={criteria={"st", "sunken"}
 }},
-{	name="Мон. Ал. Ордена", 
- 	namecreatepartyraid="В МАО",
-	abbreviationrus="МАО",
-	abbreviationeng="МАО",
+{	name="Scarlet Monastery", 
+ 	namecreatepartyraid="To SM",
+	abbreviationrus="SM",
+	abbreviationeng="SM",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ScarletMonastery",
-	search={criteria={"в собор", "в библиотеку", "мон. ал. орд", "в кладбище", "в оружейн", "талнос", "доан", "ирод", "могрейн", "инквизитор", {"монаст", "ал", "орден"}, {"моност", "ал", "орден"}, {"мао"}}
+	search={criteria={"sm", "scarlet"}
 }},
-{	name="Курганы Иглошкурых", 
- 	namecreatepartyraid="В Курганы",
-	abbreviationrus="КИ",
-	abbreviationeng="Курганы",
+{	name="Razorfen Downs", 
+ 	namecreatepartyraid="To RFD",
+	abbreviationrus="RFD",
+	abbreviationeng="RFD",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RazorfenDowns",
-	search={criteria={"в курганы", "в ки ", "хладов", {"курганы", "иглошкурых"}, {"ки"}}
+	search={criteria={"rfd", "razorfen"}
 }},
-{	name="Лабиринты Иглошкурых", 
- 	namecreatepartyraid="В Лабиринты",
-	abbreviationrus="ЛИ",
-	abbreviationeng="Лабиринты",
+{	name="Razorfen Kraul", 
+ 	namecreatepartyraid="To RFK",
+	abbreviationrus="RFK",
+	abbreviationeng="RFK",
 	difficulties="1",
 	patch="classic",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RazorfenKraul",
-	search={criteria={"в ли ", "в лабиринты", "остробок", {"лабиринты", "иглошкурых"}, {"ли"}}
+	search={criteria={"rfk", "kraul"}
 }}, 
-{ 	 name="Огненный солнцеворот", 
- 	namecreatepartyraid="На Ахуна",
-	 abbreviationrus="ОС",
-	 abbreviationeng="Ахун",
+{ 	 name="Midsummer Fire Festival", 
+ 	namecreatepartyraid="To Ahune",
+	 abbreviationrus="Ahune",
+	 abbreviationeng="Ahune",
  	 cutVname="true",
 	 cutVeng="true",
 	 difficulties="12",
 	 patch="events",
 	 picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Summer",
-	 search={criteria={"за косой", {"ахун"}, {"огнен", "солнце"}}
+	 search={criteria={"ahune", "midsummer"}
 }},
-{ 	 name="Хмельный Фестиваль", 
- 	namecreatepartyraid="На Худовара",
-	 abbreviationrus="ХФ",
-	 abbreviationeng="Худовар",
+{ 	 name="Brewfest", 
+ 	namecreatepartyraid="To Coren",
+	 abbreviationrus="Coren",
+	 abbreviationeng="Coren",
  	 cutVname="true",
 	 cutVeng="true",
 	 difficulties="1",
 	 patch="events",
 	 picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Brew",
-	 search={criteria={"худовар", "худавар", "за кодо", "за бараном", {"утром", "дрож"}, {"хмел", "фестив"}}
+	 search={criteria={"coren", "direbrew", "brewfest"}
 }},
-{ 	 name="Тыквовин", 
- 	namecreatepartyraid="На Всадника",
-	 abbreviationrus="ТВ",
-	 abbreviationeng="Всадник",
+{ 	 name="Hallow's End", 
+ 	namecreatepartyraid="To Horseman",
+	 abbreviationrus="Horseman",
+	 abbreviationeng="Horseman",
  	 cutVname="true",
 	 cutVeng="true",
 	 difficulties="1",
 	 patch="events",
 	 picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Halloween",
-	 search={criteria={"всадник", "конем", "канем", "конём", "тыквовин", "канём", {"поводья", "всадника"}}
+	 search={criteria={"horseman", "headless"}
 }},
-{ 	 name="Любовная лихорадка", 
- 	namecreatepartyraid="На Хамеля",
-	 abbreviationrus="ЛЛ",
-	 abbreviationeng="Хамель",
+{ 	 name="Love is in the Air", 
+ 	namecreatepartyraid="To Hummel",
+	 abbreviationrus="Hummel",
+	 abbreviationeng="Hummel",
  	 cutVname="true",
 	 cutVeng="true",
 	 difficulties="1",
 	 patch="events",
 	 picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Love",
-	 search={criteria={"аптекар", "хаммел", "хамел", "ракет", {"любов", "лихорад"}}
+	 search={criteria={"hummel", "apothecary"}
 }},
-{	name="Случ. Подземелье", 
- 	namecreatepartyraid="В ПП",
-	abbreviationrus="ПП",
-	abbreviationeng="Рандом",
+{	name="Random Dungeon", 
+ 	namecreatepartyraid="To RDF",
+	abbreviationrus="RDF",
+	abbreviationeng="RDF",
 	difficulties="12",
 	patch="random",
 	picture="Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RANDOMDUNGEON",
-	search={criteria={{"ргер"}, " ргер","р гер", "рендом", "случ. подз", "рендомгер", "рендомпп", 
-	"рандом", "рандомгер", "рандомпп", "рпп", "пп ", "случайку", 
-	"рандом героик", "рендом героик", "в рг"}
+	search={criteria={"rdf", "random", "rhc", "random dungeon", "random heroic"}
 }},
 }
 
 
 
 FGL.db.add_instances={
-{name="Групповой", difficulties="12"},
-{name="Рейдовый", difficulties="345678"},
-{name="Любой", difficulties="12345678"},
-{name="С достижением", difficulties="12345678"},
+{name="Party", difficulties="12"},
+{name="Raid", difficulties="345678"},
+{name="Any", difficulties="12345678"},
+{name="With ach", difficulties="12345678"},
 }
 
 FGL.db.roles={
 	heal={
-		label="хил",
+		label="heal",
 		search={
-			criteria={"хил", " hil", "hil ", "heal", "холик", "лекар"},
-			exception={"хил есть", "хилы есть", "пахилю", "похилю", "хильну", "я хил", "пати хилу", "хилы фул", "прохилю"}
+			criteria={"heal", "heals", "healer", "healers", "rsham", "hpala", "hpal", "hpriest", "holy priest", "rdruid", "rdru", "resto", "restoration", "disc", "discipline", "holy", "tree"},
+			exception={"heal full", "healer full", "heals full", "healers full", "lf guild", "lfg"}
 		}
 	},
 	attack={
-		label="дд",
+		label="dps",
 		search={
-			criteria={"дд", "спд", "мили", "dd", "spd", "дамагер", "домагер", "domager", "damager", "боец", "бойц"},
-			exception={"пойду", "задамажу", "я дд", "я рдд", "дд фул", "заддшу", "поддшу", "проддшу"}
+			criteria={"dps", "dd", "rdps", "mdps", "melee", "caster", "ret", "retri", "rogue", "hunter", "mage", "warlock", "lock", "spriest", "shadow priest", "boomie", "boomy", "moonkin", "feral", "cat", "enh", "enhance", "enhancement", "ele", "elemental", "dk", "warrior", "arms", "fury", "damage"},
+			exception={"dps full", "dd full", "rdps full", "mdps full", "lf guild", "lfg"}
 		}
 	},
 	tank={
-		label="танк",
+		label="tank",
 		search={
-			criteria={" mt", "need ot", "tank", "танк", "мт", "нужен от ", "нид от "},
-			exception={"мт есть", "танк есть", "танки есть", "от есть", "танкану", "я танк", "пати танку", "танки фул", "протанчу"}
+			criteria={"tank", "tanks", "mt", "ot", "prot", "protection", "bear", "blood dk", "blood", "pala tank", "paladin tank", "war tank", "dk tank"},
+			exception={"tank full", "tanks full", "lf guild", "lfg"}
 		}
 	},
 	all={
-		label="все",
+		label="all",
 		search={
-			criteria={	"нид все", "все ", "нужны все", "все нужны", "все нид", "нидвсе", 
-				"need vse", "vse need", "nid vse", "vse nid", "все в ", "vse v ", "неед все"
-			},
+			criteria={"need all", "lf all", "all roles", "need more", "need any", "need all roles", "lfm all", "lfm any", "all welcome"},
 			exception={}
 		}
 	},
@@ -869,81 +864,81 @@ FGL.db.roles={
 FGL.db.classfindtable = {
 ["DEATHKNIGHT"]={
 				{},
-				{"дк"},
-				{},
+				{"dk", "frost", "unholy"},
+				{"blood"},
 				},
 ["ROGUE"]={
 				{},
-				{"рог"},
+				{"rogue", "assa", "combat", "sub"},
 				{},
 				},
 ["HUNTER"]={
 				{},
-				{"хант"},
+				{"hunt", "hunter", "mm", "bm", "surv"},
 				{},
 				},
 ["MAGE"]={
 				{},
-				{"маг"},
+				{"mage", "arcane", "fire", "frost mage"},
 				{},
 				},
 ["WARRIOR"]={
 				{},
-				{"вар"},
-				{"пвар", {"прото", "вар"}},
+				{"warr", "warrior", "arms", "fury"},
+				{"pwar", "prot warr", "prot warrior"},
 				},
 ["WARLOCK"]={
 				{},
-				{"лок","афли","демо","дестр"},
+				{"lock", "warlock", "affli", "demo", "destro"},
 				{},
 				},		
 ["DRUID"]={
-				{"рдру","дерево","бревно","палено", {"ресто", "дру", 5}},
-				{"дру","кошка","сова","мункин","совух"},
-				{"мишк"},
+				{"rdru", "resto druid", "tree"},
+				{"druid", "cat", "feral", "boomie", "balance", "moonkin"},
+				{"bear", "guardian"},
 				},
 ["PALADIN"]={
-				{"хпал","hpal", {"холи", "пал"}},
-				{"пал","ретри"},
-				{"ппал", "ppal", {"прото", "пал"}},
+				{"hpala", "hpal", "holy paladin"},
+				{"pala", "ret", "retri"},
+				{"ppal", "prot pala", "prot paladin"},
 				},
 ["PRIEST"]={
-				{"хприст","дц", {"прист", "холи"}},
-				{"прист","шп","шприст", {"шадоу", "прист", 5}},
+				{"hpriest", "holy priest", "dc", "disc", "discipline"},
+				{"priest", "spriest", "shadow"},
 				{},
 				},
 ["SHAMAN"]={
-				{"ршам", {"ресто", "шам", 5}},
-				{"шам","элем","энх"},
+				{"rsham", "resto sham", "resto shaman"},
+				{"sham", "shaman", "ele", "enh"},
 				{},
 				},			
 }
 
 FGL.db.submsgs = {
-	"{ромб}",
-	"{звезда}",
-	"{круг}",
-	"{череп}",
-	"{крест}",
-	"{треугольник}",
-	"{полумесяц}",
-	"{квадрат}",
-	"{Ромб}",
-	"{Звезда}",
-	"{Круг}",
-	"{Череп}",
-	"{Крест}",
-	"{Треугольник}",
-	"{Полумесяц}",
-	"{Квадрат}",
-	"{РОМБ}",
-	"{ЗВЕЗДА}",
-	"{КРУГ}",
-	"{ЧЕРЕП}",
-	"{КРЕСТ}",
-	"{ТРЕУГОЛЬНИК}",
-	"{ПОЛУМЕСЯЦ}",
-	"{КВАДРАТ}",
+	"{diamond}",
+	"{star}",
+	"{circle}",
+	"{skull}",
+	"{cross}",
+	"{triangle}",
+	"{moon}",
+	"{square}",
+	"{Diamond}",
+	"{Star}",
+	"{Circle}",
+	"{Skull}",
+	"{Cross}",
+	"{Triangle}",
+	"{Moon}",
+	"{Square}",
+	"{DIAMOND}",
+	"{STAR}",
+	"{CIRCLE}",
+	"{SKULL}",
+	"{CROSS}",
+	"{TRIANGLE}",
+	"{MOON}",
+	"{SQUARE}",
 	"__",
 	"**",
 	"-".."-",
@@ -952,136 +947,98 @@ FGL.db.submsgs = {
 }
 
 FGL.db.exceptions={
-	"ищу пати",
-	"ищет",
-	"ишет",
-	"ишу пати",
-	"ищю пати",
-	"ищю пати",
-	"ишупати",
-	"ищюпати",
-	"ищупати",
-	"ишу рейд",
-	"ищю рейд",
-	"ишурейд",
-	"ищюрейд",
-	"ичу рэйд",
-	"ичу рейд",
-	"ищурейд",
-	"ищу рейд",
-	"ишу цлк",
-	"ищю цлк",
-	"ишу цлк",
-	"ишуцлк",
-	"ищюцлк",
-	"ищуцлк",
-	"ищу цлк",
-	"ищу цкл",
-	"ишу цлк",
-	"ишю цлк",
-	"ищут цлк",
-	"ищют цлк",
-	"ишут цлк",	
-	"ишуцлк",
-	"ищу ргер",		
-	"ишу ргер",		
-	"ищю ргер",
-	"кому нуж",
-	"кому нид",
-	"тиму",
-	"2x2",
-	"3x3",
-	"5x5",
-	"2х2",
-	"3х3",
-	"5х5",
-	"2на2",
-	"3на3",
-	"5на5",
-	--"репу",
-	--"репы",
-	"пойду",
-	"пайду",
-	"схожу",
-	" ги",
-	"вгиль",
-	"гильдии",
-	"гильдее",
-	"есть пати",
-	"рецами",
-	"продам",
-	"куплю",
-	"обменяю",
-	"кому там над",
-	"кому там нуж",
-	"кто там соб",
-	"нид кому?",
-	"фул уже",
-	"хочешь узнать",	
-	"походы",
-	"походов",
-	"поня",
-	"покупа",
-	"работаю",
-	"своди",
-	"искал",
-	"зачем регать",
-	"в цлк выдавал",
-	"в цлк выдаёт",
+	"wtb",
+	"wts",
+	"selling",
+	"lf guild",
+	"lfg",
+	"lfp",
+	"looking for guild",
+	"looking for group",
+	"sell",
+	"buy",
+	"trade",
+	"trading",
+	"gold",
+	"coins",
+	"cheap",
+	"discord",
+	"twitch",
+	"youtube",
+	"carry",
+	"boost",
+	"boosting",
+	"2v2",
+	"3v3",
+	"5v5",
+	"arena",
+	"rating",
+	"mmr",
+	"recruit",
+	"recruiting",
+	"wtt",
+	"guild",
+	"social",
+	"pvp guild",
+	"pve guild",
+	"casual guild",
+	"hardcore",
+	"join our",
+	"looking for members",
+	"gs ",
+	"gearscore",
+	"achievement seller",
+	"sell run",
+	"selling run",
+	"server first",
 }
 
 
 FGL.db.heroic={
-"г",
-"гер",
-"г ",
-" гер",
-"гер ",
-" г ",
-"ргер",
-"гирои",
-"герои",
-"хиро",
-"хм",
-"за драко",
-"за маунтом",
-"за флаем",
-"ивк",
+"hc",
+"heroic",
+"hm",
+" hc",
+"hc ",
+" hc ",
+"rhc",
+"heroics",
 }
 
 FGL.db.normal={
 "",
-"об",
-"н ",
-"нор ",
-" об",
-"об ",
+"nm",
+"n ",
+"norm ",
+" nm",
+"nm ",
+"normal",
 }
 
 FGL.db.createtexts={
 	full={
-		start="В %s",
+		start="To %s",
 		cut="%s",
-		need=" нужны:%s.",
-		need1=" нужны%s.",
-		need3=" нужен%s.",
-		pm="Писать в пм: %s.",
-		ddspd="дамагер",
+		need=" need: %s.",
+		need1=" need %s.",
+		need3=" need %s.",
+		pm="PM: %s.",
+		ddspd="dps",
 	},
 	splite={
-		start="В %s",
-		start2="На %s",
+		start="To %s",
+		start2="To %s",
 		cut="%s",
-		need=" нид%s",
-		pm="(в пм: %s)",
-		spd="спд",
-		dd="дд",
-		rdd="рдд",
-		ddspd="дд/спд",
+		need=" need %s",
+		pm="(PM: %s)",
+		spd="rdps",
+		dd="mdps",
+		rdd="rdps",
+		ddspd="dps",
 	},
 	random={
-		name="Случ. Подземелье",
-		start="В %s",
+		name="Random Dungeon",
+		start="To %s",
 	},
 }
 
@@ -1114,28 +1071,28 @@ FGL.db.iconclasses={
 
 FGL.db.classesprint={
 	["TANK"]={
-		"вар",
-		"дк",
-		"пал",
-		"дру",
+		"war",
+		"dk",
+		"pal",
+		"dru",
 	},
 	["HEAL"]={
-		"пал",
-		"шам",
-		"прист",
-		"дру",
+		"pal",
+		"sham",
+		"priest",
+		"dru",
 	},
 	["DD"]={
-		"вар",
-		"дк",
-		"пал",
-		"шам",
-		"хант",
-		"маг",
-		"рог",
-		"лок",
-		"прист",
-		"дру",
+		"war",
+		"dk",
+		"pal",
+		"sham",
+		"hunt",
+		"mage",
+		"rogue",
+		"lock",
+		"priest",
+		"dru",
 	},
 }
 
@@ -1153,68 +1110,68 @@ FGL.db.classesgroup={
 }
 
 
--- допускается верхний регистр
+-- uppercase is allowed
 
 FGL.db.achievements = {
-	{criteria={"за ачив", "на ачив", "за достиж", "на достиж"}},
-	{ 	--Слава рейдеру Ульдуара 10
+	{criteria={"for ach", "for achievement", "achiev", "achievement"}},
+	{ 	--Glory of the Ulduar Raider 10
 		id=2957,
 		checkdiff="34",
-		criteria={"СРУ", "сру 10"}
+		criteria={"gotur", "gotur 10"}
 	},
-	{ 	--Слава рейдеру Ульдуара 25
+	{ 	--Glory of the Ulduar Raider 25
 		id=2958,
 		checkdiff="56",
-		criteria={"СРУ", "сру 25"}
+		criteria={"gotur", "gotur 25"}
 	},
-	{ 	--Слава рейдеру Ледяной Короны 10
+	{ 	--Glory of the Icecrown Raider 10
 		id=4602,
 		checkdiff="34",
-		criteria={"СРЛК", "срлк"}
+		criteria={"icc ach", "gotir", "gotir 10"}
 	},
-	{ 	--Слава рейдеру Ледяной Короны 25
+	{ 	--Glory of the Icecrown Raider 25
 		id=4603,
 		checkdiff="56",
-		criteria={"СРЛК", "срлк"}
+		criteria={"icc ach", "gotir", "gotir 25"}
 	},
 }
 
 FGL.db.defbackgroundfiles={
-{"Крепость Нерубиана",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Nerubian.tga"},
-{"Арена Острогорья",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Outland"},
-{"Разрушенный город",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RuinedCity.tga"},
-{"Цитадель Адского пламени",   	"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HellfireCitadelBack.tga"},
-{"Лесная Глушь",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Enviroment.tga"},
-{"Подземелье",    			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Dungeon.tga"},
-{"Пещера",     			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Cave.tga"},
-{"Черный Храм",  			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-blacktemplecitadel.tga"},
-{"Запределье",    			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-outlandrocks.tga"},
-{"Планета",   			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-planet.tga"},
-{"Домики",   			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Houses.tga"},
-{"Артас Менетил",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ArthasMenetil.tga"},
-{"Король Лич",     			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Artas.tga"},
-{"Бронзобород",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Bronzebeard.tga"},
-{"Камень жизни",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-SoulStone.tga"},
-{"Гоблины-подрывники",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Goblins.tga"},
-{"Восстание нежити",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Undeads.tga"},
-{"Пропасть",      			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Pit.tga"},
-{"Неуязвимый",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Invinсible.tga"},
-{"Кельтас",   			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Kaelthas.tga"},
-{"КелТузад",      			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-KelTuzad.tga"},
-{"Страж Лунного колодца",      	"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-MoonwellGuardian.tga"},
-{"Неутомимый чернокнижник",    	"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Warlock.tga"},
-{"Поле Боя",      			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Bg.tga"},
-{"Зиккураты плети",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Ziggurat.tga"},
-{"Темница душ",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-SoulPrison.tga"},
-{"Кровавая эльфийка",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BloodElf.tga"},
-{"Череп на стене",       		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Skullwall.tga"},
-{"Смертельные земли",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-deadlands.tga"},
-{"Знамя Орды",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HordeFlag.tga"},
-{"Кодо и тигр",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Kodo.tga"},
-{"Сильвана",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Silvana.tga"},
-{"Троль",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Troll.tga"},
-{"Обитель Демонов",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-demonshouse.tga"},
-{"Земли клыков",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Fanglands.tga"},
+{"Nerubian Keep",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Nerubian.tga"},
+{"Blade's Edge Arena",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Outland"},
+{"Ruined City",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-RuinedCity.tga"},
+{"Hellfire Citadel",   	"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HellfireCitadelBack.tga"},
+{"Forest Wilderness",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Enviroment.tga"},
+{"Dungeon",    			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Dungeon.tga"},
+{"Cave",     			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Cave.tga"},
+{"Black Temple",  			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-blacktemplecitadel.tga"},
+{"Outland",    			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-outlandrocks.tga"},
+{"Planet",   			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-planet.tga"},
+{"Houses",   			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Houses.tga"},
+{"Arthas Menethil",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-ArthasMenetil.tga"},
+{"Lich King",     			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Artas.tga"},
+{"Bronzebeard",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Bronzebeard.tga"},
+{"Soulstone",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-SoulStone.tga"},
+{"Goblin Sappers",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Goblins.tga"},
+{"Undead Rising",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Undeads.tga"},
+{"The Pit",      			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Pit.tga"},
+{"Invincible",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Invincible.tga"},
+{"Kael'thas",   			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Kaelthas.tga"},
+{"Kel'Thuzad",      			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-KelTuzad.tga"},
+{"Moonwell Guardian",      	"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-MoonwellGuardian.tga"},
+{"Tireless Warlock",    	"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Warlock.tga"},
+{"Battleground",      			"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Bg.tga"},
+{"Scourge Ziggurats",    		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Ziggurat.tga"},
+{"Soul Prison",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-SoulPrison.tga"},
+{"Blood Elf",      		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-BloodElf.tga"},
+{"Skull Wall",       		"Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Skullwall.tga"},
+{"Deadlands",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-deadlands.tga"},
+{"Horde Banner",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-HordeFlag.tga"},
+{"Kodo and Tiger",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Kodo.tga"},
+{"Sylvanas",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Silvana.tga"},
+{"Troll",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Troll.tga"},
+{"Demon's House",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-demonshouse.tga"},
+{"Fanglands",         "Interface\\AddOns\\FindGroup\\textures\\UI-LFG-BACKGROUND-Fanglands.tga"},
 
 }
 
@@ -1249,164 +1206,164 @@ FGL.db.soundfiles={
 }
 
 FGL.db.FindList={
-"Подземелий",
-"Подземелий (гер.)",
-"Рейдов",
-"Рейдов (гер.)",
+"Dungeons",
+"Dungeons (HC)",
+"Raids",
+"Raids (HC)",
 }
 
-FGL.db.msgforsaves = "Привет! В %s %s по кд (ID %d) пойдешь?"
-FGL.db.msgforsaves_notinvite = "Привет! В %s %s по кд (ID %d) собирает [%s]. Если пойдешь, то пиши ему!"
+FGL.db.msgforsaves = "Hi! Will you go to %s %s on CD (ID %d)?"
+FGL.db.msgforsaves_notinvite = "Hi! [%s] is forming %s %s on CD (ID %d). PM them if you want to join!"
 FGL.db.msgforprint = "%s %s ID-%s: "
 
 FGL.db.tooltips={
-["FindGroupOptionsViewFindFrameCheckButton1"] = {"ANCHOR_TOPLEFT", "Отображать иконки всех ролей", 
-	"Выбрав эту функцию, вы будете видеть ВСЕ иконки ролей которые нужны в группе/рейде. При этом сам поиск будет производится всё также по заданой вами категории."
+["FindGroupOptionsViewFindFrameCheckButton1"] = {"ANCHOR_TOPLEFT", "Display all role icons", 
+	"By selecting this, you will see ALL role icons needed in the group/raid. Search will still be based on your category."
 	},
-["FindGroupOptionsViewFindFrameCheckButton2"] = {"ANCHOR_TOPLEFT", "Отображать фон инста", 
-	"Уберите этот флажок, если не желаете видеть картинки, которые появляются при подводе курсора к названию инста."
+["FindGroupOptionsViewFindFrameCheckButton2"] = {"ANCHOR_TOPLEFT", "Display instance background", 
+	"Uncheck this if you don't want to see images when hovering over an instance name."
 	},
-["FindGroupOptionsViewFindFrameCheckButton3"] = {"ANCHOR_TOPLEFT", "Отображать инсты с КД", 
-	"Когда отмечена эта опция, инсты с КД не скрываются и окрашиваются в серый(неактивный) цвет."
+["FindGroupOptionsViewFindFrameCheckButton3"] = {"ANCHOR_TOPLEFT", "Display instances with CD", 
+	"When checked, instances with an active CD are not hidden but colored gray (inactive)."
 	},
-["FindGroupOptionsViewFindFrameCheckButton4"] = {"ANCHOR_TOPLEFT", "Отображать сокращения",
-	"Показывать сокращенные названия инстов в окне поиска."
+["FindGroupOptionsViewFindFrameCheckButton4"] = {"ANCHOR_TOPLEFT", "Display abbreviations",
+	"Show shortened instance names in the search window."
 	},
-["FindGroupOptionsFrameResetButton"] = {"ANCHOR_TOPLEFT", "По умолчанию",
-	"Эта кнопка устанавливает все значения на стандартные."
+["FindGroupOptionsFrameResetButton"] = {"ANCHOR_TOPLEFT", "Default",
+	"Resets all values to default."
 	},
-["FindGroupOptionsViewFindFrameCheckButtonRaidFind"] = {"ANCHOR_TOPLEFT", "Отображать свои сообщения",
-	"Сканировать собственные сообщения и сообщения участников рейда/группы."
+["FindGroupOptionsViewFindFrameCheckButtonRaidFind"] = {"ANCHOR_TOPLEFT", "Display own messages",
+	"Scan your own messages and messages from raid/party members."
 	},
-["FindGroupOptionsViewFindFrameCheckButtonClassFind"] = {"ANCHOR_TOPLEFT", "Отображать чужие классы",
-	"Отображать сообщения в которых ваш класс предположительно не нужен."
+["FindGroupOptionsViewFindFrameCheckButtonClassFind"] = {"ANCHOR_TOPLEFT", "Display other classes",
+	"Display messages where your class is presumably not needed."
 	},
-["FindGroupOptionsFindFrameCheckButtonCloseFind"] = {"ANCHOR_TOPLEFT", "Фоновый Режим",
-	"Аддон будет работать и искать сообщения даже если закрыт."
+["FindGroupOptionsFindFrameCheckButtonCloseFind"] = {"ANCHOR_TOPLEFT", "Background Mode",
+	"Addon will continue to work and search for messages even if closed."
 	},
-["FindGroupOptionsInterfaceFrameCheckButton1"] = {"ANCHOR_TOPLEFT", "Показывать подсказки",
-	"Показывать вот такие подсказки на кнопки и прочие элементы аддона."
+["FindGroupOptionsInterfaceFrameCheckButton1"] = {"ANCHOR_TOPLEFT", "Show tooltips",
+	"Show these tooltips on buttons and other addon elements."
 	},
-["FindGroupOptionsCreateRuleFrameCheckButtonSplite"] = {"ANCHOR_TOPLEFT", "Сокращать текст сбора",
-	"Сокращать предложение по сбору в общепринятный жаргонный вид."
+["FindGroupOptionsCreateRuleFrameCheckButtonSplite"] = {"ANCHOR_TOPLEFT", "Shorten LFG text",
+	"Shorten the LFG sentence to a common jargon format."
 	},
-["FindGroupOptionsCreateRuleFrameCheckButtonLider"] = {"ANCHOR_TOPLEFT", "Писать ник рейд лидера",
-	"Дописывать ник лидера рейда, если вы не лидер и не помошник."
+["FindGroupOptionsCreateRuleFrameCheckButtonLider"] = {"ANCHOR_TOPLEFT", "Write Raid Leader name",
+	"Append the raid leader's name if you are not the leader or assistant."
 	},
-["FindGroupOptionsCreateRuleFrameCheckButtonFull"] = {"ANCHOR_TOPLEFT", "Автостоп",
-	"Когда рейд/группа набрало колличество игроков заданной сложности инста то в чат посылается сообщение, что группа/рейд набраны. При этом сбор останавливается."
+["FindGroupOptionsCreateRuleFrameCheckButtonFull"] = {"ANCHOR_TOPLEFT", "Auto Stop",
+	"When the raid/party reaches the maximum players for the instance difficulty, a message is sent to chat that the group is full. LFG stops."
 	},
-["FindGroupOptionsCreateRuleFrameCheckButtonId"] = {"ANCHOR_TOPLEFT", "ID подземелий",
-	"В тексте сбора к названию подземелия будет подписываться номер сохранения, если такой есть."
+["FindGroupOptionsCreateRuleFrameCheckButtonId"] = {"ANCHOR_TOPLEFT", "Dungeon ID",
+	"The dungeon lock ID will be appended to the instance name in the LFG text, if applicable."
 	},
-["FindGroupOptionsMinimapIconFrameCheckButtonShow"] = {"ANCHOR_TOPLEFT", "Отображать кнопку у миникарты",
-	"Показывать миникнопку у миникарты дающую быстрый доступ к функциям аддона."
+["FindGroupOptionsMinimapIconFrameCheckButtonShow"] = {"ANCHOR_TOPLEFT", "Show minimap button",
+	"Show a minimap button for quick access to addon features."
 	},
-["FindGroupOptionsMinimapIconFrameCheckButtonFree"] = {"ANCHOR_TOPLEFT", "Свободное перемещение",
-	"Кнопка будет откреплена от миникарты для свободного перемещения."
+["FindGroupOptionsMinimapIconFrameCheckButtonFree"] = {"ANCHOR_TOPLEFT", "Free move",
+	"The button will be detached from the minimap for free movement."
 	},
-["FindGroupOptionsAlarmFrameCheckButtonAlarmCD"] = {"ANCHOR_TOPLEFT", "Оповещать только без КД",
-	"Оповещение будет игнорировать подземелья с ID."
+["FindGroupOptionsAlarmFrameCheckButtonAlarmCD"] = {"ANCHOR_TOPLEFT", "Alert only without CD",
+	"Alerts will ignore dungeons where you have an active ID."
 	},
+
 
 
 
 
 
-
-["FindGroupFrameAlarmButton"] = {"ANCHOR_TOPRIGHT", "Оповещение",
-	"Когда в таблице поиска появляется новая запись, аддон может оповестить вас о ней."
+["FindGroupFrameAlarmButton"] = {"ANCHOR_TOPRIGHT", "Alerts",
+	"When a new entry appears in the search table, the addon can alert you."
 	},
-["FindGroupFrameCreateButton1"] = {"ANCHOR_TOPRIGHT", "Окно сбора",
-	"Нажмите для перехода в режим сбора группы/рейда."
+["FindGroupFrameCreateButton1"] = {"ANCHOR_TOPRIGHT", "Create Window",
+	"Click to switch to group/raid creation mode."
 	},
-["FindGroupFrameCreateButton2"] = {"ANCHOR_TOPRIGHT", "Окно поиска",
-	"Нажмите для перехода в режим поиска рейда/группы."
+["FindGroupFrameCreateButton2"] = {"ANCHOR_TOPRIGHT", "Search Window",
+	"Click to switch to group/raid search mode."
 	},
-["FindGroupFrameCCDButton"] = {"ANCHOR_TOPRIGHT", "Сохраненные подземелья",
-	"Список игроков и сохраненных подземелий."
+["FindGroupFrameCCDButton"] = {"ANCHOR_TOPRIGHT", "Saved Dungeons",
+	"List of players and saved dungeons."
 	},
-["FindGroupFrameConfigButton1"] = {"ANCHOR_TOPRIGHT", "Вспомогательная панель поиска",
-	"Панель помогающая настроить окно поиска под личные параметры."
+["FindGroupFrameConfigButton1"] = {"ANCHOR_TOPRIGHT", "Auxiliary Search Panel",
+	"Panel to help configure the search window."
 	},
-["FindGroupFrameConfigButton2"] = {"ANCHOR_TOPRIGHT", "Вспомогательная панель сбора",
-	"Панель помогающая настроить окно сбора под личные параметры."
+["FindGroupFrameConfigButton2"] = {"ANCHOR_TOPRIGHT", "Auxiliary Create Panel",
+	"Panel to help configure the create window."
 	},
-["FindGroupFrameConfigFrameButton"] = {"ANCHOR_TOPRIGHT", "Настройки",
-	"Настройки всех параметров аддона."
+["FindGroupFrameConfigFrameButton"] = {"ANCHOR_TOPRIGHT", "Settings",
+	"Settings for all addon parameters."
 	},
-["FindGroupFramePinButton"] = {"ANCHOR_TOPRIGHT", "Блокировка",
-	"Блокирование окна от перетаскиваний."
+["FindGroupFramePinButton"] = {"ANCHOR_TOPRIGHT", "Lock",
+	"Lock the window from being moved."
 	},
-["FindGroupFrameInfoButton"] = {"ANCHOR_TOPRIGHT", "Инфо",
-	"Информация по этому аддону."
+["FindGroupFrameInfoButton"] = {"ANCHOR_TOPRIGHT", "Info",
+	"Information about this addon."
 	},
-["FindGroupFrameCloseButton"] = {"ANCHOR_TOPRIGHT", "Закрыть",
-	"Нажмите для закрытия окна."
+["FindGroupFrameCloseButton"] = {"ANCHOR_TOPRIGHT", "Close",
+	"Click to close the window."
 	},
-["FindGroupConfigFrameHNeedsButton"] = {"ANCHOR_TOPRIGHT", "Роли",
-	"Выберите роли для которых будет производится поиск."
+["FindGroupConfigFrameHNeedsButton"] = {"ANCHOR_TOPRIGHT", "Roles",
+	"Select the roles you want to search for."
 	},
-["FindGroupConfigFrameHTextButton"] = {"ANCHOR_TOPRIGHT", "Текст отправляемый игроку",
-	"пати"
+["FindGroupConfigFrameHTextButton"] = {"ANCHOR_TOPRIGHT", "Text sent to player",
+	"inv"
 	},
-["FindGroupConfigFrameHOtherButton"] = {"ANCHOR_TOPRIGHT", "Оповещение",
-	"Создайте свой список для оповещения."
+["FindGroupConfigFrameHOtherButton"] = {"ANCHOR_TOPRIGHT", "Alerts",
+	"Create your own list for alerts."
 	},
-["FindGroupShadowClearButton"] = {"ANCHOR_TOPRIGHT", "Очистить",
-	"Очистить весь список оповещений."
+["FindGroupShadowClearButton"] = {"ANCHOR_TOPRIGHT", "Clear",
+	"Clear the entire alert list."
 	},
-["FindGroupShadowAddButton"] = {"ANCHOR_TOPRIGHT", "Добавить",
-	"Добавить еще один критерий в список оповещений."
+["FindGroupShadowAddButton"] = {"ANCHOR_TOPRIGHT", "Add",
+	"Add another criteria to the alert list."
 	},
-["FindGroupConfigFrameHActButton"] = {"ANCHOR_TOPRIGHT", "Продолжительность собщений",
-	"Продолжительность собщений игроков в окне поиска. (регулируется левой и правой кнопкой мыши)"
+["FindGroupConfigFrameHActButton"] = {"ANCHOR_TOPRIGHT", "Message duration",
+	"Duration of player messages in the search window. (adjusted with left/right mouse clicks)"
 	},
-["FindGroupConfigFrameHChannelsButton"] = {"ANCHOR_TOPRIGHT", "Каналы",
-	"Выберите каналы в которые будет отслылаться сообщение сбора."
-	},
-
-["FindGroupConfigFrameHClassButton"] = {"ANCHOR_TOPRIGHT", "Классы",
-	"Выберите классы необходимые для вашей группы/рейда."
+["FindGroupConfigFrameHChannelsButton"] = {"ANCHOR_TOPRIGHT", "Channels",
+	"Select channels where the LFG message will be sent."
 	},
 
-["FindGroupFrameCalculate"] = {"ANCHOR_TOPRIGHT", "Автоподбор",
-	"Помогает в окне сбора автоподсчитать роли исходя из спеков вблизи стоящих членов группы/рейда."
-	},
-["FindGroupSavesFrameSendButton"] = {"ANCHOR_TOPRIGHT", "Рассылка сообщений",
-	"Все игроки, которые в сети, будут уведомлены о наборе по кд в данное подземелье."
-	},
-["FindGroupSavesFramePrintButton"] = {"ANCHOR_TOPRIGHT", "Распечатать список",
-	"Текущий список игроков будет отправлен в чат-рейд или группу."
-	},
-["FindGroupSavesFrameCloseButton"] = {"ANCHOR_TOPRIGHT", "Закрыть",
-	"Нажмите для закрытия окна."
-	},
-["FindGroupSavesFrameBackButton"] = {"ANCHOR_TOPRIGHT", "Назад",
-	"Нажмите для возврата в предыдущее окно."
+["FindGroupConfigFrameHClassButton"] = {"ANCHOR_TOPRIGHT", "Classes",
+	"Select classes needed for your group/raid."
 	},
 
-["SavesPlus"] = {"ANCHOR_TOPRIGHT", "Пригласить",
-	"Пригласить в группу."
+["FindGroupFrameCalculate"] = {"ANCHOR_TOPRIGHT", "Auto Calculate",
+	"Helps in the create window to auto-calculate roles based on specs of nearby party/raid members."
 	},
-["SavesSend"] = {"ANCHOR_TOPRIGHT", "Шепнуть игроку",
-	"Игроку отправится текст:\n"
+["FindGroupSavesFrameSendButton"] = {"ANCHOR_TOPRIGHT", "Mass Message",
+	"All players online will be notified about the run for this CD."
+	},
+["FindGroupSavesFramePrintButton"] = {"ANCHOR_TOPRIGHT", "Print List",
+	"The current player list will be sent to raid/party chat."
+	},
+["FindGroupSavesFrameCloseButton"] = {"ANCHOR_TOPRIGHT", "Close",
+	"Click to close the window."
+	},
+["FindGroupSavesFrameBackButton"] = {"ANCHOR_TOPRIGHT", "Back",
+	"Click to return to the previous window."
+	},
+
+["SavesPlus"] = {"ANCHOR_TOPRIGHT", "Invite",
+	"Invite to group."
+	},
+["SavesSend"] = {"ANCHOR_TOPRIGHT", "Whisper Player",
+	"The following text will be sent to the player:\n"
 	},
 
 
 ["FindGroupFrameMinimapButton"] = 		{"ANCHOR_TOPRIGHT", "FindGroup: Link", ""},
-["FindGroupFrameTextToolTip"] = 		{"ANCHOR_TOPRIGHT", "Отправить запрос", ""},
-["FindGroupFrameHeal"] = 			{"ANCHOR_TOPRIGHT", "Лечение", ""},
-["FindGroupFrameTank"] = 			{"ANCHOR_TOPRIGHT", "Защита", ""},
-["FindGroupFrameDD"] = 			{"ANCHOR_TOPRIGHT", "Атака", ""},
-["FindGroupFrameHead"] = 			{"ANCHOR_TOPRIGHT", "Героическая сложность", ""},
+["FindGroupFrameTextToolTip"] = 		{"ANCHOR_TOPRIGHT", "Send Request", ""},
+["FindGroupFrameHeal"] = 			{"ANCHOR_TOPRIGHT", "Heal", ""},
+["FindGroupFrameTank"] = 			{"ANCHOR_TOPRIGHT", "Tank", ""},
+["FindGroupFrameDD"] = 			{"ANCHOR_TOPRIGHT", "Damage", ""},
+["FindGroupFrameHead"] = 			{"ANCHOR_TOPRIGHT", "Heroic Difficulty", ""},
 }
 
 FGL.db.shadow={
 	{
 		texts={
-			"Поиск для персонажей которые могут:",
-			"Принять",
+			"Search for characters who can:",
+			"Accept",
 		},
 		widgets={
 			"FindGroupShadowCheckButton1",
@@ -1419,8 +1376,8 @@ FGL.db.shadow={
 	},
 	{
 		texts={
-			"Редактор шаблона сообщений:",
-			"Принять",
+			"Message template editor:",
+			"Accept",
 		},
 		widgets={
 			"FindGroupShadowEditBox",
@@ -1430,8 +1387,8 @@ FGL.db.shadow={
 	},
 	{
 		texts={
-			"Оповещение:",
-			"Принять",
+			"Alert:",
+			"Accept",
 		},
 		widgets={
 			"FindGroupShadowTitleInst",
@@ -1448,7 +1405,7 @@ FGL.db.shadow={
 	{
 		texts={
 			"",
-			"Отправить",
+			"Send",
 		},
 		widgets={
 			"FindGroupShadowEditBox",
@@ -1458,7 +1415,7 @@ FGL.db.shadow={
 	{
 		texts={
 			"",
-			"Отправить",
+			"Send",
 		},
 		widgets={
 			"FindGroupShadowEditBox",
@@ -1467,8 +1424,8 @@ FGL.db.shadow={
 	},
 	{
 		texts={
-			"Редактирование классов",
-			"Принять",
+			"Edit classes",
+			"Accept",
 		},
 		widgets={
 			"FindGroupClasses",
@@ -1887,7 +1844,7 @@ FindGroupShowText:ClearAllPoints()
 FindGroupShowText:SetPoint("BOTTOMLEFT", FindGroupFrame, "TOPLEFT", 0, 2)
 end
 
-local FINDGROUP_CONFIRM_CLEAR_CONFIG = "Вы действительно хотите привести все настройки к стандартным?"
+local FINDGROUP_CONFIRM_CLEAR_CONFIG = "Are you sure you want to reset all settings to default?"
 StaticPopupDialogs["FINDGROUP_CONFIRM_CLEAR_CONFIG"] = {
 	text = FINDGROUP_CONFIRM_CLEAR_CONFIG,
 	button1 = YES,

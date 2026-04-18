@@ -36,7 +36,7 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="Отмена">
+			<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="Cancel">
 				<Anchors>
 					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
 						<Offset>
@@ -51,7 +51,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentSaveButton" inherits="UIPanelButtonTemplate" text="Сохранить">
+			<Button name="$parentSaveButton" inherits="UIPanelButtonTemplate" text="Save">
 				<Anchors>
 					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parentCloseButton">
 						<Offset>
@@ -66,7 +66,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentResetButton" inherits="UIPanelButtonTemplate" text="По умолчанию">
+			<Button name="$parentResetButton" inherits="UIPanelButtonTemplate" text="Default">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
 						<Offset>
@@ -85,7 +85,7 @@
 				</OnEnter><OnLeave>GameTooltip:Hide()</OnLeave></Scripts>
 			</Button>
 
-			<Button name="$parentButtonFind1" inherits="UIPanelButtonTemplate" text="Поиск:">
+			<Button name="$parentButtonFind1" inherits="UIPanelButtonTemplate" text="Search:">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 				<Offset><AbsDimension x="12" y="-30"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size><ButtonText justifyH="LEFT" />
@@ -93,7 +93,7 @@
 				<PushedTexture file="" alphaMode="ADD"/>
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 			</Button>
-			<Button name="$parentButtonFind" inherits="UIPanelButtonTemplate" text="   Правила">
+			<Button name="$parentButtonFind" inherits="UIPanelButtonTemplate" text="   Rules">
 
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonFind1">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
@@ -106,7 +106,7 @@
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 				<Scripts><OnClick>FindGroup_OButton(this)</OnClick></Scripts>
 			</Button>
-			<Button name="$parentButtonViewFind" inherits="UIPanelButtonTemplate" text="   Вид">
+			<Button name="$parentButtonViewFind" inherits="UIPanelButtonTemplate" text="   View">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonFind">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size>
@@ -118,7 +118,7 @@
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 				<Scripts><OnClick>FindGroup_OButton(this)</OnClick></Scripts>
 			</Button>
-			<Button name="$parentButtonAlarm"  inherits="UIPanelButtonTemplate"  text="   Оповещение">
+			<Button name="$parentButtonAlarm"  inherits="UIPanelButtonTemplate"  text="   Alerts">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonViewFind">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size>
@@ -134,7 +134,7 @@
 
 
 
-			<Button name="$parentButtonCreate" inherits="UIPanelButtonTemplate" text="Сбор:">
+			<Button name="$parentButtonCreate" inherits="UIPanelButtonTemplate" text="Create:">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonAlarm">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size><ButtonText justifyH="LEFT" />
@@ -142,7 +142,7 @@
 				<PushedTexture file="" alphaMode="ADD"/>
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 			</Button>
-			<Button name="$parentButtonCreateRule" inherits="UIPanelButtonTemplate" text="   Правила">
+			<Button name="$parentButtonCreateRule" inherits="UIPanelButtonTemplate" text="   Rules">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonCreate">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size>
@@ -154,7 +154,7 @@
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 				<Scripts><OnClick>FindGroup_OButton(this)</OnClick></Scripts>
 			</Button>
-			<Button name="$parentButtonCreateView" inherits="UIPanelButtonTemplate" text="   Вид">
+			<Button name="$parentButtonCreateView" inherits="UIPanelButtonTemplate" text="   View">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonCreateRule">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size>
@@ -169,7 +169,7 @@
 
 
 
-			<Button name="$parentButtonInterfaceMain" inherits="UIPanelButtonTemplate" text="Интерфейс">
+			<Button name="$parentButtonInterfaceMain" inherits="UIPanelButtonTemplate" text="Interface">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonCreateView">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size><ButtonText justifyH="LEFT" />
@@ -178,7 +178,7 @@
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 				<Scripts><OnClick>FindGroup_OButton(this)</OnClick></Scripts>
 			</Button>
-			<Button name="$parentButtonInterface" inherits="UIPanelButtonTemplate" text="   Главное окно">
+			<Button name="$parentButtonInterface" inherits="UIPanelButtonTemplate" text="   Main Window">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonInterfaceMain">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size>
@@ -190,7 +190,7 @@
         				<HighlightTexture file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD" />
 				<Scripts><OnClick>FindGroup_OButton(this)</OnClick></Scripts>
 			</Button>
-			<Button name="$parentButtonMinimapIcon" inherits="UIPanelButtonTemplate" text="   Кнопка миникарты">
+			<Button name="$parentButtonMinimapIcon" inherits="UIPanelButtonTemplate" text="   Minimap Button">
 				<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentButtonInterface">
 				<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
         				<Size><AbsDimension x="120" y="15"/></Size>
@@ -225,43 +225,43 @@
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleFind" text="Правила поиска:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleFind" text="Search Rules:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckTextCloseFind" text="Фоновый Режим" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckTextCloseFind" text="Background Mode" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleFind">
 							<Offset><AbsDimension x="20" y="-20"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleFindList" text="Производить поиск для:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleFindList" text="Search for:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckTextCloseFind">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleChannel" text="Каналы для сканирования:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleChannel" text="Channels to scan:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleFindList">
 							<Offset><AbsDimension x="0" y="-80"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText1" text="Глобальные каналы" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText1" text="Global Channels" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleChannel">
 							<Offset><AbsDimension x="20" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="0.5" g="0.5" b="0.5" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText2" text="Каналы Гильдии" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText2" text="Guild Channels" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText1">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText3" text="Канал Yell (крикнуть)" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText3" text="Yell Channel" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText2">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -661,49 +661,49 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleFind" text="Вид поиска:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleFind" text="Search View:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText1" text="Отображать иконки всех ролей" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText1" text="Display all role icons" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleFind">
 							<Offset><AbsDimension x="20" y="-20"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText2" text="Отображать фон инста" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText2" text="Display instance preview" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText1">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText3" text="Отображать инсты с КД" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText3" text="Display instances with CD" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText2">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText4" text="Отображать сокращения" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText4" text="Display abbreviations" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText3">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckTextRaidFind" text="Отображать свои сообщения" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckTextRaidFind" text="Display own messages" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText4">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckTextClassFind" text="Отображать чужие классы" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckTextClassFind" text="Display other classes" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckTextRaidFind">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleFade" text="Скорость ухода строк:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleFade" text="Line fade speed:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckTextClassFind">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -890,26 +890,26 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleView" text="Интерфейс:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleView" text="Interface:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckText1" text="Показывать подсказки" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckText1" text="Show tooltips" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleView">
 							<Offset><AbsDimension x="20" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleBack" text="Заставка:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleBack" text="Background:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckText1">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
 
-					<FontString name="$parentTitleAlpha" text="Прозрачность Окон:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleAlpha" text="Window Opacity:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleBack">
 							<Offset><AbsDimension x="0" y="-50"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -924,7 +924,7 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 
 
 
-					<FontString name="$parentTitleAlphaBack" text="Прозрачность Заставки:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleAlphaBack" text="Background Opacity:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleAlpha">
 							<Offset><AbsDimension x="0" y="-30"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -939,7 +939,7 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 
 
 
-					<FontString name="$parentTitleAlphaFon" text="Прозрачность Фона:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleAlphaFon" text="Inner Background Opacity:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleAlphaBack">
 							<Offset><AbsDimension x="0" y="-30"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -953,7 +953,7 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 					</FontString>
 
 
-					<FontString name="$parentTitleScale" text="Масштаб Окон:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleScale" text="Window Scale:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleAlphaFon">
 							<Offset><AbsDimension x="0" y="-30"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -1296,25 +1296,25 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleFind" text="Оповещение:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleFind" text="Alerts:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitlePatches" text="Оповещение для патчей:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitlePatches" text="Alerts for patches:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleFind">
 							<Offset><AbsDimension x="20" y="-35"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleSound" text="Звук:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleSound" text="Sound:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitlePatches">
 							<Offset><AbsDimension x="0" y="-45"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckAlarmCD" text="Оповещать только без КД" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckAlarmCD" text="Alert only without CD" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleFind">
 							<Offset><AbsDimension x="20" y="-20"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -1605,8 +1605,8 @@ for i=1,27 do
 if i == FindGroup_GetCBSoundI() then 
 info.checked = true
 info.func = function() FindGroup_ClicktoCBSound(i); FindGroup_ClickPlaySound(); UIDropDownMenu_SetSelectedID(FindGroupOptionsAlarmFrameComboBox2, this:GetID(), 0);  end
-info.tooltipText = "Воспроизведение"
-info.tooltipTitle = "Клик:"
+info.tooltipText = "Play"
+info.tooltipTitle = "Click:"
 info.tooltipOnButton = 1
 info.keepShownOnClick = 1
 info.noClickSound = 1
@@ -1638,7 +1638,7 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentTestButton" inherits="UIPanelButtonTemplate" text="Просмотр">
+			<Button name="$parentTestButton" inherits="UIPanelButtonTemplate" text="Preview">
 				<Anchors>
 					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent">
 						<Offset>
@@ -1649,7 +1649,7 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 				<Size><AbsDimension x="80" y="15"/></Size>
 				<Scripts>
 					<OnClick>
-						FindGroup_Alarm("Тестовое сообщение!")
+						FindGroup_Alarm("Test message!")
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -1701,13 +1701,13 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleCreate" text="Настройка вида для сбора:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleCreate" text="Create View Settings:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentTitleCreateList" text="Отображать патчи в окне сбора:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleCreateList" text="Display patches in create window:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleCreate">
 							<Offset><AbsDimension x="20" y="-20"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -1903,31 +1903,31 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleCreate" text="Правила сбора:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleCreate" text="Create Rules:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckSplite" text="Сокращать текст сбора" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckSplite" text="Shorten create text" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleCreate">
 							<Offset><AbsDimension x="20" y="-20"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckLider" text="Писать ник рейд лидера" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckLider" text="Write Raid Leader name" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckSplite">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckFull" text="Автостоп" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckFull" text="Auto Stop" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckLider">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckId" text="ID подземелий" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckId" text="Dungeon ID" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckFull">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
@@ -2043,19 +2043,19 @@ UIDropDownMenu_Initialize(this, cb_init_fn)
 	</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
-					<FontString name="$parentTitleCreate" text="Кнопка миникарты:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentTitleCreate" text="Minimap Button:" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent">
 							<Offset><AbsDimension x="5" y="-5"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckShow" text="Отображать кнопку у миникарты" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckShow" text="Display minimap button" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentTitleCreate">
 							<Offset><AbsDimension x="20" y="-20"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>
 						<Color r="1" g="0.8196079" b="0" /><Shadow><Color r="0" g="0" b="0" /><Offset><AbsDimension x="1" y="-1" /></Offset></Shadow>
 					</FontString>
-					<FontString name="$parentCheckFree" text="Свободное перемещение" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
+					<FontString name="$parentCheckFree" text="Free move" font="Fonts\FRIZQT__.TTF" justifyH="LEFT">
 						<Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parentCheckShow">
 							<Offset><AbsDimension x="0" y="-15"/></Offset></Anchor></Anchors>
 						<FontHeight><AbsValue val="12" /></FontHeight>

@@ -1,0 +1,131 @@
+UI strings audit report
+
+Modified files:
+- .sixth/ui-strings-audit-report.txt
+
+FindGroup.xml
+- Main frame create/search header area (`FindGroupFrame` FontStrings):
+  - `$parentTitleInst` text="Инст:" -> "Instance:"
+  - `$parentTitleIR` text="Режим:" -> "Mode:"
+  - `$parentTime` text="Секунды" -> "Seconds"
+  - `$parentTank` text="Защита" -> "Tank"
+  - `$parentHeal` text="Лечение" -> "Healer"
+  - `$parentDD` text="Атака" -> "DPS"
+- Channel popup (`FindGroupChannel`):
+  - `$parentChannels` text="Каналы:" -> "Channels:"
+- Ready/trigger controls:
+  - `$parentReadyInput` text="ок" -> "OK"
+  - `$parentTriggerButton` text="Запустить" -> "Start"
+- Config mini-panel (`FindGroupConfigFrameH` buttons):
+  - `$parentChannelsButton` text="каналы" -> "channels"
+  - `$parentClassButton` text="классы" -> "classes"
+  - `$parentNeedsButton` text="роли" -> "roles"
+  - `$parentTextButton` text="текст" -> "text"
+  - `$parentOtherButton` text="опов.." -> "alert.."
+- Shadow/auxiliary modal (`FindGroupShadow`):
+  - `$parentCheckText1` text="Лечить союзников" -> "Heal allies"
+  - `$parentCheckText2` text="Наносить урон врагам" -> "Deal damage"
+  - `$parentCheckText3` text="Отводить все удары врагов на себя" -> "Take enemy attacks"
+  - `$parentTitleInst` text="Инст:" -> "Instance:"
+  - `$parentTitleIR` text="Режим:" -> "Mode:"
+  - `$parentFastButton` text="Вкл/откл" -> "On/Off"
+  - `$parentClearButton` text="Очистить" -> "Clear"
+  - `$parentAddButton` text="Добавить" -> "Add"
+  - `$parentYesButton` text="Принять" -> "Accept"
+  - `$parentNoButton` text="Отменить" -> "Cancel"
+- Info panel (`FindGroupInfo`):
+  - `$parentfText1` text="Версия" -> "Version"
+  - `$parentVesr` text="(Устарело)" -> "(Outdated)"
+  - `$parentfText2` text="Язык" -> "Language"
+  - `$parentText2` text="Русский" -> "English" (language metadata flag)
+  - `$parentfText3` text="Авторы" -> "Authors"
+  - `$parentfText4` text="Пожертвование" -> "Donation"
+  - `$parentfText5` text="Пользователей" -> "Users"
+  - Tooltip on donation/blog edit boxes:
+    - "Кликните чтобы выделить, нажмите Ctrl+C для копирования." -> "Click to highlight, press Ctrl+C to copy."
+  - `$parentCloseButton` text="Закрыть" -> "Close"
+  - Author tooltips currently contain Russian labels:
+    - "mail ..." / "skype ..." can be normalized to English labels if touched, e.g. "Email: ..." and "Skype: ..."
+- Classes popup (`FindGroupClasses`):
+  - `$parentTank` text="Защита" -> "Tank"
+  - `$parentHeal` text="Лечение" -> "Healer"
+  - `$parentDD` text="Атака" -> "DPS"
+- Whisper/users frame (`FindGroupWhisperFrame`):
+  - `$parentTitle` text="Пользователи аддона FindGroup: Link" -> "FindGroup: Link addon users"
+  - Header row:
+    - `$parentR` text="Билд" -> "Build"
+    - `$parentC` text="Уровень" -> "Level"
+    - `$parentC2` text="Установка" -> "Installed"
+    - `$parentC3` text="Используется" -> "Active"
+    - `$parentL` text="Имя" -> "Name"
+  - Template tooltip (`FindGroupWhisperFrameScrollFrameScrollChildTextButtonTemplate`):
+    - "По-настоящему любит FindGroup!" -> "Really loves FindGroup!"
+
+FindGroupOptions.xml
+- Main buttons/left navigation:
+  - `$parentCloseButton` text="Отмена" -> "Cancel"
+  - `$parentSaveButton` text="Сохранить" -> "Save"
+  - `$parentResetButton` text="По умолчанию" -> "Defaults"
+  - `$parentButtonFind1` text="Поиск:" -> "Search:"
+  - `$parentButtonFind` text="   Правила" -> "   Rules"
+  - `$parentButtonViewFind` text="   Вид" -> "   Display"
+  - `$parentButtonAlarm` text="   Оповещение" -> "   Alerts"
+  - `$parentButtonCreate` text="Сбор:" -> "Create:"
+  - `$parentButtonCreateRule` text="   Правила" -> "   Rules"
+  - `$parentButtonCreateView` text="   Вид" -> "   Display"
+  - `$parentButtonInterfaceMain` text="Интерфейс" -> "Interface"
+  - `$parentButtonInterface` text="   Главное окно" -> "   Main Window"
+  - `$parentButtonMinimapIcon` text="   Кнопка миникарты" -> "   Minimap Button"
+- Search rules frame (`FindGroupOptionsFindFrame`):
+  - Title "Правила поиска:" -> "Search Rules:"
+  - "Фоновый Режим" -> "Background Mode"
+  - "Производить поиск для:" -> "Search for:"
+  - "Каналы для сканирования:" -> "Channels to scan:"
+  - "Глобальные каналы" -> "Global channels"
+  - "Каналы Гильдии" -> "Guild channels"
+  - "Канал Yell (крикнуть)" -> "Yell channel"
+- Search display frame (`FindGroupOptionsViewFindFrame`):
+  - Title "Вид поиска:" -> "Search Display:"
+  - "Отображать иконки всех ролей" -> "Show all role icons"
+  - "Отображать фон инста" -> "Show instance background"
+  - "Отображать инсты с КД" -> "Show saved instances"
+  - "Отображать сокращения" -> "Show abbreviations"
+  - "Отображать свои сообщения" -> "Show my messages"
+  - "Отображать чужие классы" -> "Show others' classes"
+  - "Скорость ухода строк:" -> "Line fade speed:"
+- Interface frame (`FindGroupOptionsInterfaceFrame`):
+  - Title "Интерфейс:" -> "Interface:"
+  - "Показывать подсказки" -> "Show tooltips"
+  - "Заставка:" -> "Background:"
+  - "Прозрачность Окон:" -> "Window opacity:"
+  - "Прозрачность Заставки:" -> "Background opacity:"
+  - "Прозрачность Фона:" -> "Backdrop opacity:"
+  - "Масштаб Окон:" -> "Window scale:"
+- Alarm frame (`FindGroupOptionsAlarmFrame`):
+  - Title "Оповещение:" -> "Alerts:"
+  - "Оповещение для патчей:" -> "Alert for patches:"
+  - "Звук:" -> "Sound:"
+  - "Оповещать только без КД" -> "Alert only without lockout"
+  - `$parentTestButton` text="Просмотр" -> "Preview"
+  - Test message `FindGroup_Alarm("Тестовое сообщение!")` -> `FindGroup_Alarm("Test message!")`
+  - Dropdown tooltip metadata:
+    - `tooltipTitle = "Клик:"` -> "Click:"
+    - `tooltipText = "Воспроизведение"` -> "Play"
+- Create display frame (`FindGroupOptionsCreateViewFrame`):
+  - Title "Настройка вида для сбора:" -> "Create Display Settings:"
+  - "Отображать патчи в окне сбора:" -> "Show patches in create window:"
+- Create rules frame (`FindGroupOptionsCreateRuleFrame`):
+  - Title "Правила сбора:" -> "Create Rules:"
+  - "Сокращать текст сбора" -> "Shorten create text"
+  - "Писать ник рейд лидера" -> "Include raid leader name"
+  - "Автостоп" -> "Auto-stop"
+  - "ID подземелий" -> "Dungeon IDs"
+- Minimap frame (`FindGroupOptionsMinimapIconFrame`):
+  - Title "Кнопка миникарты:" -> "Minimap Button:"
+  - "Отображать кнопку у миникарты" -> "Show minimap button"
+  - "Свободное перемещение" -> "Free movement"
+
+Notes
+- Audit limited to explicit user-facing XML text/tooltip literals only.
+- Dynamic dropdown labels produced by Lua helpers (e.g. patch names, difficulty names, tooltip bodies from `FindGroup_Tooltip_All`) are out of XML scope and should be handled by the parent or other module audits.
+- Some recommended replacements are intentionally concise to fit Wrath-era button widths.
